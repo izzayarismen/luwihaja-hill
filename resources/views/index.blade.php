@@ -150,7 +150,7 @@
               <p>Villa Air Luwihaja Hill adalah  sebuah destinasi penginapan istimewa yang dirancang untuk menyatukan kenyamanan modern dengan pesona alam yang asri. Kami menawarkan pengalaman menginap yang unik di mana Anda dapat beristirahat dengan tenang sambil menikmati pemandangan dan kesegaran aliran sungai jernih yang berada tepat di depan mata Anda</p>
 
               <div class="about-actions">
-                <a href="about.html" class="btn-discover">
+                <a href="/tentang-kami" class="btn-discover">
                   <span>Baca Selengkapnya</span>
                   <i class="bi bi-arrow-right"></i>
                 </a>
@@ -166,7 +166,7 @@
     </section><!-- /About Home Section -->
 
      <!-- Amenities Cards Section -->
-    <section id="amenities-cards" class="amenities-cards section">
+    <section id="amenities-cards" class="amenities-cards section-gelap">
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
@@ -295,7 +295,59 @@
           <div class="col-lg-4 col-md-6">
             <div class="offer-card" data-aos="zoom-in" data-aos-delay="200">
               <div class="offer-badge">
-                <span class="discount">25% OFF</span>
+                <span class="discount">Sedang Diskon</span>
+              </div>
+              <div class="offer-image">
+                <img src="images/showcase-3.webp" alt="Weekend Getaway" class="img-fluid">
+              </div>
+              <div class="offer-content">
+                <h3>Paket Liburan Singkat</h3>
+                <p>Lepaskan penat dengan paket akhir pekan eksklusif di Luwihaja Hill. Nikmati sarapan gratis untuk 2 orang, welcome drink, dan late check-out hingga jam 2 siang.</p>
+                <div class="offer-details">
+                  <div class="price-info">
+                    <span class="original-price">Rp.1000.000 </span>
+                    <span class="offer-price">Rp. 850.000</span>
+                    <span class="per-night">per malam</span>
+                  </div>
+                  <div class="validity">
+                    <i class="bi bi-calendar-check"></i>
+                    <span>Berlaku hingga 31 Des 2025</span>
+                  </div>
+                </div>
+                <a href="#" class="btn-book">Pesan Sekarang</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="offer-card" data-aos="zoom-in" data-aos-delay="200">
+              <div class="offer-badge">
+                <span class="discount">Sedang Diskon</span>
+              </div>
+              <div class="offer-image">
+                <img src="images/showcase-3.webp" alt="Weekend Getaway" class="img-fluid">
+              </div>
+              <div class="offer-content">
+                <h3>Paket Liburan Singkat</h3>
+                <p>Lepaskan penat dengan paket akhir pekan eksklusif di Luwihaja Hill. Nikmati sarapan gratis untuk 2 orang, welcome drink, dan late check-out hingga jam 2 siang.</p>
+                <div class="offer-details">
+                  <div class="price-info">
+                    <span class="original-price">Rp.1000.000 </span>
+                    <span class="offer-price">Rp. 850.000</span>
+                    <span class="per-night">per malam</span>
+                  </div>
+                  <div class="validity">
+                    <i class="bi bi-calendar-check"></i>
+                    <span>Berlaku hingga 31 Des 2025</span>
+                  </div>
+                </div>
+                <a href="#" class="btn-book">Pesan Sekarang</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="offer-card" data-aos="zoom-in" data-aos-delay="200">
+              <div class="offer-badge">
+                <span class="discount">Sedang Diskon</span>
               </div>
               <div class="offer-image">
                 <img src="images/showcase-3.webp" alt="Weekend Getaway" class="img-fluid">
@@ -319,67 +371,13 @@
             </div>
           </div>
 
-          <div class="col-lg-4 col-md-6">
-            <div class="offer-card featured" data-aos="zoom-in" data-aos-delay="300">
-              <div class="offer-badge">
-                <span class="discount">BEST VALUE</span>
-              </div>
-              <div class="offer-image">
-                <img src="images/showcase-7.webp" alt="Extended Stay Deal" class="img-fluid">
-              </div>
-              <div class="offer-content">
-                <h3>Staycation Hemat</h3>
-                <p>Menginap 5 malam atau lebih dengan harga hemat. Cocok untuk liburan panjang bersama keluarga atau healing lebih lama dengan fasilitas premium Luwihaja Hill.</p>
-                <div class="offer-details">
-                  <div class="price-info">
-                    <span class="original-price">Rp. 1.700.000</span>
-                    <span class="offer-price">Rp. 1.500.000</span>
-                    <span class="per-night">per malam</span>
-                  </div>
-                  <div class="validity">
-                    <i class="bi bi-calendar-check"></i>
-                    <span>Pesan sebelum 15 Jan 2026</span>
-                  </div>
-                </div>
-                <a href="#" class="btn-book">Pesan Sekarang</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6">
-            <div class="offer-card" data-aos="zoom-in" data-aos-delay="400">
-              <div class="offer-badge">
-                <span class="discount">PESAN LEBIH AWAL</span>
-              </div>
-              <div class="offer-image">
-                <img src="images/showcase-11.webp" alt="Advance Booking" class="img-fluid">
-              </div>
-              <div class="offer-content">
-                <h3>Pesan Jauh Hari</h3>
-                <p>Rencanakan liburan Anda lebih awal dan lebih hemat! Pesan kamar minimal 30 hari sebelum tanggal check-in dan nikmati diskon spesial dari kami.</p>
-                <div class="offer-details">
-                  <div class="price-info">
-                    <span class="original-price">Rp. 800.000</span>
-                    <span class="offer-price">Rp. 750.000</span>
-                    <span class="per-night">per malam</span>
-                  </div>
-                  <div class="validity">
-                    <i class="bi bi-calendar-check"></i>
-                    <span>Berlaku untuk semua tipe kamar/span>
-                  </div>
-                </div>
-                <a href="#" class="btn-book">Pesan Lebih Awal</a>
-              </div>
-            </div>
-          </div>
-
         </div>
       </div>
 
     </section><!-- /Offer Cards Section -->
 
     <!-- Rooms Showcase Section -->
-    <section id="rooms-showcase" class="rooms-showcase section">
+    <section id="rooms-showcase" class="rooms-showcase section-gelap">
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
@@ -607,7 +605,7 @@
     </section><!-- /Events Cards Section -->
 
     <!-- Testimonials Section -->
-    <section id="testimonials" class="testimonials section">
+    <section id="testimonials" class="testimonials section-gelap">
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
@@ -786,6 +784,62 @@
       </div>
 
     </section><!-- /Testimonials Section -->
+   
+    <!-- Location Section -->
+    <section id="lokasi" class="hotel-location section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Lokasi</h2>
+        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+      </div><!-- End Section Title -->
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row">
+
+          <!-- Map Section -->
+          <div class="col-lg-8 mb-5 mb-lg-0" data-aos="fade-right" data-aos-delay="200">
+            <div class="map-wrapper" style="height: 100%">
+              <iframe style="height: 100%" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3963.0266070980883!2d106.95231537453701!3d-6.643617764945126!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69b7981e20e2fb%3A0x8095edcccc6da80d!2sVilla%20dan%20Cafe%20Air%20Luwihaja%20Hill!5e0!3m2!1sid!2sid!4v1761913874506!5m2!1sid!2sid" frameborder="0" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+          </div>
+
+          <!-- Location Info -->
+          <div class="col-lg-4" data-aos="fade-left" data-aos-delay="300">
+            <div class="location-info mb-3">
+              <div class="address-block">
+                <h5><i class="bi bi-geo-alt"></i> Address</h5>
+                <p>456 Broadway Avenue<br>New York, NY 10013<br>United States</p>
+              </div>
+            </div>
+            <div class="location-info">
+              <h3>Also Find Me On</h3>
+
+              <div class="address-block">
+                <h5><img src="/images/tiket-com.png" height="20px"> Tiket.com</h5>
+                <p>456 Broadway Avenue<br>New York, NY 10013<br>United States</p>
+              </div>
+
+              <div class="transport-info">
+                <h5><i class="bi bi-airplane"></i> Airport Distance</h5>
+                <p>John F. Kennedy Airport - 45 minutes by car</p>
+                <p>LaGuardia Airport - 30 minutes by car</p>
+              </div>
+
+              <div class="contact-info">
+                <h5><i class="bi bi-telephone"></i> Contact</h5>
+                <p>Phone: +1 (555) 234-5678</p>
+                <p>Email: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="c4adaaa2ab84a1bca5a9b4a8a1eaa7aba9">[email�protected]</a></p>
+              </div>
+
+              <a href="#" class="btn btn-primary">Get Directions</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
 
     <!-- Call To Action Section -->
     <!-- <section id="call-to-action" class="call-to-action section light-background">

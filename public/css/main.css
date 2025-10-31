@@ -747,6 +747,14 @@ section,
   overflow: clip;
 }
 
+.section-gelap {
+  color: var(--default-color);
+  background-color: #DDD7C9;
+  padding: 60px 0;
+  scroll-margin-top: 90px;
+  overflow: clip;
+}
+
 @media (max-width: 1199px) {
 
   section,
@@ -2012,7 +2020,7 @@ section,
 
 .testimonials .testimonial-slider {
   position: relative;
-  padding-bottom: 50px;
+  /* padding-bottom: 50px; */
 }
 
 .testimonials .testimonial-slider .swiper-wrapper {
@@ -2432,12 +2440,12 @@ section,
 .offer-cards .offer-card .offer-content .offer-details .price-info .original-price {
   color: color-mix(in srgb, var(--default-color), transparent 50%);
   text-decoration: line-through;
-  font-size: 14px;
+  font-size: 12px;
 }
 
 .offer-cards .offer-card .offer-content .offer-details .price-info .offer-price {
   color: var(--accent-color);
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 700;
 }
 
@@ -6331,7 +6339,7 @@ section,
   padding: 30px;
   background: var(--surface-color);
   border-radius: 10px;
-  height: 100%;
+  /* height: 100%; */
   box-shadow: 0 5px 25px color-mix(in srgb, var(--default-color), transparent 90%);
 }
 
@@ -6350,7 +6358,7 @@ section,
 .hotel-location .location-info .address-block,
 .hotel-location .location-info .transport-info,
 .hotel-location .location-info .contact-info {
-  margin-bottom: 25px;
+  /* margin-bottom: 25px; */
   padding-bottom: 20px;
   border-bottom: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
 }
