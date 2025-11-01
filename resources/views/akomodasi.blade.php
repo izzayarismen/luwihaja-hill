@@ -28,25 +28,24 @@
             <div class="room-filters" data-aos="fade-right" data-aos-delay="100">
               <h5>Filter Kamar</h5>
 
-              <div class="filter-group">
-                <label>Rentang Harga</label>
-                <select class="form-select" name="harga">
-                    <option value="" @selected(empty($harga))>Semua Harga</option>
-                    <option value="0-500" @selected($harga == '0-500')>Rp0 - Rp500rb</option>
-                    <option value="500-1000" @selected($harga == '500-1000')>Rp500rb - Rp1jt</option>
-                    <option value="1000+" @selected($harga == '1000+')>Rp1jt+</option>
-                </select>
-              </div>
+                <div class="filter-group">
+                    <label>Rentang Harga</label>
+                    <select class="form-select" name="harga">
+                        <option value="" @selected(empty($harga))>Semua Harga</option>
+                        <option value="0-500" @selected($harga == '0-500')>Rp0 - Rp500rb</option>
+                        <option value="500-1000" @selected($harga == '500-1000')>Rp500rb - Rp1jt</option>
+                        <option value="1000+" @selected($harga == '1000+')>Rp1jt+</option>
+                    </select>
+                </div>
 
-              <div class="filter-group" name="kapasitas">
-                <label>Kapasitas Kamar</label>
-                <select class="form-select">
-                  <option value="">Semua Kapasitas</option>
-                  <option value="1-2">1-2 Tamu</option>
-                  <option value="3-4">3-4 Tamu</option>
-                  <option value="5">5+ Tamu</option>
-                </select>
-              </div>
+                <div class="filter-group"> <label>Kapasitas Kamar</label>
+                    <select class="form-select" name="kapasitas">
+                        <option value="" @selected(empty($kapasitas))>Semua Kapasitas</option>
+                        <option value="1-2" @selected($kapasitas == '1-2')>1-2 Tamu</option>
+                        <option value="3-4" @selected($kapasitas == '3-4')>3-4 Tamu</option>
+                        <option value="5" @selected($kapasitas == '5')>5+ Tamu</option>
+                    </select>
+                </div>
 
               <div class="filter-group" name="pemandangan">
                 <label>Tipe Pemandangan</label>
@@ -60,22 +59,21 @@
 
               <button type="submit" class="btn btn-primary w-100">Terapkan Filter</button>
             </div>
-            </form>
           </div>
 
           <div class="col-lg-9 col-md-8">
             <div class="rooms-header d-flex justify-content-between align-items-center mb-4" data-aos="fade-left" data-aos-delay="150">
-              <div class="results-count">
-                <span>Menampilkan {{ $akomodasi->count() }} akomodasi</span>
-              </div>
-              <div class="sort-options">
-                <select class="form-select">
-                  <option value="featured">Urutkan dari Default</option>
-                  <option value="price-low">Harga: Rendah ke Tinggi</option>
-                  <option value="price-high">Harga: Tinggi ke Rendah</option>
-                </select>
-              </div>
-            </div>
+                <div class="results-count">
+                    <span>Menampilkan {{ $akomodasi->count() }} akomodasi</span>
+                </div>
+                <div class="sort-options">
+                    <select class="form-select" name="sort">
+                        <option value="default" @selected($sort == 'default' || empty($sort))>Urutkan dari Default</option>
+                        <option value="price-low" @selected($sort == 'price-low')>Harga: Rendah ke Tinggi</option>
+                        <option value="price-high" @selected($sort == 'price-high')>Harga: Tinggi ke Rendah</option>
+                    </select>
+                </div>
+            </div></form>
 
             <div class="row gy-4">
 

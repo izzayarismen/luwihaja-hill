@@ -12,27 +12,52 @@ class AkomodasiController extends Controller
      */
     public function index(Request $request)
     {
-        $query = Akomodasi::orderBy('id', 'desc');
-        $harga = $request->harga;
+        $harga = $request->input('harga');
+        $kapasitas = $request->input('kapasitas');
+        $sort = $request->input('sort', 'default');
+        $priceColumnRaw = 'COALESCE(harga_diskon, harga_asli)';
 
-        $priceColumn = 'COALESCE(harga_diskon, harga_asli)';
+        $query = Akomodasi::query();
 
-        if ($harga == '0-500') {
-            $query->whereRaw("$priceColumn <= 500000");
+        $query->when($harga, function ($q) use ($harga, $priceColumnRaw) {
+            if ($harga == '0-500') {
+                return $q->whereRaw("$priceColumnRaw <= 500000");
+            }
+            if ($harga == '500-1000') {
+                return $q->whereRaw("$priceColumnRaw BETWEEN 500000 AND 1000000");
+            }
+            if ($harga == '1000+') {
+                return $q->whereRaw("$priceColumnRaw >= 1000000");
+            }
+        });
 
-        } else if ($harga == '500-1000') {
-            $query->whereRaw("$priceColumn BETWEEN 500000 AND 1000000");
+        $query->when($kapasitas, function ($q) use ($kapasitas) {
+            if ($kapasitas == '1-2') {
+                return $q->whereBetween('jumlah_tamu', [1, 2]);
+            }
+            if ($kapasitas == '3-4') {
+                return $q->whereBetween('jumlah_tamu', [3, 4]);
+            }
+            if ($kapasitas == '5+') {
+                return $q->where('jumlah_tamu', '>=', 5);
+            }
+        });
 
-        } else if ($harga == '1000+') {
-            $query->whereRaw("$priceColumn >= 1000000");
+        if ($sort == 'price-low') {
+            $query->orderByRaw($priceColumnRaw . ' ASC');
+        } elseif ($sort == 'price-high') {
+            $query->orderByRaw($priceColumnRaw . ' DESC');
+        } else {
+            $query->orderBy('id', 'desc');
         }
 
         $akomodasi = $query->get();
-
         return view('akomodasi', [
             'active' => 'akomodasi',
             'akomodasi' => $akomodasi,
-            'harga' => $harga
+            'harga' => $harga,
+            'kapasitas' => $kapasitas,
+            'sort' => $sort
         ]);
     }
 
