@@ -29,33 +29,6 @@
               <p>
                 Kami menyediakan beragam tipe akomodasi untuk memenuhi segala kebutuhan Anda. Mulai dari kamar Deluxe Bed, Queen Bed, dan Twin Bed yang cocok untuk dua orang , hingga Super Duluxe dan berbagai tipe Family Room yang lebih luas untuk keluarga atau rombongan. Setiap unit kami menawarkan pemandangan yang menenangkan, baik itu pemandangan langsung ke arah sungai , taman dan kolam ikan , maupun pegunungan dan kolam renang.</p>
 
-              <div class="stats-grid">
-                <div class="stat-item" data-aos="fade-up" data-aos-delay="200">
-                  <div class="stat-number">
-                    <span data-purecounter-start="0" data-purecounter-end="132" data-purecounter-duration="1" class="purecounter"></span>
-                  </div>
-                  <div class="stat-label">Luxury Rooms</div>
-                </div>
-                <div class="stat-item" data-aos="fade-up" data-aos-delay="250">
-                  <div class="stat-number">
-                    <span data-purecounter-start="0" data-purecounter-end="98" data-purecounter-duration="1" class="purecounter"></span>%
-                  </div>
-                  <div class="stat-label">Guest Satisfaction</div>
-                </div>
-                <div class="stat-item" data-aos="fade-up" data-aos-delay="300">
-                  <div class="stat-number">
-                    <span data-purecounter-start="1800" data-purecounter-end="1892" data-purecounter-duration="2" class="purecounter"></span>
-                  </div>
-                  <div class="stat-label">Established</div>
-                </div>
-                <div class="stat-item" data-aos="fade-up" data-aos-delay="350">
-                  <div class="stat-number">
-                    <span data-purecounter-start="0" data-purecounter-end="27" data-purecounter-duration="1" class="purecounter"></span>
-                  </div>
-                  <div class="stat-label">Awards Won</div>
-                </div>
-              </div>
-
               <div class="cta-button">
                 <a href="#" class="btn-primary">Discover Our Story</a>
               </div>
@@ -75,90 +48,6 @@
                 </div>
               </div>
 
-              <div class="features-grid">
-                <div class="feature-item" data-aos="fade-up" data-aos-delay="300">
-                  <div class="feature-icon">
-                    <i class="bi bi-wifi"></i>
-                  </div>
-                  <h5>Free Wi-Fi</h5>
-                  <p>High-speed internet throughout the property</p>
-                </div>
-                <div class="feature-item" data-aos="fade-up" data-aos-delay="350">
-                  <div class="feature-icon">
-                    <i class="bi bi-car-front"></i>
-                  </div>
-                  <h5>Valet Parking</h5>
-                  <p>Complimentary parking with professional service</p>
-                </div>
-                <div class="feature-item" data-aos="fade-up" data-aos-delay="400">
-                  <div class="feature-icon">
-                    <i class="bi bi-cup-hot"></i>
-                  </div>
-                  <h5>24/7 Room Service</h5>
-                  <p>Gourmet dining delivered to your door</p>
-                </div>
-                <div class="feature-item" data-aos="fade-up" data-aos-delay="450">
-                  <div class="feature-icon">
-                    <i class="bi bi-gem"></i>
-                  </div>
-                  <h5>Concierge Service</h5>
-                  <p>Personal assistance for all your needs</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="row awards-section">
-          <div class="col-12">
-            <div class="section-header text-center" data-aos="fade-up" data-aos-delay="100">
-              <h4>Awards & Recognition</h4>
-              <p>Celebrating excellence in hospitality and service</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-lg-3 col-md-6">
-            <div class="award-item" data-aos="fade-up" data-aos-delay="200">
-              <div class="award-icon">
-                <i class="bi bi-award"></i>
-              </div>
-              <h6>Best Luxury Hotel</h6>
-              <span>Travel Excellence Awards 2023</span>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-6">
-            <div class="award-item" data-aos="fade-up" data-aos-delay="250">
-              <div class="award-icon">
-                <i class="bi bi-star-fill"></i>
-              </div>
-              <h6>5-Star Rating</h6>
-              <span>International Hotel Guide</span>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-6">
-            <div class="award-item" data-aos="fade-up" data-aos-delay="300">
-              <div class="award-icon">
-                <i class="bi bi-heart-fill"></i>
-              </div>
-              <h6>Guest's Choice</h6>
-              <span>TripAdvisor 2023</span>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-6">
-            <div class="award-item" data-aos="fade-up" data-aos-delay="350">
-              <div class="award-icon">
-                <i class="bi bi-tree"></i>
-              </div>
-              <h6>Eco-Friendly Hotel</h6>
-              <span>Green Tourism Certification</span>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
     </section><!-- /About Section -->
 
     <!-- Rooms Showcase About Section -->
@@ -166,7 +55,7 @@
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
-        <h2>Rooms</h2>
+        <h2>Akomodasi</h2>
         <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
       </div><!-- End Section Title -->
 

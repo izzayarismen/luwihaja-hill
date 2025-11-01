@@ -449,7 +449,7 @@
                     </div>
                     <div class="compact-bottom">
                       <span class="compact-price">Rp. 1.300.000<small> / malam</small></span>
-                      <a href="room-details.html" class="quick-book">Reservasi</a>
+                      <a href="room-details.html" class="quick-book">Pesan Sekarang</a>
                     </div>
                   </div>
                 </div>
@@ -472,7 +472,7 @@
                     </div>
                     <div class="compact-bottom">
                       <span class="compact-price">Rp. 1.000.000<small> / malam</small></span>
-                      <a href="room-details.html" class="quick-book">Reservasi</a>
+                      <a href="room-details.html" class="quick-book">Pesan Sekarang</a>
                     </div>
                   </div>
                 </div>
@@ -495,7 +495,7 @@
                     </div>
                     <div class="compact-bottom">
                       <span class="compact-price">Rp. 900.000<small> / malam</small></span>
-                      <a href="room-details.html" class="quick-book">Reservasi</a>
+                      <a href="room-details.html" class="quick-book">Pesan Sekarang</a>
                     </div>
                   </div>
                 </div>
@@ -506,7 +506,7 @@
         </div>
 
         <div class="text-center mt-5" data-aos="fade-up" data-aos-delay="600">
-          <a href="rooms.html" class="discover-all-btn">Lihat Semua Akomodasi</a>
+          <a href="/akomodasi" class="discover-all-btn">Lihat Semua Akomodasi</a>
         </div>
 
       </div>
@@ -809,8 +809,8 @@
           <div class="col-lg-4" data-aos="fade-left" data-aos-delay="300">
             <div class="location-info mb-3">
               <div class="address-block">
-                <h5><i class="bi bi-geo-alt"></i> Address</h5>
-                <p>456 Broadway Avenue<br>New York, NY 10013<br>United States</p>
+                <h5><i class="bi bi-geo-alt"></i> Alamat</h5>
+                <p>Jl. Tegal Luhur, Paseban,<br>Kec. Megamendung, Kabupaten Bogor<br>Jawa Barat 16770</p>
               </div>
             </div>
             <div class="location-info">
