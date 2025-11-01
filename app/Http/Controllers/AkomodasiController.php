@@ -10,13 +10,29 @@ class AkomodasiController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $akomodasi = Akomodasi::all();
+        $query = Akomodasi::orderBy('id', 'desc');
+        $harga = $request->harga;
+
+        $priceColumn = 'COALESCE(harga_diskon, harga_asli)';
+
+        if ($harga == '0-500') {
+            $query->whereRaw("$priceColumn <= 500000");
+
+        } else if ($harga == '500-1000') {
+            $query->whereRaw("$priceColumn BETWEEN 500000 AND 1000000");
+
+        } else if ($harga == '1000+') {
+            $query->whereRaw("$priceColumn >= 1000000");
+        }
+
+        $akomodasi = $query->get();
 
         return view('akomodasi', [
             'active' => 'akomodasi',
-            'akomodasi' => $akomodasi
+            'akomodasi' => $akomodasi,
+            'harga' => $harga
         ]);
     }
 

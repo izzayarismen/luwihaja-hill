@@ -24,30 +24,31 @@
         <div class="row">
 
           <div class="col-lg-3 col-md-4">
+            <form method="GET" action="/akomodasi">
             <div class="room-filters" data-aos="fade-right" data-aos-delay="100">
               <h5>Filter Kamar</h5>
 
               <div class="filter-group">
                 <label>Rentang Harga</label>
-                <select class="form-select">
-                  <option value="">Semua Harga</option>
-                  <option value="budget">$100 - $200</option>
-                  <option value="mid">$200 - $350</option>
-                  <option value="luxury">$350+</option>
+                <select class="form-select" name="harga">
+                    <option value="" @selected(empty($harga))>Semua Harga</option>
+                    <option value="0-500" @selected($harga == '0-500')>Rp0 - Rp500rb</option>
+                    <option value="500-1000" @selected($harga == '500-1000')>Rp500rb - Rp1jt</option>
+                    <option value="1000+" @selected($harga == '1000+')>Rp1jt+</option>
                 </select>
               </div>
 
-              <div class="filter-group">
+              <div class="filter-group" name="kapasitas">
                 <label>Kapasitas Kamar</label>
                 <select class="form-select">
                   <option value="">Semua Kapasitas</option>
                   <option value="1-2">1-2 Tamu</option>
                   <option value="3-4">3-4 Tamu</option>
-                  <option value="5+">5+ Tamu</option>
+                  <option value="5">5+ Tamu</option>
                 </select>
               </div>
 
-              <div class="filter-group">
+              <div class="filter-group" name="pemandangan">
                 <label>Tipe Pemandangan</label>
                 <select class="form-select">
                   <option value="">Semua Pemandangan</option>
@@ -57,26 +58,9 @@
                 </select>
               </div>
 
-              <div class="filter-group">
-                <label>Fasilitas Kamar</label>
-                <div class="feature-checkboxes">
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="wifi">
-                    <label class="form-check-label" for="wifi">WiFi Gratis</label>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="balcony">
-                    <label class="form-check-label" for="balcony">Mini Kitchen</label>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="kitchen">
-                    <label class="form-check-label" for="kitchen">Non-Smooking Room</label>
-                  </div>
-                </div>
-              </div>
-
-              <button type="button" class="btn btn-primary w-100">Terapkan Filter</button>
+              <button type="submit" class="btn btn-primary w-100">Terapkan Filter</button>
             </div>
+            </form>
           </div>
 
           <div class="col-lg-9 col-md-8">
@@ -86,10 +70,9 @@
               </div>
               <div class="sort-options">
                 <select class="form-select">
-                  <option value="featured">Urutkan dari Best Seller</option>
+                  <option value="featured">Urutkan dari Default</option>
                   <option value="price-low">Harga: Rendah ke Tinggi</option>
                   <option value="price-high">Harga: Tinggi ke Rendah</option>
-                  <option value="rating">Ulasan Tamu</option>
                 </select>
               </div>
             </div>
@@ -125,7 +108,9 @@
                     </div>
                 </div>
                 @empty
-
+                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+                    <h4>Tidak ada Akomodasi</h4>
+                </div>
                 @endforelse
             </div>
 
