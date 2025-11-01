@@ -8,7 +8,7 @@
         <p>Jelajahi detail fasilitas modern dan pemandangan alam menenangkan yang kami siapkan untuk pengalaman menginap Anda yang tak terlupakan.</p>
         <nav class="breadcrumbs">
           <ol>
-            <li><a href="index.html">Beranda</a></li>
+            <li><a href="/">Beranda</a></li>
             <li class="current">Detail Akomodasi</li>
           </ol>
         </nav>
