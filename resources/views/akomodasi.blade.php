@@ -82,7 +82,7 @@
           <div class="col-lg-9 col-md-8">
             <div class="rooms-header d-flex justify-content-between align-items-center mb-4" data-aos="fade-left" data-aos-delay="150">
               <div class="results-count">
-                <span>Menampilkan 6 tipe kamar</span>
+                <span>Menampilkan {{ $akomodasi->count() }} akomodasi</span>
               </div>
               <div class="sort-options">
                 <select class="form-select">
