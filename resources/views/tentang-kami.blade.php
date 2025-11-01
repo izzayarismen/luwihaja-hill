@@ -40,7 +40,7 @@
               <div class="main-image" data-aos="zoom-in" data-aos-delay="200">
                 <img src="images/showcase-3.webp" alt="Hotel Luxury Suite" class="img-fluid">
                 <div class="image-overlay">
-                  <a href="https://www.youtube.com/watch?v=Y7f98aduVJ8" class="glightbox">
+                  <a href="https://youtu.be/mL6Ar3dfMMM?si=P0sO6xe3wfShD1eK" class="glightbox">
                     <div class="play-button">
                       <i class="bi bi-play-circle"></i>
                     </div>

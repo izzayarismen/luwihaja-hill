@@ -6,9 +6,10 @@
 
       <div class="hero-content">
         <div class="hero-background">
-          <video autoplay="" muted="" loop="" loading="lazy">
-            <source src="media/video-6.mp4" type="video/mp4">
-          </video>
+          <!-- <video autoplay="" muted="" loop="" loading="lazy">
+            <source src="/images/header.jpg" type="image src">
+          </video> -->
+          <image src="/images/hero.jpg" width="100%" height="100%"></image>
           <div class="hero-overlay"></div>
         </div>
 
@@ -81,7 +82,7 @@
               </div> -->
 
               <div class="hero-actions" data-aos="fade-up" data-aos-delay="400">
-                <a href="rooms.html" class="btn btn-light btn-lg">
+                <a href="/akomodasi" class="btn btn-light btn-lg">
                   <i class="bi bi-house-door"></i>
                   Lihat Produk
                 </a>
@@ -132,10 +133,10 @@
             <div class="about-images">
               <div class="image-stack">
                 <div class="image-main">
-                  <img src="images/showcase-3.webp" alt="Heritage Hotel Exterior" class="img-fluid">
+                  <img src="/images/tentangkami1.jpg" alt="tentangkami1" class="img-fluid">
                 </div>
                 <div class="image-overlay">
-                  <img src="images/room-8.webp" alt="Elegant Room Interior" class="img-fluid">
+                  <img src="images/tentangkami2.jpg" alt="tentangkami2" class="img-fluid">
                 </div>
               </div>
             </div>
@@ -165,7 +166,7 @@
 
     </section><!-- /About Home Section -->
 
-     <!-- Amenities Cards Section -->
+     <!-- Kenapa Harus Section -->
     <section id="amenities-cards" class="amenities-cards section-gelap">
 
       <!-- Section Title -->
@@ -277,9 +278,9 @@
         </div>
       </div>
 
-    </section><!-- /Amenities Cards Section -->
+    </section><!-- /Kenapa Harus Section -->
 
-     <!-- Offer Cards Section -->
+     <!-- Rekomendasi Section -->
     <section id="offer-cards" class="offer-cards section">
 
       <!-- Section Title -->
@@ -374,9 +375,9 @@
         </div>
       </div>
 
-    </section><!-- /Offer Cards Section -->
+    </section><!-- /Rekomendasi Section -->
 
-    <!-- Rooms Showcase Section -->
+    <!-- Akomodasi Section -->
     <section id="rooms-showcase" class="rooms-showcase section-gelap">
 
       <!-- Section Title -->
@@ -511,7 +512,7 @@
 
       </div>
 
-    </section><!-- /Rooms Showcase Section -->
+    </section><!-- /Akomodasi Section -->
 
      <!-- Events Cards Section -->
     <section id="events-cards" class="events-cards section">
@@ -604,7 +605,7 @@
 
     </section><!-- /Events Cards Section -->
 
-    <!-- Testimonials Section -->
+    <!-- Testimoni Section -->
     <section id="testimonials" class="testimonials section-gelap">
 
       <!-- Section Title -->
@@ -783,56 +784,58 @@
 
       </div>
 
-    </section><!-- /Testimonials Section -->
+    </section><!-- /Testimoni Section -->
 
-    <section id="faq" class="faq section">
+    <!-- FAQ Section -->
+     <section id="faq" class="faq section">
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>FAQ</h2>
+        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+      </div><!-- End Section Title -->
 
-        <!-- Section Title -->
-        <div class="container section-title" data-aos="fade-up">
-          <h2>FAQ</h2>
-          <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
-        </div><!-- End Section Title -->
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="accordion" id="accordionExample">
+            <div class="accordion-item rounded mb-5">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#one" aria-expanded="false" aria-controls="one">
+                  Berapa kisaran harga kamar untuk menginap di Villa dan Cafe Air Luwihajahill?
+                </button>
+              </h2>
+              <div id="one" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  Harga termurah di Villa dan Cafe Air Luwihajahill kalau kamu mau menginap mulai dari Rp. 600.000
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item rounded mb-5">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#two" aria-expanded="false" aria-controls="two">
+                  Di mana alamat Villa dan Cafe Air Luwihajahill?
 
-        <div class="container" data-aos="fade-up" data-aos-delay="100">
-            <div class="accordion" id="accordionExample">
-                <div class="accordion-item rounded mb-5">
-                  <h2 class="accordion-header">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#one" aria-expanded="false" aria-controls="one">
-                      Accordion Item #1
-                    </button>
-                  </h2>
-                  <div id="one" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                    <div class="accordion-body">
-                      <strong>This is the second item’s accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It’s also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-                    </div>
-                  </div>
+                </button>
+              </h2>
+              <div id="two" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                Villa dan Cafe Air Luwihajahill beralamat di Jl. Tegal Luhur, Paseban, Kec. Megamendung, Kabupaten Bogor, Jawa Barat 16770
                 </div>
-                <div class="accordion-item rounded mb-5">
-                  <h2 class="accordion-header">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#two" aria-expanded="false" aria-controls="two">
-                      Accordion Item #2
-                    </button>
-                  </h2>
-                  <div id="two" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                    <div class="accordion-body">
-                      <strong>This is the second item’s accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It’s also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-                    </div>
-                  </div>
+              </div>
+            </div>
+            <div class="accordion-item rounded mb-5">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#three" aria-expanded="false" aria-controls="three">
+                  Pukul berapa waktu check-in & check-out di Villa dan Cafe Air Luwihajahill?
+                </button>
+              </h2>
+              <div id="three" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  Waktu untuk check-in di Villa dan Cafe Air Luwihajahill adalah mulai dari pukul 14:00-21:00 dan waktu check-out paling lambat pukul 12:00
                 </div>
-                <div class="accordion-item rounded mb-5">
-                  <h2 class="accordion-header">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#three" aria-expanded="false" aria-controls="three">
-                      Accordion Item #3
-                    </button>
-                  </h2>
-                  <div id="three" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                    <div class="accordion-body">
-                      <strong>This is the second item’s accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It’s also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-                    </div>
-                  </div>
-                </div>
+              </div>
+            </div>
         </div>
-    </section>
+      </div>
+    </section> <!-- /FAQ Section -->
 
     <!-- Location Section -->
     <section id="lokasi" class="hotel-location section-gelap">
@@ -888,7 +891,7 @@
 
         </div>
       </div>
-    </section>
+    </section> <!-- /Location Section -->
 
     <!-- Call To Action Section -->
     <!-- <section id="call-to-action" class="call-to-action section light-background">
