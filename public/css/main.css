@@ -222,7 +222,7 @@ h6 {
 /* Global Header on Scroll
 ------------------------------*/
 .scrolled .header {
-  --background-color: rgba(24, 14, 1, 0.8);
+  --background-color: #2C3930;
 }
 
 /*--------------------------------------------------------------
@@ -484,7 +484,7 @@ h6 {
 }
 
 .footer .footer-top {
-  background-color: color-mix(in srgb, var(--background-color), white 5%);
+  background-color: color-mix(in srgb, #3F4F44, white 5%);
   padding-top: 50px;
 }
 
@@ -572,6 +572,7 @@ h6 {
 
 .footer .copyright {
   padding: 30px 0;
+  background-color: #2C3930;
 }
 
 .footer .copyright p {

@@ -9,7 +9,7 @@
         <p>Kami menyediakan beragam tipe akomodasi yang dirancang untuk setiap kebutuhan, mulai dari liburan untuk pasangan hingga petualangan seru bersama keluarga.</p>
         <nav class="breadcrumbs">
           <ol>
-            <li><a href="index.html">Beranda</a></li>
+            <li><a href="/">Beranda</a></li>
             <li class="current">Akomodasi</li>
           </ol>
         </nav>
