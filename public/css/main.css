@@ -852,7 +852,7 @@ section,
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, color-mix(in srgb, var(--background-color), transparent 20%) 0%, color-mix(in srgb, var(--background-color), transparent 20%) 100%);
+  background: linear-gradient(135deg, color-mix(in srgb, #2C3930, transparent 22%) 0%, color-mix(in srgb, #2C3930, transparent 22%) 100%);
   z-index: 2;
 }
 
@@ -2013,14 +2013,10 @@ section,
 .testimonials {
   position: relative;
   overflow: hidden;
-  /* Swiper Navigation */
-  /* Swiper Pagination */
-  /* Responsive Styles */
 }
 
 .testimonials .testimonial-slider {
   position: relative;
-  /* padding-bottom: 50px; */
 }
 
 .testimonials .testimonial-slider .swiper-wrapper {
@@ -6339,7 +6335,6 @@ section,
   padding: 30px;
   background: var(--surface-color);
   border-radius: 10px;
-  /* height: 100%; */
   box-shadow: 0 5px 25px color-mix(in srgb, var(--default-color), transparent 90%);
 }
 
@@ -6358,7 +6353,6 @@ section,
 .hotel-location .location-info .address-block,
 .hotel-location .location-info .transport-info,
 .hotel-location .location-info .contact-info {
-  /* margin-bottom: 25px; */
   padding-bottom: 20px;
   border-bottom: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
 }
@@ -7443,5 +7437,4 @@ section,
 # Starter Section Section
 --------------------------------------------------------------*/
 .starter-section {
-  /* Add your styles here */
 }

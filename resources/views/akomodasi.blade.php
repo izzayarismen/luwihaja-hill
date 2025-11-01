@@ -106,7 +106,7 @@
                         @endif
                         <div class="room-price">
                             <span class="price">{{ $item->harga_diskon != null ? @currency($item->harga_diskon) : @currency($item->harga_asli) }}</span>
-                            <span class="period">/ malam</span>
+                            <span class="period"> / malam</span>
                         </div>
                       </div>
                       <div class="room-content">
@@ -118,8 +118,8 @@
                           <span><i class="bi bi-house"></i>{{ $item->luas }}m²</span>
                         </div>
                         <div class="room-actions">
-                          <a href="/akomodasi/1" class="btn btn-primary">View Details</a>
-                          <a href="booking.html" class="btn btn-outline-primary">Check Availability</a>
+                          <a href="/akomodasi/{{ $item->id }}" class="btn btn-primary">View Details</a>
+                          <a href="/booking/{{ $item->id }}" class="btn btn-outline-primary">Check Availability</a>
                         </div>
                       </div>
                     </div>

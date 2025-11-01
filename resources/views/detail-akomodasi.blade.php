@@ -25,7 +25,7 @@
           <div class="col-lg-8">
             <div class="room-gallery">
               <div class="main-image-container image-zoom-container">
-                <img id="main-product-image" src="/images/room-1.webp" alt="Presidential Suite" class="img-fluid main-room-image" data-zoom="/images/room-1.webp">
+                <img id="main-product-image" src="{{ $akomodasi->gambar }}" alt="{{ $akomodasi->tipe }}" class="img-fluid main-room-image" data-zoom="{{ $akomodasi->gambar }}">
                 <div class="image-nav-buttons">
                   <button class="image-nav-btn prev-image" type="button">
                     <i class="bi bi-chevron-left"></i>
@@ -36,8 +36,8 @@
                 </div>
               </div>
               <div class="thumbnail-gallery thumbnail-list">
-                <div class="thumbnail-item active" data-image="/images/room-1.webp">
-                  <img src="/images/room-1.webp" alt="Presidential Suite" class="img-fluid">
+                <div class="thumbnail-item active" data-image="{{ $akomodasi->gambar }}">
+                  <img src="{{ $akomodasi->gambar }}" alt="{{ $akomodasi->tipe }}" class="img-fluid">
                 </div>
                 <div class="thumbnail-item" data-image="/images/room-3.webp">
                   <img src="/images/room-3.webp" alt="Bedroom View" class="img-fluid">
@@ -59,7 +59,7 @@
           <div class="col-lg-4">
             <div class="room-details-sidebar" data-aos="fade-left" data-aos-delay="200">
               <div class="room-header">
-                <h2>Presidential Suite</h2>
+                <h2>{{ $akomodasi->tipe }}</h2>
                 <div class="room-rating">
                   <i class="bi bi-star-fill"></i>
                   <i class="bi bi-star-fill"></i>
@@ -71,10 +71,12 @@
               </div>
 
               <div class="room-price">
+                @if ($akomodasi->harga_diskon)
+                <p class="price-note" style="text-decoration: line-through">{{ @currency($akomodasi->harga_asli) }} / malam</p>
+                @endif
                 <div class="price-value">
-                  <span class="currency">Rp</span>
-                  <span class="amount">899</span>
-                  <span class="period">/malam</span>
+                  <span class="amount">{{ $akomodasi->harga_diskon ? @currency($akomodasi->harga_diskon) : @currency($akomodasi->harga_asli) }}</span>
+                  <span class="period"> / malam</span>
                 </div>
                 <p class="price-note">*Pajak dan biaya lain tidak termasuk</p>
               </div>
@@ -120,10 +122,7 @@
                     <div class="col-lg-8">
                       <h3> Deskripsi Kamar</h3>
                       <p class="room-description">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Mauris viverra veniam sit amet lacus cursus bibendum. Pellentesque non nisi enim. Maecenas malesuada lorem vel cursus blandit. Sed tempor, ipsum vel cursus bibendum, nunc nisl aliquam mauris, eget aliquam lacus nunc vel nisl.
-                      </p>
-                      <p>
-                        Nunc auctor, nisl eget ultricies tincidunt, nunc nisl aliquam mauris, eget aliquam lacus nunc vel nisl. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Mauris viverra veniam sit amet lacus cursus bibendum.
+                        {{ $akomodasi->deskripsi }}
                       </p>
 
                       <div class="room-features-grid mt-4">
@@ -162,11 +161,11 @@
                         <h4>Quick Stats</h4>
                         <div class="stat-item">
                           <span class="stat-label">Check-in:</span>
-                          <span class="stat-value">3:00 PM</span>
+                          <span class="stat-value">{{ $akomodasi->checkin }}</span>
                         </div>
                         <div class="stat-item">
                           <span class="stat-label">Check-out:</span>
-                          <span class="stat-value">11:00 AM</span>
+                          <span class="stat-value">{{ $akomodasi->checkout }}</span>
                         </div>
                       </div>
                     </div>

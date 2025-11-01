@@ -41,8 +41,11 @@ class AkomodasiController extends Controller
      */
     public function show(string $id)
     {
+        $akomodasi = Akomodasi::find($id);
+
         return view('detail-akomodasi', [
-            'active' => 'akomodasi'
+            'active' => 'akomodasi',
+            'akomodasi' => $akomodasi
         ]);
     }
 

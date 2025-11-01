@@ -307,7 +307,7 @@
                   <div class="price-info">
                     <span class="original-price">Rp.1000.000 </span>
                     <span class="offer-price">Rp. 850.000</span>
-                    <span class="per-night">per malam</span>
+                    <span class="per-night">/ malam</span>
                   </div>
                   <div class="validity">
                     <i class="bi bi-calendar-check"></i>
@@ -333,7 +333,7 @@
                   <div class="price-info">
                     <span class="original-price">Rp.1000.000 </span>
                     <span class="offer-price">Rp. 850.000</span>
-                    <span class="per-night">per malam</span>
+                    <span class="per-night">/ malam</span>
                   </div>
                   <div class="validity">
                     <i class="bi bi-calendar-check"></i>
@@ -359,7 +359,7 @@
                   <div class="price-info">
                     <span class="original-price">Rp.1000.000 </span>
                     <span class="offer-price">Rp. 850.000</span>
-                    <span class="per-night">per malam</span>
+                    <span class="per-night">/ malam</span>
                   </div>
                   <div class="validity">
                     <i class="bi bi-calendar-check"></i>
@@ -422,7 +422,7 @@
                 <div class="room-bottom">
                   <div class="pricing-info">
                     <span class="price-tag">Rp. 700.000</span>
-                    <span class="price-label">per malam</span>
+                    <span class="price-label">/ malam</span>
                   </div>
                   <a href="room-details.html" class="explore-btn">Pesan Sekarang</a>
                 </div>
@@ -448,7 +448,7 @@
                       <span><i class="bi bi-building"></i> City View</span>
                     </div>
                     <div class="compact-bottom">
-                      <span class="compact-price">Rp. 1.300.000<small>/malam</small></span>
+                      <span class="compact-price">Rp. 1.300.000<small> / malam</small></span>
                       <a href="room-details.html" class="quick-book">Reservasi</a>
                     </div>
                   </div>
@@ -471,7 +471,7 @@
                       <span><i class="bi bi-tree"></i> Balcony</span>
                     </div>
                     <div class="compact-bottom">
-                      <span class="compact-price">Rp. 1.000.000<small>/malam</small></span>
+                      <span class="compact-price">Rp. 1.000.000<small> / malam</small></span>
                       <a href="room-details.html" class="quick-book">Reservasi</a>
                     </div>
                   </div>
@@ -494,7 +494,7 @@
                       <span><i class="bi bi-controller"></i> Entertainment</span>
                     </div>
                     <div class="compact-bottom">
-                      <span class="compact-price">Rp. 900.000<small>/malam</small></span>
+                      <span class="compact-price">Rp. 900.000<small> / malam</small></span>
                       <a href="room-details.html" class="quick-book">Reservasi</a>
                     </div>
                   </div>
@@ -784,7 +784,7 @@
       </div>
 
     </section><!-- /Testimonials Section -->
-   
+
     <!-- Location Section -->
     <section id="lokasi" class="hotel-location section">
 
