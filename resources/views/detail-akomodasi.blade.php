@@ -90,23 +90,6 @@
                       <label for="checkout-date" class="form-label">Tanggal Keluar</label>
                       <input type="date" class="form-control" id="checkout-date" name="checkout" required="">
                     </div>
-                    <div class="col-6 mb-3">
-                      <label for="guests" class="form-label">Tamu</label>
-                      <select class="form-control" id="guests" name="guests" required="">
-                        <option value="1">1 Tamu</option>
-                        <option value="2">2 Tamu</option>
-                        <option value="3">3 Tamu</option>
-                        <option value="4">4 Tamu</option>
-                      </select>
-                    </div>
-                    <div class="col-6 mb-3">
-                      <label for="rooms" class="form-label">Kamar</label>
-                      <select class="form-control" id="rooms" name="rooms" required="">
-                        <option value="1">1 Kamar</option>
-                        <option value="2">2 Kamar</option>
-                        <option value="3">3 Kamar</option>
-                      </select>
-                    </div>
                   </div>
                   <button type="submit" class="btn btn-primary btn-book">
                     <i class="bi bi-calendar-check me-2"></i>
@@ -177,14 +160,6 @@
                     <div class="col-lg-4">
                       <div class="room-stats">
                         <h4>Quick Stats</h4>
-                        <div class="stat-item">
-                          <span class="stat-label">Floor Level:</span>
-                          <span class="stat-value">25-30th Floor</span>
-                        </div>
-                        <div class="stat-item">
-                          <span class="stat-label">Balcony:</span>
-                          <span class="stat-value">Private</span>
-                        </div>
                         <div class="stat-item">
                           <span class="stat-label">Check-in:</span>
                           <span class="stat-value">3:00 PM</span>

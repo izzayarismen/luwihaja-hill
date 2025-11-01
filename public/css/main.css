@@ -20,7 +20,7 @@
 }
 
 /* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
-:root { 
+:root {
   --background-color: #f5f4f1; /* Background color for the entire website, including individual sections */
   --default-color: #212529; /* Default color used for the majority of the text content across the entire website */
   --heading-color: #32220b; /* Color for headings, subheadings and title throughout the website */
@@ -3758,7 +3758,7 @@ section,
   position: absolute;
   top: 15px;
   left: 15px;
-  background-color: var(--accent-color);
+  background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
   color: var(--contrast-color);
   padding: 6px 12px;
   border-radius: 20px;

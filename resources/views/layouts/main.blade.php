@@ -1,15 +1,14 @@
 <!DOCTYPE html><html lang="en"><head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Index - LuxuryHotel Bootstrap Template</title>
+  <title>Villa dan Cafe Air Luwihaja Hill</title>
   <meta name="description" content="">
   <meta name="keywords" content="">
 
   <meta name="robots" content="noindex, nofollow">
 
   <!-- Favicons -->
-  <link href="images/favicon.png" rel="icon">
-  <link href="images/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="/images/favicon.png" rel="icon">
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
@@ -24,16 +23,7 @@
   <link href="/css/glightbox.min.css" rel="stylesheet">
   <link href="/css/drift-basic.css" rel="stylesheet">
 
-  <!-- Main CSS File -->
   <link href="/css/main.css" rel="stylesheet">
-
-  <!-- =======================================================
-  * Template Name: LuxuryHotel
-  * Template URL: https://bootstrapmade.com/luxury-hotel-bootstrap-template/
-  * Updated: Jun 30 2025 with Bootstrap v5.3.7
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
 </head>
 
 <body class="index-page">

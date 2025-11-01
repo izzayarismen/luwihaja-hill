@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AkomodasiController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,14 +26,16 @@ Route::get('/tentang-kami', function (){
     ]);
 });
 
-Route::get('/akomodasi', function (){
-    return view('akomodasi', [
-        'active' => 'akomodasi'
-    ]);
-});
+// Route::get('/akomodasi', function (){
+//     return view('akomodasi', [
+//         'active' => 'akomodasi'
+//     ]);
+// });
 
-Route::get('/akomodasi/{id}', function (){
-    return view('detail-akomodasi', [
-        'active' => 'akomodasi'
-    ]);
-});
+// Route::get('/akomodasi/{id}', function (){
+//     return view('detail-akomodasi', [
+//         'active' => 'akomodasi'
+//     ]);
+// });
+
+Route::resource('/akomodasi', AkomodasiController::class);

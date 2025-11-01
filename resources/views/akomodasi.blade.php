@@ -96,159 +96,37 @@
 
             <div class="row gy-4">
 
-              <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-                <div class="room-card">
-                  <div class="room-image">
-                    <img src="images/room-1.webp" alt="Deluxe Ocean Suite" class="img-fluid">
-                    <div class="room-badge">Best Seller</div>
-                    <div class="room-price">
-                      <span class="price">$299</span>
-                      <span class="period">/ night</span>
+                @forelse ($akomodasi as $item)
+                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="room-card">
+                      <div class="room-image">
+                        <img src="{{ $item->gambar }}" alt="{{ $item->tipe }}" class="img-fluid">
+                        @if ($item->harga_diskon != null)
+                        <div class="room-badge">Sedang Diskon</div>
+                        @endif
+                        <div class="room-price">
+                            <span class="price">{{ $item->harga_diskon != null ? @currency($item->harga_diskon) : @currency($item->harga_asli) }}</span>
+                            <span class="period">/ malam</span>
+                        </div>
+                      </div>
+                      <div class="room-content">
+                        <h4>{{ $item->tipe }}</h4>
+                        <p>{{ $item->deskripsi }}</p>
+                        <div class="room-features">
+                          <span><i class="bi bi-people"></i>{{ $item->jumlah_tamu }} Tamu</span>
+                          <span><i class="bi bi-moon"></i>{{ $item->tipe_kasur }} Bed</span>
+                          <span><i class="bi bi-house"></i>{{ $item->luas }}m²</span>
+                        </div>
+                        <div class="room-actions">
+                          <a href="/akomodasi/1" class="btn btn-primary">View Details</a>
+                          <a href="booking.html" class="btn btn-outline-primary">Check Availability</a>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                  <div class="room-content">
-                    <h4>Deluxe Ocean Suite</h4>
-                    <p>Experience luxury with breathtaking ocean views, private balcony, and premium amenities. Perfect for romantic getaways and special occasions.</p>
-                    <div class="room-features">
-                      <span><i class="bi bi-people"></i> 2-4 Guests</span>
-                      <span><i class="bi bi-wifi"></i> Free Wi-Fi</span>
-                      <span><i class="bi bi-cup-hot"></i> Minibar</span>
-                    </div>
-                    <div class="room-actions">
-                      <a href="/akomodasi/1" class="btn btn-primary">View Details</a>
-                      <a href="booking.html" class="btn btn-outline-primary">Check Availability</a>
-                    </div>
-                  </div>
                 </div>
-              </div><!-- End Room Card -->
+                @empty
 
-              <div class="col-lg-6" data-aos="fade-up" data-aos-delay="250">
-                <div class="room-card">
-                  <div class="room-image">
-                    <img src="images/room-3.webp" alt="Garden View Double" class="img-fluid">
-                    <div class="room-price">
-                      <span class="price">$189</span>
-                      <span class="period">/ night</span>
-                    </div>
-                  </div>
-                  <div class="room-content">
-                    <h4>Garden View Double</h4>
-                    <p>Relax in comfort with serene garden views and modern furnishings. Ideal for couples seeking tranquility and peaceful surroundings.</p>
-                    <div class="room-features">
-                      <span><i class="bi bi-people"></i> 2 Guests</span>
-                      <span><i class="bi bi-wifi"></i> Free Wi-Fi</span>
-                      <span><i class="bi bi-tv"></i> Smart TV</span>
-                    </div>
-                    <div class="room-actions">
-                      <a href="/akomodasi/1" class="btn btn-primary">View Details</a>
-                      <a href="booking.html" class="btn btn-outline-primary">Check Availability</a>
-                    </div>
-                  </div>
-                </div>
-              </div><!-- End Room Card -->
-
-              <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
-                <div class="room-card">
-                  <div class="room-image">
-                    <img src="images/room-5.webp" alt="Family Suite" class="img-fluid">
-                    <div class="room-badge featured">Featured</div>
-                    <div class="room-price">
-                      <span class="price">$399</span>
-                      <span class="period">/ night</span>
-                    </div>
-                  </div>
-                  <div class="room-content">
-                    <h4>Family Suite</h4>
-                    <p>Spacious accommodations designed for families with separate living area, kitchenette, and connecting rooms for maximum comfort.</p>
-                    <div class="room-features">
-                      <span><i class="bi bi-people"></i> 4-6 Guests</span>
-                      <span><i class="bi bi-house"></i> Kitchenette</span>
-                      <span><i class="bi bi-controller"></i> Game Console</span>
-                    </div>
-                    <div class="room-actions">
-                      <a href="/akomodasi/1" class="btn btn-primary">View Details</a>
-                      <a href="booking.html" class="btn btn-outline-primary">Check Availability</a>
-                    </div>
-                  </div>
-                </div>
-              </div><!-- End Room Card -->
-
-              <div class="col-lg-6" data-aos="fade-up" data-aos-delay="350">
-                <div class="room-card">
-                  <div class="room-image">
-                    <img src="images/room-7.webp" alt="Business Executive" class="img-fluid">
-                    <div class="room-price">
-                      <span class="price">$249</span>
-                      <span class="period">/ night</span>
-                    </div>
-                  </div>
-                  <div class="room-content">
-                    <h4>Business Executive</h4>
-                    <p>Professional workspace meets luxury comfort with dedicated work area, high-speed internet, and premium business amenities.</p>
-                    <div class="room-features">
-                      <span><i class="bi bi-people"></i> 1-2 Guests</span>
-                      <span><i class="bi bi-laptop"></i> Work Desk</span>
-                      <span><i class="bi bi-telephone"></i> Business Line</span>
-                    </div>
-                    <div class="room-actions">
-                      <a href="/akomodasi/1" class="btn btn-primary">View Details</a>
-                      <a href="booking.html" class="btn btn-outline-primary">Check Availability</a>
-                    </div>
-                  </div>
-                </div>
-              </div><!-- End Room Card -->
-
-              <div class="col-lg-6" data-aos="fade-up" data-aos-delay="400">
-                <div class="room-card">
-                  <div class="room-image">
-                    <img src="images/room-9.webp" alt="Standard King" class="img-fluid">
-                    <div class="room-price">
-                      <span class="price">$149</span>
-                      <span class="period">/ night</span>
-                    </div>
-                  </div>
-                  <div class="room-content">
-                    <h4>Standard King</h4>
-                    <p>Comfortable and affordable accommodation with modern amenities and city views. Perfect for business travelers and short stays.</p>
-                    <div class="room-features">
-                      <span><i class="bi bi-people"></i> 2 Guests</span>
-                      <span><i class="bi bi-wifi"></i> Free Wi-Fi</span>
-                      <span><i class="bi bi-car-front"></i> Free Parking</span>
-                    </div>
-                    <div class="room-actions">
-                      <a href="/akomodasi/1" class="btn btn-primary">View Details</a>
-                      <a href="booking.html" class="btn btn-outline-primary">Check Availability</a>
-                    </div>
-                  </div>
-                </div>
-              </div><!-- End Room Card -->
-
-              <div class="col-lg-6" data-aos="fade-up" data-aos-delay="450">
-                <div class="room-card">
-                  <div class="room-image">
-                    <img src="images/room-11.webp" alt="Presidential Suite" class="img-fluid">
-                    <div class="room-badge luxury">Luxury</div>
-                    <div class="room-price">
-                      <span class="price">$699</span>
-                      <span class="period">/ night</span>
-                    </div>
-                  </div>
-                  <div class="room-content">
-                    <h4>Presidential Suite</h4>
-                    <p>Ultimate luxury experience with panoramic views, private terrace, butler service, and exclusive access to premium hotel facilities.</p>
-                    <div class="room-features">
-                      <span><i class="bi bi-people"></i> 4 Guests</span>
-                      <span><i class="bi bi-person-badge"></i> Butler Service</span>
-                      <span><i class="bi bi-star"></i> Premium Access</span>
-                    </div>
-                    <div class="room-actions">
-                      <a href="/akomodasi/1" class="btn btn-primary">View Details</a>
-                      <a href="booking.html" class="btn btn-outline-primary">Check Availability</a>
-                    </div>
-                  </div>
-                </div>
-              </div><!-- End Room Card -->
-
+                @endforelse
             </div>
 
             <div class="pagination-wrapper mt-5" data-aos="fade-up" data-aos-delay="500">
