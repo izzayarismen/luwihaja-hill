@@ -1,19 +1,19 @@
 @extends('layouts/main')
 
 @section('content')
-<!-- Page Title -->
+    <!-- Page Title -->
     <div class="page-title dark-background" data-aos="fade" style="background-image: url(images/showcase-7.webp);">
-      <div class="container position-relative">
-        <h1>Tentang Kami</h1>
-        <p>Lebih dari sekadar penginapan, kami adalah gerbang Anda menuju keindahan alam yang asri dan pengalaman yang tak terlupakan.</p>
-        <nav class="breadcrumbs">
-          <ol>
-            <li><a href="index.html">Beranda</a></li>
-            <li class="current">Tentang Kami</li>
-          </ol>
-        </nav>
-      </div>
-    </div><!-- End Page Title -->
+        <div class="container position-relative">
+            <h1>Tentang Kami</h1>
+            <p>Lebih dari sekadar penginapan, kami adalah gerbang Anda menuju keindahan alam yang asri dan pengalaman yang tak terlupakan.</p>
+            <nav class="breadcrumbs">
+            <ol>
+                <li><a href="index.html">Beranda</a></li>
+                <li class="current">Tentang Kami</li>
+            </ol>
+            </nav>
+        </div>
+    </div>
 
     <!-- About Section -->
     <section id="about" class="about section">

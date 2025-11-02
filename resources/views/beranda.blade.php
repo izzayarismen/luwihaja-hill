@@ -5,7 +5,7 @@
     <section id="hero" class="hotel-hero section dark-background">
         <div class="hero-content">
             <div class="hero-background">
-                <image src="/images/hero.jpg" width="100%" height="100%"></image>
+                <image src="/images/hero.jpg" style="object-fit: cover" width="100%" height="100%"></image>
             <div class="hero-overlay"></div>
             </div>
             <div class="container">
@@ -236,129 +236,88 @@
     </section>
 
     <!-- Akomodasi Section -->
-    <section id="akomodasi" class="rooms-showcase section-gelap">
+    <section id="rooms-showcase" class="rooms-showcase section-gelap">
         <div class="container section-title" data-aos="fade-up">
             <h2>Akomodasi</h2>
-            <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+            <p>Temukan berbagai jenis kamar dengan fasilitas terbaik untuk pengalaman menginap yang tak terlupakan.</p>
         </div>
+
         <div class="container" data-aos="fade-up" data-aos-delay="100">
             <div class="row">
-                <div class="col-lg-6 col-md-6 mb-4" data-aos="zoom-in" data-aos-delay="200">
-                    <div class="room-showcase-card featured">
-                        <div class="room-hero-image">
-                            <img src="images/room-7.webp" alt="Presidential Suite" class="img-fluid">
-                            <div class="room-badge">Popular Choice</div>
-                                <div class="room-icons">
-                                    <span class="icon-item"><i class="bi bi-people"></i> 4</span>
-                                    <span class="icon-item"><i class="bi bi-house"></i> Suite</span>
-                                    <span class="icon-item"><i class="bi bi-star"></i> Luxury</span>
+                @foreach($akomodasi as $index => $item)
+                    @if($index === 0)
+                        <div class="col-lg-6 col-md-6 mb-4" data-aos="zoom-in" data-aos-delay="200">
+                            <div class="room-showcase-card featured">
+                                <div class="room-hero-image">
+                                    <img src="{{ $item->gambar }}" alt="{{ $item->tipe }}" class="img-fluid" style="aspect-ratio: 1 / 1; object-fit: cover;">
+                                </div>
+                                <div class="room-info">
+                                    <div class="room-header">
+                                        <h3>{{ $item->tipe }}</h3>
+                                        <div class="rating">
+                                            @for($i = 0; $i < 5; $i++)
+                                                <i class="bi bi-star-fill"></i>
+                                            @endfor
+                                        </div>
+                                    </div>
+                                    <p class="room-excerpt">{{ $item->deskripsi }}</p>
+                                    <div class="room-amenities">
+                                        <span><i class="bi bi-people"></i>{{ $item->jumlah_tamu }} Tamu</span>
+                                        <span><i class="bi bi-moon"></i>{{ $item->tipe_kasur }} Bed</span>
+                                        <span><i class="bi bi-house"></i>{{ $item->luas }} m²</span>
+                                    </div>
+                                    <div class="room-bottom">
+                                        <div class="pricing-info">
+                                            <span class="price-tag">
+                                                {{ $item->harga_diskon != null ? @currency($item->harga_diskon) : @currency($item->harga_asli) }}
+                                            </span>
+                                            <span class="price-label">/ malam</span>
+                                        </div>
+                                        <a href="{{ url('/akomodasi/'.$item->id) }}" class="explore-btn">Pesan Sekarang</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="room-info">
-                            <div class="room-header">
-                                <h3>Family Room</h3>
-                                <div class="rating">
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                </div>
-                            </div>
-                            <p class="room-excerpt">Kamar terluas kami yang dirancang untuk kenyamanan keluarga, menawarkan kapasitas hingga 4 orang dewasa dengan fasilitas paling lengkap untuk liburan yang sempurna.</p>
-                            <div class="room-amenities">
-                                <i class="bi bi-wifi"></i>
-                                <i class="bi bi-tv"></i>
-                                <i class="bi bi-cup-hot"></i>
-                                <i class="bi bi-snow"></i>
-                                <i class="bi bi-telephone"></i>
-                                <i class="bi bi-safe"></i>
-                            </div>
-                            <div class="room-bottom">
-                                <div class="pricing-info">
-                                    <span class="price-tag">Rp. 700.000</span>
-                                    <span class="price-label">/ malam</span>
-                                </div>
-                                <a href="room-details.html" class="explore-btn">Pesan Sekarang</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                    @endif
+                @endforeach
+
                 <div class="col-lg-6">
                     <div class="row">
-                        <div class="col-12 mb-4" data-aos="slide-left" data-aos-delay="250">
-                            <div class="room-showcase-card compact">
-                                <div class="compact-image">
-                                    <img src="images/room-11.webp" alt="Executive Suite" class="img-fluid">
-                                    <div class="quick-view">
-                                        <i class="bi bi-eye"></i>
+                        @foreach($akomodasi->skip(1)->take(3) as $index => $item)
+                            <div class="col-12 mb-4" data-aos="slide-left" data-aos-delay="{{ 250 + $index * 50 }}">
+                                <div class="room-showcase-card compact">
+                                    <div class="compact-image">
+                                        <img src="{{ $item->gambar }}" alt="{{ $item->tipe }}" class="img-fluid" style="aspect-ratio: 1 / 1; object-fit: cover;">
                                     </div>
-                                </div>
-                                <div class="compact-content">
-                                    <h4>Super Duluxe</h4>
-                                    <p>Ideal untuk grup kecil, kamar ini memadukan kenyamanan dengan pemandangan sungai yang menenangkan untuk 3 orang.</p>
-                                    <div class="compact-features">
-                                        <span><i class="bi bi-briefcase"></i> Work Desk</span>
-                                        <span><i class="bi bi-building"></i> City View</span>
-                                    </div>
-                                    <div class="compact-bottom">
-                                        <span class="compact-price">Rp. 1.300.000<small> / malam</small></span>
-                                        <a href="room-details.html" class="quick-book">Pesan Sekarang</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 mb-4" data-aos="slide-left" data-aos-delay="300">
-                            <div class="room-showcase-card compact">
-                                <div class="compact-image">
-                                    <img src="images/room-16.webp" alt="Ocean View" class="img-fluid">
-                                    <div class="quick-view">
-                                        <i class="bi bi-eye"></i>
-                                    </div>
-                                </div>
-                                <div class="compact-content">
-                                    <h4>Duluxe Bed</h4>
-                                    <p>Nikmati pengalaman glamping modern yang nyaman untuk 2 orang dengan akses langsung ke jernihnya air sungai</p>
-                                    <div class="compact-features">
-                                        <span><i class="bi bi-water"></i> Ocean View</span>
-                                        <span><i class="bi bi-tree"></i> Balcony</span>
-                                    </div>
-                                    <div class="compact-bottom">
-                                        <span class="compact-price">Rp. 1.000.000<small> / malam</small></span>
-                                        <a href="room-details.html" class="quick-book">Pesan Sekarang</a>
+                                    <div class="compact-content">
+                                        <h4>{{ $item->tipe }}</h4>
+                                        <p>{{ Str::limit($item->deskripsi, 120) }}</p>
+                                        <div class="compact-features">
+                                            <span><i class="bi bi-people"></i> {{ $item->jumlah_tamu }} Tamu</span>
+                                            <span><i class="bi bi-moon"></i> {{ $item->tipe_kasur }} Bed</span>
+                                            <span><i class="bi bi-house"></i> {{ $item->luas }} m²</span>
+                                        </div>
+                                        <div class="compact-bottom">
+                                            <span class="compact-price">
+                                                {{ $item->harga_diskon != null ? @currency($item->harga_diskon) : @currency($item->harga_asli) }}
+                                                <small> / malam</small>
+                                            </span>
+                                            <a href="/akomodasi/{{ $item->id }}" class="quick-book">Pesan Sekarang</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-12 mb-4" data-aos="slide-left" data-aos-delay="350">
-                            <div class="room-showcase-card compact">
-                                <div class="compact-image">
-                                    <img src="images/room-9.webp" alt="Family Room" class="img-fluid">
-                                    <div class="quick-view">
-                                        <i class="bi bi-eye"></i>
-                                    </div>
-                                </div>
-                                <div class="compact-content">
-                                    <h4>Twin Bed</h4>
-                                    <p>Pilihan tepat untuk Anda yang bepergian bersama teman, menawarkan dua tempat tidur terpisah dengan semua fasilitas esensial.</p>
-                                    <div class="compact-features">
-                                        <span><i class="bi bi-door-open"></i> Connected</span>
-                                        <span><i class="bi bi-controller"></i> Entertainment</span>
-                                    </div>
-                                    <div class="compact-bottom">
-                                        <span class="compact-price">Rp. 900.000<small> / malam</small></span>
-                                        <a href="room-details.html" class="quick-book">Pesan Sekarang</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
-                <a href="/akomodasi" class="discover-all-btn">Lihat Semua Akomodasi</a>
             </div>
         </div>
+
+        <div class="text-center mt-5" data-aos="fade-up" data-aos-delay="600">
+            <a href="/akomodasi" class="discover-all-btn">Lihat Semua Akomodasi</a>
+        </div>
     </section>
+
 
     <!-- Fasilitas Section -->
     <section id="fasilitas" class="events-cards section">

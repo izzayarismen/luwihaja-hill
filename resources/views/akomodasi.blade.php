@@ -96,7 +96,7 @@
                         <div class="room-features">
                           <span><i class="bi bi-people"></i>{{ $item->jumlah_tamu }} Tamu</span>
                           <span><i class="bi bi-moon"></i>{{ $item->tipe_kasur }} Bed</span>
-                          <span><i class="bi bi-house"></i>{{ $item->luas }}m²</span>
+                          <span><i class="bi bi-house"></i>{{ $item->luas }} m²</span>
                         </div>
                         <div class="room-actions">
                           <a href="/akomodasi/{{ $item->id }}" class="btn btn-primary">View Details</a>

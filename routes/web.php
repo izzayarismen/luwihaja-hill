@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AkomodasiController;
+use App\Http\Controllers\WebController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,27 +16,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('/', function (){
-    return view('index', [
-        'active' => 'index'
-    ]);
-});
-Route::get('/tentang-kami', function (){
-    return view('tentang-kami', [
-        'active' => 'tentang-kami'
-    ]);
-});
-
-// Route::get('/akomodasi', function (){
-//     return view('akomodasi', [
-//         'active' => 'akomodasi'
-//     ]);
-// });
-
-// Route::get('/akomodasi/{id}', function (){
-//     return view('detail-akomodasi', [
-//         'active' => 'akomodasi'
-//     ]);
-// });
-
+Route::get('/', [WebController::class, 'beranda']);
+Route::get('/tentang-kami', [WebController::class, 'tentang_kami']);
 Route::resource('/akomodasi', AkomodasiController::class);

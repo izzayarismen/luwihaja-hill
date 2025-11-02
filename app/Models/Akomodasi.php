@@ -21,5 +21,7 @@ class Akomodasi extends Model
         'luas',
         'tipe_kasur',
         'fasilitas',
+        'smoking',
+        'rekomendasi',
     ];
 }

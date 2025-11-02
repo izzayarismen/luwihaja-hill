@@ -6,7 +6,7 @@
         </a>
         <nav id="navmenu" class="navmenu">
             <ul>
-            <li><a href="/" class="{{ $active == 'index' ? 'active' : '' }}">Beranda</a></li>
+            <li><a href="/" class="{{ $active == 'beranda' ? 'active' : '' }}">Beranda</a></li>
             <li><a href="/tentang-kami" class="{{ $active == 'tentang-kami' ? 'active' : '' }}">Tentang Kami</a></li>
             <li><a href="/akomodasi" class="{{ $active == 'akomodasi' ? 'active' : '' }}">Akomodasi</a></li>
             <li><a href="/#lokasi" class="{{ $active == 'lokasi' ? 'active' : '' }}">Lokasi</a></li>

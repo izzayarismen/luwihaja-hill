@@ -24,6 +24,8 @@ return new class extends Migration
             $table->integer('luas');
             $table->string('tipe_kasur');
             $table->string('fasilitas');
+            $table->boolean('smoking');
+            $table->boolean('rekomendasi');
             $table->timestamps();
         });
     }
