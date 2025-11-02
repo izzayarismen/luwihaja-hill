@@ -19,3 +19,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [WebController::class, 'beranda']);
 Route::get('/tentang-kami', [WebController::class, 'tentang_kami']);
 Route::resource('/akomodasi', AkomodasiController::class);
+Route::get('/booking', function() {
+    return view('booking', [
+            'active' => 'booking',
+        ]);
+});

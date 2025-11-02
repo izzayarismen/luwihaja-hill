@@ -2,7 +2,7 @@
 
 @section('content')
     <!-- Page Title -->
-    <div class="page-title dark-background" data-aos="fade" style="background-image: url(/images/showcase-7.webp);">
+    <div class="page-title dark-background" data-aos="fade" style="background-image: url(/images/header.jpg);">
       <div class="container position-relative">
         <h1>Detail Akomodasi</h1>
         <p>Jelajahi detail fasilitas modern dan pemandangan alam menenangkan yang kami siapkan untuk pengalaman menginap Anda yang tak terlupakan.</p>

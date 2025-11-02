@@ -3,7 +3,7 @@
 @section('content')
 
     <!-- Page Title -->
-    <div class="page-title dark-background" data-aos="fade" style="background-image: url(images/showcase-7.webp);">
+    <div class="page-title dark-background" data-aos="fade" style="background-image: url(images/header.jpg);">
       <div class="container position-relative">
         <h1>Akomodasi</h1>
         <p>Kami menyediakan beragam tipe akomodasi yang dirancang untuk setiap kebutuhan, mulai dari liburan untuk pasangan hingga petualangan seru bersama keluarga.</p>
@@ -99,7 +99,7 @@
                           <span><i class="bi bi-house"></i>{{ $item->luas }} m²</span>
                         </div>
                         <div class="room-actions">
-                          <a href="/akomodasi/{{ $item->id }}" class="btn btn-primary">View Details</a>
+                          <a href="/akomodasi/{{ $item->id }}" class="btn btn-primary">lihat detail</a>
                           <a href="/booking/{{ $item->id }}" class="btn btn-outline-primary">Check Availability</a>
                         </div>
                       </div>
@@ -116,7 +116,7 @@
               <nav aria-label="Room listings pagination">
                 <ul class="pagination justify-content-center">
                   <li class="page-item disabled">
-                    <span class="page-link">Previous</span>
+                    <span class="page-link">Sebelumnya</span>
                   </li>
                   <li class="page-item active">
                     <span class="page-link">1</span>
@@ -128,7 +128,7 @@
                     <a class="page-link" href="#">3</a>
                   </li>
                   <li class="page-item">
-                    <a class="page-link" href="#">Next</a>
+                    <a class="page-link" href="#">Selanjutnya</a>
                   </li>
                 </ul>
               </nav>

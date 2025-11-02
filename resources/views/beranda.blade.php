@@ -59,7 +59,7 @@
     <section id="kenapa" class="amenities-cards section-gelap">
         <div class="container section-title" data-aos="fade-up">
             <h2>Kenapa Harus Menginap di Luwihaja Hill</h2>
-            <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+            <p>Perpaduan unik antara kenyamanan modern dan ketenangan alam yang menjadikan kami pilihan istimewa untuk liburan Anda</p>
         </div>
         <div class="container" data-aos="fade-up" data-aos-delay="100">
             <div class="row gy-5">
@@ -149,7 +149,7 @@
     <section id="rekomendasi" class="offer-cards section">
         <div class="container section-title" data-aos="fade-up">
             <h2>Rekomendasi</h2>
-            <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+            <p>Manfaatkan penawaran dan paket spesial kami untuk liburan yang lebih hemat dan berkesan di Luwihaja Hill</p>
         </div>
         <div class="container" data-aos="fade-up" data-aos-delay="100">
             <div class="row g-4">
@@ -322,7 +322,7 @@
     <section id="fasilitas" class="events-cards section">
         <div class="container section-title" data-aos="fade-up">
             <h2>Fasilitas</h2>
-            <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+            <p>Lengkapi pengalaman menginap Anda dengan beragam fasilitas, mulai dari kafe, area api unggun, hingga akses pemandian sungai</p>
         </div>
         <div class="container" data-aos="fade-up" data-aos-delay="100">
             <div class="row g-4">
@@ -400,7 +400,7 @@
     <section id="testimonials" class="testimonials section-gelap">
         <div class="container section-title" data-aos="fade-up">
             <h2>Testimoni</h2>
-            <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+            <p>Dengarkan pengalaman dan cerita dari para tamu yang telah menikmati waktu mereka bersama kami</p>
         </div>
         <div class="container" data-aos="fade-up" data-aos-delay="100">
             <div class="testimonial-slider swiper init-swiper">
@@ -537,7 +537,7 @@
     <section id="faq" class="faq section">
         <div class="container section-title" data-aos="fade-up">
             <h2>FAQ</h2>
-            <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+            <p>Punya pertanyaan? Temukan jawaban cepat untuk hal-hal yang sering ditanyakan di sini</p>
         </div>
         <div class="container" data-aos="fade-up" data-aos-delay="100">
             <div class="accordion" id="accordionExample">
@@ -563,7 +563,7 @@
     <section id="lokasi" class="hotel-location section-gelap">
         <div class="container section-title" data-aos="fade-up">
             <h2>Lokasi</h2>
-            <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+            <p>Kami berlokasi strategis di Megamendung, Bogor. Lihat peta dan kontak kami untuk informasi lebih lanjut</p>
         </div>
         <div class="container" data-aos="fade-up" data-aos-delay="100">
             <div class="row">

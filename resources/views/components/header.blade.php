@@ -10,6 +10,7 @@
             <li><a href="/tentang-kami" class="{{ $active == 'tentang-kami' ? 'active' : '' }}">Tentang Kami</a></li>
             <li><a href="/akomodasi" class="{{ $active == 'akomodasi' ? 'active' : '' }}">Akomodasi</a></li>
             <li><a href="/#lokasi" class="{{ $active == 'lokasi' ? 'active' : '' }}">Lokasi</a></li>
+            <li><a href="/#faq" class="{{ $active == 'faq' ? 'active' : '' }}">FAQ</a></li>
             </ul>
             <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>

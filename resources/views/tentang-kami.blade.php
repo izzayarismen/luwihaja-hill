@@ -2,7 +2,7 @@
 
 @section('content')
     <!-- Page Title -->
-    <div class="page-title dark-background" data-aos="fade" style="background-image: url(images/showcase-7.webp);">
+    <div class="page-title dark-background" data-aos="fade" style="background-image: url(images/header.jpg);">
         <div class="container position-relative">
             <h1>Tentang Kami</h1>
             <p>Lebih dari sekadar penginapan, kami adalah gerbang Anda menuju keindahan alam yang asri dan pengalaman yang tak terlupakan.</p>
@@ -38,7 +38,7 @@
           <div class="col-lg-6">
             <div class="about-visuals">
               <div class="main-image" data-aos="zoom-in" data-aos-delay="200">
-                <img src="images/showcase-3.webp" alt="Hotel Luxury Suite" class="img-fluid">
+                <img src="images/tentangkami1.jpg" alt="tentangkami1" class="img-fluid">
                 <div class="image-overlay">
                   <a href="https://youtu.be/mL6Ar3dfMMM?si=P0sO6xe3wfShD1eK" class="glightbox">
                     <div class="play-button">
