@@ -318,7 +318,6 @@
         </div>
     </section>
 
-
     <!-- Fasilitas Section -->
     <section id="fasilitas" class="events-cards section">
         <div class="container section-title" data-aos="fade-up">
@@ -542,43 +541,20 @@
         </div>
         <div class="container" data-aos="fade-up" data-aos-delay="100">
             <div class="accordion" id="accordionExample">
+                @foreach ($faq as $item)
                 <div class="accordion-item rounded mb-5">
-                <h2 class="accordion-header">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#one" aria-expanded="false" aria-controls="one">
-                    Berapa kisaran harga kamar untuk menginap di Villa dan Cafe Air Luwihajahill?
-                    </button>
-                </h2>
-                <div id="one" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                    <div class="accordion-body">
-                    Harga termurah di Villa dan Cafe Air Luwihajahill kalau kamu mau menginap mulai dari Rp. 600.000
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#{{ $item->id }}" aria-expanded="false" aria-controls="{{ $item->id }}">
+                        {{ $item->pertanyaan }}
+                        </button>
+                    </h2>
+                    <div id="{{ $item->id }}" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                        {{ $item->jawaban }}
+                        </div>
                     </div>
                 </div>
-                </div>
-                <div class="accordion-item rounded mb-5">
-                <h2 class="accordion-header">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#two" aria-expanded="false" aria-controls="two">
-                    Di mana alamat Villa dan Cafe Air Luwihajahill?
-
-                    </button>
-                </h2>
-                <div id="two" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                    <div class="accordion-body">
-                    Villa dan Cafe Air Luwihajahill beralamat di Jl. Tegal Luhur, Paseban, Kec. Megamendung, Kabupaten Bogor, Jawa Barat 16770
-                    </div>
-                </div>
-                </div>
-                <div class="accordion-item rounded mb-5">
-                <h2 class="accordion-header">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#three" aria-expanded="false" aria-controls="three">
-                    Pukul berapa waktu check-in & check-out di Villa dan Cafe Air Luwihajahill?
-                    </button>
-                </h2>
-                <div id="three" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                    <div class="accordion-body">
-                    Waktu untuk check-in di Villa dan Cafe Air Luwihajahill adalah mulai dari pukul 14:00-21:00 dan waktu check-out paling lambat pukul 12:00
-                    </div>
-                </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>

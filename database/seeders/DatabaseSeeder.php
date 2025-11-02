@@ -5,6 +5,7 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 use App\Models\Akomodasi;
+use App\Models\Faq;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -83,6 +84,21 @@ class DatabaseSeeder extends Seeder
                 'created_at' => '2025-11-01 11:17:29',
                 'updated_at' => '2025-11-01 11:17:29',
             ],
+        ]);
+
+        Faq::insert([
+            [
+                'pertanyaan' => 'Berapa kisaran harga kamar untuk menginap di Villa dan Cafe Air Luwihajahill?',
+                'jawaban' => 'Harga termurah di Villa dan Cafe Air Luwihajahill kalau kamu mau menginap mulai dari Rp. 600.000',
+            ],
+            [
+                'pertanyaan' => 'Di mana alamat Villa dan Cafe Air Luwihajahill?',
+                'jawaban' => 'Villa dan Cafe Air Luwihajahill beralamat di Jl. Tegal Luhur, Paseban, Kec. Megamendung, Kabupaten Bogor, Jawa Barat 16770',
+            ],
+            [
+                'pertanyaan' => 'Pukul berapa waktu check-in & check-out di Villa dan Cafe Air Luwihajahill?',
+                'jawaban' => 'Waktu untuk check-in di Villa dan Cafe Air Luwihajahill adalah mulai dari pukul 14:00-21:00 dan waktu check-out paling lambat pukul 12:00',
+            ]
         ]);
     }
 }
