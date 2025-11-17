@@ -24,3 +24,16 @@ Route::get('/booking', function() {
             'active' => 'booking',
         ]);
 });
+
+Route::get('/admin', function() {
+    return view('admin/index', [
+            'active' => 'admin',
+        ]);
+});
+
+
+Route::get('/admin/produk', function() {
+    return view('admin/produk', [
+            'active' => 'admin',
+        ]);
+});
