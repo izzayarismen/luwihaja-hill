@@ -9,7 +9,6 @@
 
         <div class="relative flex flex-1 flex-col overflow-x-hidden overflow-y-auto">
             @include('components/admin/overlay')
-
             @include('components/admin/header')
 
             <main class="flex-1 bg-gray-50 dark:bg-gray-900">

@@ -4,12 +4,10 @@
         class="flex items-center gap-2 pt-8 sidebar-header pb-7">
         <a href="index.html">
             <span class="logo" :class="sidebarToggle ? 'hidden' : ''">
-                <img class="dark:hidden" src="./images/logo/logo.png" alt="Logo" />
-                <img class="hidden dark:block" src="./images/logo/logo.png" alt="Logo" />
+                <img class="hidden lg:block" src="/images/logo-admin.png" alt="Logo" />
             </span>
 
-            <img class="logo-icon" :class="sidebarToggle ? 'lg:block' : 'hidden'" src="./images/logo/logo-icon.png"
-                alt="Logo" />
+            <img class="logo-icon" :class="sidebarToggle ? 'hidden lg:block' : 'hidden'" src="/images/logo-icon.png" alt="Logo" />
         </a>
     </div>
 
@@ -32,7 +30,7 @@
 
                 <ul class="flex flex-col gap-4 mb-6">
                     <li>
-                        <a href="index.html" class="menu-item group"
+                        <a href="/admin" class="menu-item group"
                             :class="page === 'ecommerce' ? 'menu-item-active' : 'menu-item-inactive'">
                             <svg :class="page === 'ecommerce' ? 'menu-item-icon-active' : 'menu-item-icon-inactive'"
                                 width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -50,7 +48,7 @@
 
                     </li>
                     <li>
-                        <a href="videos.html" class="menu-item group"
+                        <a href="/admin/produk" class="menu-item group"
                             :class="page === 'videos' ? 'menu-item-active' : 'menu-item-inactive'">
                             <svg :class="page === 'videos' ? 'menu-item-icon-active' : 'menu-item-icon-inactive'"
                                 width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -69,10 +67,8 @@
                     </li>
 
                     <li>
-                        <a href="profile.html" @click="selected = (selected === 'Profile' ? '':'Profile')"
-                            class="menu-item group"
-                            :class="(selected === 'Profile') && (page === 'profile') ? 'menu-item-active' :
-                            'menu-item-inactive'">
+                        <a href="/admin/booking" class="menu-item group"
+                            :class="page === 'booking' ? 'menu-item-active' : 'menu-item-inactive'">
                             <svg :class="(selected === 'Profile') && (page === 'profile') ? 'menu-item-icon-active' :
                             'menu-item-icon-inactive'"
                                 width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -88,7 +84,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="blank.html" class="menu-item group"
+                        <a href="/admin/faq-ulasan" class="menu-item group"
                             :class="page === 'blank' ? 'menu-item-active' : 'menu-item-inactive'">
                             <svg :class="page === 'blank' ? 'menu-item-icon-active' : 'menu-item-icon-inactive'"
                                 width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -104,7 +100,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="form-elements.html" class="menu-item group"
+                        <a href="/admin/verifikasi" class="menu-item group"
                             :class="page === 'formElements' ? 'menu-item-active' : 'menu-item-inactive'">
                             <svg :class="page === 'formElements' ? 'menu-item-icon-active' : 'menu-item-icon-inactive'"
                                 width="24" height="24" viewBox="0 0 24 24" fill="none"

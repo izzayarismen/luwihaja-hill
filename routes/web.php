@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AkomodasiController;
+use App\Http\Controllers\FaqController;
 use App\Http\Controllers\WebController;
 use Illuminate\Support\Facades\Route;
 
@@ -37,3 +38,18 @@ Route::get('/admin/produk', function() {
             'active' => 'admin',
         ]);
 });
+
+Route::get('/admin/verifikasi', function() {
+    return view('admin/verifikasi', [
+            'active' => 'admin',
+        ]);
+});
+
+Route::get('/admin/booking', function() {
+    return view('admin/booking', [
+            'active' => 'admin',
+        ]);
+});
+
+
+Route::resource('/admin/faq-ulasan', FaqController::class);
