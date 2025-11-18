@@ -80,7 +80,7 @@ class FaqController extends Controller
     public function update(Request $request, string $id)
     {
          // Validasi data (sangat disarankan)
-         $request->validate([
+        $request->validate([
             'pertanyaan' => 'required|string',
             'jawaban' => 'required|string',
         ]);

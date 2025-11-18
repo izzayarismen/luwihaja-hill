@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AkomodasiController;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\WebController;
 use Illuminate\Support\Facades\Route;
@@ -19,12 +20,21 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [WebController::class, 'beranda']);
 Route::get('/tentang-kami', [WebController::class, 'tentang_kami']);
+
 Route::resource('/akomodasi', AkomodasiController::class);
+
+Route::get('/register', [AuthController::class, 'getRegister']);
+Route::post('/register', [AuthController::class, 'postRegister']);
+Route::get('/login', [AuthController::class, 'getLogin'])->name('login');
+Route::post('/login', [AuthController::class, 'postLogin']);
+Route::get('/logout', [AuthController::class, 'getLogout']);
+
 Route::get('/booking', function() {
     return view('booking', [
             'active' => 'booking',
         ]);
 });
+
 
 Route::get('/admin', function() {
     return view('admin/index', [
@@ -50,6 +60,7 @@ Route::get('/admin/booking', function() {
             'active' => 'admin',
         ]);
 });
+
 
 
 Route::resource('/admin/faq-ulasan', FaqController::class);
