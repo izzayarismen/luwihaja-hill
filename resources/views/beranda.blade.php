@@ -153,84 +153,37 @@
         </div>
         <div class="container" data-aos="fade-up" data-aos-delay="100">
             <div class="row g-4">
+                @foreach ($rekomendasi->take(3) as $item)
                 <div class="col-lg-4 col-md-6">
                     <div class="offer-card" data-aos="zoom-in" data-aos-delay="200">
+                        @if ($item->harga_diskon != null)
                         <div class="offer-badge">
                             <span class="discount">Sedang Diskon</span>
                         </div>
+                        @endif
                         <div class="offer-image">
-                            <img src="images/showcase-3.webp" alt="Weekend Getaway" class="img-fluid">
+                            <img src="{{ $item->gambar }}" alt="Weekend Getaway" class="img-fluid">
                         </div>
                         <div class="offer-content">
-                            <h3>Paket Liburan Singkat</h3>
-                            <p>Lepaskan penat dengan paket akhir pekan eksklusif di Luwihaja Hill. Nikmati sarapan gratis untuk 2 orang, welcome drink, dan late check-out hingga jam 2 siang.</p>
+                            <h3>{{ $item->tipe }}</h3>
+                            <p>{{ $item->deskripsi }}</p>
                             <div class="offer-details">
                                 <div class="price-info">
-                                    <span class="original-price">Rp.1000.000 </span>
-                                    <span class="offer-price">Rp. 850.000</span>
+                                    @if ($item->harga_diskon != null)
+                                    <span class="original-price">{{ @currency($item->harga_asli) }}</span>
+                                    <span class="offer-price">{{ @currency($item->harga_diskon) }}</span>
                                     <span class="per-night">/ malam</span>
-                                </div>
-                                <div class="validity">
-                                    <i class="bi bi-calendar-check"></i>
-                                    <span>Berlaku hingga 31 Des 2025</span>
+                                    @else
+                                    <span class="offer-price">{{ @currency($item->harga_asli) }}</span>
+                                    <span class="per-night">/ malam</span>
+                                    @endif
                                 </div>
                             </div>
-                            <a href="#" class="btn-book">Pesan Sekarang</a>
+                            <a href="/akomodasi/{{ $item->id }}" class="btn-book">Pesan Sekarang</a>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="offer-card" data-aos="zoom-in" data-aos-delay="200">
-                        <div class="offer-badge">
-                            <span class="discount">Sedang Diskon</span>
-                        </div>
-                        <div class="offer-image">
-                            <img src="images/showcase-3.webp" alt="Weekend Getaway" class="img-fluid">
-                        </div>
-                        <div class="offer-content">
-                            <h3>Paket Liburan Singkat</h3>
-                            <p>Lepaskan penat dengan paket akhir pekan eksklusif di Luwihaja Hill. Nikmati sarapan gratis untuk 2 orang, welcome drink, dan late check-out hingga jam 2 siang.</p>
-                            <div class="offer-details">
-                                <div class="price-info">
-                                    <span class="original-price">Rp.1000.000 </span>
-                                    <span class="offer-price">Rp. 850.000</span>
-                                    <span class="per-night">/ malam</span>
-                                </div>
-                                <div class="validity">
-                                    <i class="bi bi-calendar-check"></i>
-                                    <span>Berlaku hingga 31 Des 2025</span>
-                                </div>
-                            </div>
-                            <a href="#" class="btn-book">Pesan Sekarang</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="offer-card" data-aos="zoom-in" data-aos-delay="200">
-                        <div class="offer-badge">
-                            <span class="discount">Sedang Diskon</span>
-                        </div>
-                        <div class="offer-image">
-                            <img src="images/showcase-3.webp" alt="Weekend Getaway" class="img-fluid">
-                        </div>
-                        <div class="offer-content">
-                            <h3>Paket Liburan Singkat</h3>
-                            <p>Lepaskan penat dengan paket akhir pekan eksklusif di Luwihaja Hill. Nikmati sarapan gratis untuk 2 orang, welcome drink, dan late check-out hingga jam 2 siang.</p>
-                            <div class="offer-details">
-                                <div class="price-info">
-                                    <span class="original-price">Rp.1000.000 </span>
-                                    <span class="offer-price">Rp. 850.000</span>
-                                    <span class="per-night">/ malam</span>
-                                </div>
-                                <div class="validity">
-                                    <i class="bi bi-calendar-check"></i>
-                                    <span>Berlaku hingga 31 Des 2025</span>
-                                </div>
-                            </div>
-                            <a href="#" class="btn-book">Pesan Sekarang</a>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
@@ -580,17 +533,18 @@
                         </div>
                     </div>
                     <div class="location-info">
-                        <h3>Also Find Me On</h3>
+                        <h3>Informasi Kami</h3>
                         <div class="contact-info">
                             <h5><i class="bi bi-telephone"></i>Kontak</h5>
                             <p>No. Telepopn: +62 821-1555-1822</p>
                             <p>Email: luwihajahill@gmail.com</p>
                             <p>Instagram: @villadancafeair</p>
                         </div>
-                        <div class="address-block">
-                            <h5><img src="/images/tiket-com.png" height="20px"> Tiket.com</h5>
-                            <p>456 Broadway Avenue<br>New York, NY 10013<br>United States</p>
-                            <a href="#" class="btn btn-primary">Get Directions</a>
+                        <div class="address-block my-3">
+                            <img src="https://s-light.tiket.photos/t/01E25EBZS3W0FY9GTG6C42E1SE/original/test-discovery/2024/03/01/ac13e03e-896c-4bbb-ba7c-cdf9b04a68b7-1709290197088-cb26aa8c25b24b1aa5df8bb2edce7ea7.png" class="img-fluid" width="30%" alt="">
+                            <br>
+                            {{-- <h5>Tiket.com</h5> --}}
+                            <a href="https://en.tiket.com/homes/indonesia/villa-dan-cafe-air-luwihajahill-509001662365722026" class="btn btn-primary mt-3" target="_blank">Lihat tiket.com</a>
                         </div>
                     </div>
                 </div>

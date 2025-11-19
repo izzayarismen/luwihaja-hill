@@ -15,13 +15,13 @@
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6 footer-links">
-                    <h4>Useful Links</h4>
+                    <h4>Lihat semua</h4>
                     <ul>
                         <li><a href="/">Beranda</a></li>
                         <li><a href="/tentang-kami">Tentang Kami</a></li>
                         <li><a href="/akomodasi">Akomodasi</a></li>
-                        <li><a href="/#lokasi">Lokasi</a></li>
                         <li><a href="/#faq">FAQ</a></li>
+                        <li><a href="/#lokasi">Lokasi</a></li>
                     </ul>
                 </div>
             </div>
@@ -34,9 +34,9 @@
                 <div>
                 © Copyright <strong><span>2025</span></strong>. All Rights Reserved
                 </div>
-                <div class="credits">
+                {{-- <div class="credits">
                 Developed by <a href="https://instagram.com/izzayrm_">Nur Izza Yarismen</a>
-                </div>
+                </div> --}}
             </div>
             <div class="social-links order-first order-lg-last mb-3 mb-lg-0">
                 <a href="https://instagram.com/villadancafeair"><i class="bi bi-instagram"></i></a>
