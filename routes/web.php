@@ -30,6 +30,12 @@ Route::middleware('auth')->group(function () {
                 'title' => 'Booking',
             ]);
     });
+
+    Route::get('/payment', function() {
+        return view('payment', [
+                'title' => 'Booking',
+            ]);
+    });
 });
 
 Route::middleware('guest')->group(function () {

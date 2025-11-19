@@ -121,7 +121,7 @@
                         </div>
 
                         <div class="checkout-button">
-                            <a href="#" class="btn btn-accent w-100">
+                            <a href="/payment" class="btn btn-accent w-100">
                                 Lanjut ke Pemayaran <i class="bi bi-arrow-right"></i>
                             </a>
                         </div>

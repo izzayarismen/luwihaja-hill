@@ -93,10 +93,10 @@
                       <input type="date" class="form-control" id="checkout-date" name="checkout" required="">
                     </div>
                   </div>
-                  <button type="submit" class="btn btn-primary btn-book">
+                  <a href="/booking" type="submit" class="btn btn-primary btn-book">
                     <i class="bi bi-calendar-check me-2"></i>
                     Pesan Sekarang
-                  </button>
+                  </a>
                 </form>
               </div>
 

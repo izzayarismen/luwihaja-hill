@@ -15,7 +15,7 @@
             <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>
         @auth
-        <a class="btn-getstarted d-none d-sm-block" href="/profile"><i class="bi bi-person"></i></a>
+        <a class="btn-getstarted d-none d-sm-block" href="/profile"><i class="bi bi-person-circle me-2"></i>Profile</a>
         @else
         <a class="btn-getstarted d-none d-sm-block" href="/login">Login</a>
         @endauth
