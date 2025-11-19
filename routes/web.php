@@ -3,6 +3,7 @@
 use App\Http\Controllers\AkomodasiController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\FaqController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WebController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,23 +18,30 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::middleware('auth')->group(function () {
+    // Profile
+    Route::get('/profile', [ProfileController::class, 'getProfile']);
+    Route::put('/profile', [ProfileController::class, 'updateProfile']);
+
+    Route::get('/logout', [AuthController::class, 'getLogout']);
+});
+
+Route::middleware('guest')->group(function () {
+    // Register
+    Route::get('/register', [AuthController::class, 'getRegister']);
+    Route::post('/register', [AuthController::class, 'postRegister']);
+
+    // Login
+    Route::get('/login', [AuthController::class, 'getLogin'])->name('login');
+    Route::post('/login', [AuthController::class, 'postLogin']);
+
+});
 
 Route::get('/', [WebController::class, 'beranda']);
 Route::get('/tentang-kami', [WebController::class, 'tentang_kami']);
 
 Route::resource('/akomodasi', AkomodasiController::class);
 
-Route::get('/register', [AuthController::class, 'getRegister']);
-Route::post('/register', [AuthController::class, 'postRegister']);
-Route::get('/login', [AuthController::class, 'getLogin'])->name('login');
-Route::post('/login', [AuthController::class, 'postLogin']);
-Route::get('/logout', [AuthController::class, 'getLogout']);
-
-Route::get('/profile', function() {
-    return view('profile', [
-            'active' => 'booking',
-        ]);
-});
 
 Route::get('/booking', function() {
     return view('booking', [

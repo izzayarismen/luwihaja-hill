@@ -6,7 +6,9 @@ namespace Database\Seeders;
 
 use App\Models\Akomodasi;
 use App\Models\Faq;
+use App\Models\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -98,6 +100,16 @@ class DatabaseSeeder extends Seeder
             [
                 'pertanyaan' => 'Pukul berapa waktu check-in & check-out di Villa dan Cafe Air Luwihajahill?',
                 'jawaban' => 'Waktu untuk check-in di Villa dan Cafe Air Luwihajahill adalah mulai dari pukul 14:00-21:00 dan waktu check-out paling lambat pukul 12:00',
+            ]
+        ]);
+
+        User::insert([
+            [
+                'nama' => 'Admin',
+                'email' => 'admin@gmail.com',
+                'telepon' => '08123456789',
+                'password' => Hash::make('12345678'),
+                'role' => 'admin',
             ]
         ]);
     }

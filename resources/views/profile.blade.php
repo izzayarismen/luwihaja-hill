@@ -15,37 +15,33 @@
                     <!-- Personal Information -->
                     <div class="settings-section" data-aos="fade-up">
                         <h3>Personal Information</h3>
-                        <form class="php-email-form settings-form">
+                        <form class="settings-form" action="/profile" method="POST">
+                            @method('PUT')
+                            @csrf
                             <div class="row g-3">
-                                <div class="col-md-6">
-                                    <label for="firstName" class="form-label">First Name</label>
-                                    <input type="text" class="form-control" id="firstName"
-                                        value="Sarah" required="">
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="lastName" class="form-label">Last Name</label>
-                                    <input type="text" class="form-control" id="lastName"
-                                        value="Anderson" required="">
+                                {{-- <div class="col-md-6">
+                                    <label for="profil" class="form-label">Foto Profil</label>
+                                    <input type="file" name="profil" class="form-control" id="profil" accept="image/*">
+                                </div> --}}
+                                <div class="col-md-12">
+                                    <label for="nama" class="form-label">Nama Lengkap</label>
+                                    <input type="text" name="nama" class="form-control" id="nama"
+                                        value="{{ Auth::user()->nama }}" required >
                                 </div>
                                 <div class="col-md-6">
                                     <label for="email" class="form-label">Email</label>
-                                    <input type="email" class="form-control" id="email"
-                                        value="sarah@example.com" required="">
+                                    <input type="email" name="email" class="form-control" id="email"
+                                        value="{{ Auth::user()->email }}" required >
                                 </div>
                                 <div class="col-md-6">
                                     <label for="phone" class="form-label">Phone</label>
-                                    <input type="tel" class="form-control" id="phone"
-                                        value="+1 (555) 123-4567">
+                                    <input type="tel" name="telepon" class="form-control" id="phone"
+                                        value="{{ Auth::user()->telepon }}" required >
                                 </div>
                             </div>
 
                             <div class="form-buttons">
                                 <button type="submit" class="btn-save">Save Changes</button>
-                            </div>
-
-                            <div class="loading">Loading</div>
-                            <div class="error-message"></div>
-                            <div class="sent-message">Your changes have been saved successfully!
                             </div>
                         </form>
                     </div>

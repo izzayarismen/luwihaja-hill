@@ -22,8 +22,10 @@ class WebController extends Controller
 
     public function tentang_kami()
     {
+        $akomodasi = Akomodasi::all();
         return view('tentang-kami', [
-            'active' => 'tentang-kami'
+            'active' => 'tentang-kami',
+            'akomodasi' => $akomodasi
         ]);
     }
 }

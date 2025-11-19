@@ -92,13 +92,6 @@ $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(valu
                                             </span>
                                         </div>
                                     </div>
-                                    <!-- Checkbox -->
-                                    {{-- <div class="flex items-end justify-end">
-                                        <a href="/reset-password.html"
-                                            class="text-sm text-brand-500 hover:text-brand-600 dark:text-brand-400">Lupa
-                                            password?</a>
-                                    </div> --}}
-                                    <!-- Button -->
                                     <div>
                                         <button
                                             class="flex items-center justify-center w-full px-4 py-3 text-sm font-medium text-white transition rounded-lg shadow-theme-xs" style="background-color: #3F4F44">

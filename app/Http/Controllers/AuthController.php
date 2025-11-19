@@ -15,8 +15,8 @@ class AuthController extends Controller
 
     public function postRegister(Request $request)
     {
-        if(!$request->name && !$request->email && !$request->password) {
-            return back()->with('error', 'Nama lengkap, Email dan Password tidak boleh kosong!');
+        if(!$request->nama && !$request->email && !$request->telepon && !$request->password) {
+            return back()->with('error', 'Nama lengkap, Email, No. Telepon dan Password tidak boleh kosong!');
         }
 
         $user = User::where('email', $request->email)->first();
@@ -26,8 +26,9 @@ class AuthController extends Controller
         }
 
         User::create([
-            'name' => $request->name,
+            'nama' => $request->nama,
             'email' => $request->email,
+            'telepon' => $request->telepon,
             'password' => bcrypt($request->password)
         ]);
 
@@ -53,7 +54,7 @@ class AuthController extends Controller
         if(Auth::guard('web')->attempt($credentials)) {
             $request->session()->regenerate();
 
-            if($request->email == 'admin@gmail.com') {
+            if($request->user()->role == 'admin') {
                 return redirect('/admin')->with('success', 'Berhasil Sign in Admin!');
             } else {
                 return redirect('/')->with('success', 'Berhasil Sign in Tutor!');

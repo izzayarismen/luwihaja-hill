@@ -4,9 +4,9 @@
         <!-- User Info -->
         <div class="user-info" data-aos="fade-right">
             <div class="user-avatar">
-                <img src="/images/person-f-3.webp" alt="Profile" loading="lazy">
+                <img src="{{ Auth::user()->foto }}" alt="Profile" loading="lazy">
             </div>
-            <h4>Sarah Anderson</h4>
+            <h4>{{ Auth::user()->nama }}</h4>
         </div>
 
         <!-- Navigation Menu -->
