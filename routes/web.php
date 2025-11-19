@@ -29,6 +29,12 @@ Route::get('/login', [AuthController::class, 'getLogin'])->name('login');
 Route::post('/login', [AuthController::class, 'postLogin']);
 Route::get('/logout', [AuthController::class, 'getLogout']);
 
+Route::get('/profile', function() {
+    return view('profile', [
+            'active' => 'booking',
+        ]);
+});
+
 Route::get('/booking', function() {
     return view('booking', [
             'active' => 'booking',
