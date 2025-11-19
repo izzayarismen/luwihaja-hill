@@ -10,7 +10,9 @@ class ProfileController extends Controller
 {
     public function getProfile()
     {
-        return view('profile');
+        return view('profile', [
+            'title' => 'Profil',
+        ]);
     }
 
     public function updateProfile(Request $request)

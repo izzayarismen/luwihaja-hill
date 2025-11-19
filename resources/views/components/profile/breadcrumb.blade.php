@@ -4,7 +4,7 @@
         <nav class="breadcrumbs">
             <ol>
                 <li><a href="/">Beranda</a></li>
-                <li class="current">Profil</li>
+                <li class="current">{{ $title }}</li>
             </ol>
         </nav>
     </div>

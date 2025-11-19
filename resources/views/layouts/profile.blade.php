@@ -38,29 +38,7 @@
 
         @include('components/profile/breadcrumb')
 
-        <!-- Account Section -->
-        <section id="account" class="account section">
-
-            <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-                <!-- Mobile Menu Toggle -->
-                <div class="mobile-menu d-lg-none mb-4">
-                    <button class="mobile-menu-toggle" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#profileMenu">
-                        <i class="bi bi-grid"></i>
-                        <span>Menu</span>
-                    </button>
-                </div>
-
-                <div class="row g-4">
-                    @include('components/profile/sidebar')
-
-                    @yield('content')
-                </div>
-
-            </div>
-
-        </section>
+        @yield('content')
 
     </main>
 

@@ -99,7 +99,7 @@
                           <span><i class="bi bi-house"></i>{{ $item->luas }} m²</span>
                         </div>
                         <div class="room-actions">
-                          <a href="/akomodasi/{{ $item->id }}" class="btn btn-primary">lihat detail</a>
+                          <a href="/akomodasi/{{ $item->id }}" class="btn btn-primary">Lihat Detail</a>
                           <a href="/booking/{{ $item->id }}" class="btn btn-outline-primary">Check Availability</a>
                         </div>
                       </div>

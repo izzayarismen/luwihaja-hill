@@ -24,6 +24,12 @@ Route::middleware('auth')->group(function () {
     Route::put('/profile', [ProfileController::class, 'updateProfile']);
 
     Route::get('/logout', [AuthController::class, 'getLogout']);
+
+    Route::get('/booking', function() {
+        return view('booking', [
+                'title' => 'Booking',
+            ]);
+    });
 });
 
 Route::middleware('guest')->group(function () {
@@ -39,15 +45,8 @@ Route::middleware('guest')->group(function () {
 
 Route::get('/', [WebController::class, 'beranda']);
 Route::get('/tentang-kami', [WebController::class, 'tentang_kami']);
-
 Route::resource('/akomodasi', AkomodasiController::class);
 
-
-Route::get('/booking', function() {
-    return view('booking', [
-            'active' => 'booking',
-        ]);
-});
 
 
 Route::get('/admin', function() {
