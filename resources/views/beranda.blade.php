@@ -6,7 +6,7 @@
         <div class="hero-content">
             <div class="hero-background">
                 <image src="/images/hero.jpg" style="object-fit: cover" width="100%" height="100%"></image>
-            <div class="hero-overlay"></div>
+                <div class="hero-overlay"></div>
             </div>
             <div class="container">
                 <div class="row justify-content-center">
