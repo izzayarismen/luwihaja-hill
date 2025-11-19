@@ -4,7 +4,7 @@
 <body x-data="{ page: 'comingSoon', 'loaded': true, 'darkMode': false, 'stickyMenu': false, 'sidebarToggle': false, 'scrollTop': false }" x-init="darkMode = JSON.parse(localStorage.getItem('darkMode'));
 $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))" :class="{ 'dark bg-gray-900': darkMode === true }">
     <!-- ===== Preloader Start ===== -->
-    <include src="./partials/preloader.html"></include>
+    @include('components/admin/preloader')
     <!-- ===== Preloader End ===== -->
 
     <!-- ===== Page Wrapper Start ===== -->
@@ -16,7 +16,7 @@ $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(valu
             <!-- Form -->
             <div class="flex flex-col flex-1 w-full lg:w-1/2">
                 <div class="w-full max-w-md pt-10 mx-auto">
-                    <a href="index.html"
+                    <a href="/"
                         class="inline-flex items-center text-sm text-gray-500 transition-colors hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300">
                         <svg class="stroke-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                             viewBox="0 0 20 20" fill="none">

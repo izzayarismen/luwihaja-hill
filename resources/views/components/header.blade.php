@@ -9,11 +9,15 @@
             <li><a href="/" class="{{ $active == 'beranda' ? 'active' : '' }}">Beranda</a></li>
             <li><a href="/tentang-kami" class="{{ $active == 'tentang-kami' ? 'active' : '' }}">Tentang Kami</a></li>
             <li><a href="/akomodasi" class="{{ $active == 'akomodasi' ? 'active' : '' }}">Akomodasi</a></li>
-            <li><a href="/#lokasi" class="{{ $active == 'lokasi' ? 'active' : '' }}">Lokasi</a></li>
             <li><a href="/#faq" class="{{ $active == 'faq' ? 'active' : '' }}">FAQ</a></li>
+            <li><a href="/#lokasi" class="{{ $active == 'lokasi' ? 'active' : '' }}">Lokasi</a></li>
             </ul>
             <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>
-        <a class="btn-getstarted d-none d-sm-block" href="booking.html">Pesan Sekarang</a>
+        @auth
+        <a class="btn-getstarted d-none d-sm-block" href="/profile"><i class="bi bi-person"></i> Profile</a>
+        @else
+        <a class="btn-getstarted d-none d-sm-block" href="/login">Login</a>
+        @endauth
     </div>
 </header>

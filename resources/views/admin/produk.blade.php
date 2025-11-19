@@ -83,7 +83,7 @@ $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(valu
                     <template x-if="view === 'edit'">
                         <div x-transition>
                             <div x-data="{ pageName: selectedProduct.id ? 'Edit Produk' : 'Tambah Produk' }">
-                                <include src="./partials/breadcrumb.html" />
+                                @include('components/admin/breadcrumb')
                             </div>
 
                             <div class="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-3">
