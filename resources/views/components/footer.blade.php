@@ -10,8 +10,8 @@
                         <p>Jl. Tegal Luhur, Paseban, </p>
                         <p>Kec. Megamendung, Kabupaten Bogor</p>
                         <p> Jawa Barat 16770</p>
-                        <p class="mt-3"><strong>Phone:</strong> <span>+1 5589 55488 55</span></p>
-                        <p><strong>Email:</strong> <span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="4c25222a230c29342d213c2029622f2321">[email�protected]</a></span></p>
+                        <p class="mt-3"><strong>No. Telepon:</strong> <span>0821-1555-1822</span></p>
+                        <p><strong>Instagram:</strong> <span>@villadancafeair</span></p>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6 footer-links">
@@ -39,9 +39,9 @@
                 </div> --}}
             </div>
             <div class="social-links order-first order-lg-last mb-3 mb-lg-0">
-                <a href="https://instagram.com/villadancafeair"><i class="bi bi-instagram"></i></a>
-                <a href="https://wa.me/6282115551822"><i class="bi bi-whatsapp"></i></a>
-                <a href="mailto:"><i class="bi bi-envelope-at"></i></a>
+                <a href="https://instagram.com/villadancafeair" target="_blank"><i class="bi bi-instagram"></i></a>
+                <a href="https://wa.me/6282115551822" target="_blank"><i class="bi bi-whatsapp"></i></a>
+                <a href="mailto:villadancafeair.luwihajahill@gmail.com" target="_blank"><i class="bi bi-envelope-at"></i></a>
             </div>
         </div>
     </div>

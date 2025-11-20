@@ -1,5 +1,9 @@
 @extends('layouts/profile')
 
+@php
+    use Carbon\Carbon;
+@endphp
+
 @section('content')
     <!-- Content Area -->
     <section id="account" class="account section">
@@ -97,7 +101,7 @@
                             <!-- Orders Tab -->
                             <div class="tab-pane fade" id="orders">
                                 <div class="section-header" data-aos="fade-up">
-                                    <h2>My Orders</h2>
+                                    <h2>Pesanan Saya</h2>
                                     <div class="header-actions">
                                         <div class="search-box">
                                             <i class="bi bi-search"></i>
@@ -120,33 +124,40 @@
                                 </div>
 
                                 <div class="orders-grid">
+                                    @foreach ($pesanan_saya as $item)
                                     <!-- Order Card 1 -->
                                     <div class="order-card" data-aos="fade-up" data-aos-delay="100">
                                         <div class="order-header">
                                             <div class="order-id">
                                                 <span class="label">Order ID:</span>
-                                                <span class="value">#ORD-2024-1278</span>
+                                                <span class="value">#{{ $item->order_id }}</span>
                                             </div>
-                                            <div class="order-date">Feb 20, 2025</div>
+                                            <div class="order-date">{{ Carbon::parse($item->created_at)->translatedFormat('D, d M Y') }}</div>
                                         </div>
                                         <div class="order-content">
                                             <div class="product-grid">
-                                                <img src="images/product-1.webp" alt="Product" loading="lazy">
-                                                <img src="images/product-2.webp" alt="Product" loading="lazy">
-                                                <img src="images/product-3.webp" alt="Product" loading="lazy">
+                                                <img src="{{ $item->akomodasi->gambar }}" alt="Product" loading="lazy">
                                             </div>
                                             <div class="order-info">
                                                 <div class="info-row">
                                                     <span>Status</span>
-                                                    <span class="status processing">Processing</span>
+                                                    @if ($item->status == 'pending')
+                                                    <span class="status processing">Pending</span>
+                                                    @else
+                                                    <span class="status delivered">Verified</span>
+                                                    @endif
                                                 </div>
                                                 <div class="info-row">
-                                                    <span>Items</span>
-                                                    <span>3 items</span>
+                                                    <span>Tanggal Masuk</span>
+                                                    <span>{{ Carbon::parse($item->tanggal_masuk)->translatedFormat('D, d M Y') }}</span>
+                                                </div>
+                                                <div class="info-row">
+                                                    <span>Tanggal Keluar</span>
+                                                    <span>{{ Carbon::parse($item->tanggal_keluar)->translatedFormat('D, d M Y') }}</span>
                                                 </div>
                                                 <div class="info-row">
                                                     <span>Total</span>
-                                                    <span class="price">$789.99</span>
+                                                    <span class="price">{{ @currency($item->total_harga) }}</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -311,278 +322,7 @@
                                             </div>
                                         </div>
                                     </div>
-
-                                    <!-- Order Card 2 -->
-                                    <div class="order-card" data-aos="fade-up" data-aos-delay="200">
-                                        <div class="order-header">
-                                            <div class="order-id">
-                                                <span class="label">Order ID:</span>
-                                                <span class="value">#ORD-2024-1265</span>
-                                            </div>
-                                            <div class="order-date">Feb 15, 2025</div>
-                                        </div>
-                                        <div class="order-content">
-                                            <div class="product-grid">
-                                                <img src="images/product-4.webp" alt="Product" loading="lazy">
-                                                <img src="images/product-5.webp" alt="Product" loading="lazy">
-                                            </div>
-                                            <div class="order-info">
-                                                <div class="info-row">
-                                                    <span>Status</span>
-                                                    <span class="status shipped">Shipped</span>
-                                                </div>
-                                                <div class="info-row">
-                                                    <span>Items</span>
-                                                    <span>2 items</span>
-                                                </div>
-                                                <div class="info-row">
-                                                    <span>Total</span>
-                                                    <span class="price">$459.99</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="order-footer">
-                                            <button type="button" class="btn-track" data-bs-toggle="collapse"
-                                                data-bs-target="#tracking2" aria-expanded="false">Track
-                                                Order</button>
-                                            <button type="button" class="btn-details" data-bs-toggle="collapse"
-                                                data-bs-target="#details2" aria-expanded="false">View
-                                                Details</button>
-                                        </div>
-
-                                        <!-- Order Tracking -->
-                                        <div class="collapse tracking-info" id="tracking2">
-                                            <div class="tracking-timeline">
-                                                <div class="timeline-item completed">
-                                                    <div class="timeline-icon">
-                                                        <i class="bi bi-check-circle-fill"></i>
-                                                    </div>
-                                                    <div class="timeline-content">
-                                                        <h5>Order Confirmed</h5>
-                                                        <p>Your order has been received and confirmed</p>
-                                                        <span class="timeline-date">Feb 15, 2025 - 9:15 AM</span>
-                                                    </div>
-                                                </div>
-
-                                                <div class="timeline-item completed">
-                                                    <div class="timeline-icon">
-                                                        <i class="bi bi-check-circle-fill"></i>
-                                                    </div>
-                                                    <div class="timeline-content">
-                                                        <h5>Processing</h5>
-                                                        <p>Your order is being prepared for shipment</p>
-                                                        <span class="timeline-date">Feb 15, 2025 - 11:30 AM</span>
-                                                    </div>
-                                                </div>
-
-                                                <div class="timeline-item completed">
-                                                    <div class="timeline-icon">
-                                                        <i class="bi bi-check-circle-fill"></i>
-                                                    </div>
-                                                    <div class="timeline-content">
-                                                        <h5>Packaging</h5>
-                                                        <p>Your items have been packaged for shipping</p>
-                                                        <span class="timeline-date">Feb 15, 2025 - 2:45 PM</span>
-                                                    </div>
-                                                </div>
-
-                                                <div class="timeline-item active">
-                                                    <div class="timeline-icon">
-                                                        <i class="bi bi-truck"></i>
-                                                    </div>
-                                                    <div class="timeline-content">
-                                                        <h5>In Transit</h5>
-                                                        <p>Package in transit with carrier</p>
-                                                        <span class="timeline-date">Feb 16, 2025 - 10:20 AM</span>
-                                                        <div class="shipping-info">
-                                                            <span>Tracking Number: </span>
-                                                            <span class="tracking-number">1Z999AA1234567890</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="timeline-item">
-                                                    <div class="timeline-icon">
-                                                        <i class="bi bi-house-door"></i>
-                                                    </div>
-                                                    <div class="timeline-content">
-                                                        <h5>Delivery</h5>
-                                                        <p>Estimated delivery: Feb 18, 2025</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <!-- Order Details -->
-                                        <div class="collapse order-details" id="details2">
-                                            <div class="details-content">
-                                                <div class="detail-section">
-                                                    <h5>Order Information</h5>
-                                                    <div class="info-grid">
-                                                        <div class="info-item">
-                                                            <span class="label">Payment Method</span>
-                                                            <span class="value">Credit Card (**** 7821)</span>
-                                                        </div>
-                                                        <div class="info-item">
-                                                            <span class="label">Shipping Method</span>
-                                                            <span class="value">Standard Shipping (3-5
-                                                                days)</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="detail-section">
-                                                    <h5>Items (2)</h5>
-                                                    <div class="order-items">
-                                                        <div class="item">
-                                                            <img src="images/product-4.webp" alt="Product"
-                                                                loading="lazy">
-                                                            <div class="item-info">
-                                                                <h6>Ut enim ad minim veniam</h6>
-                                                                <div class="item-meta">
-                                                                    <span class="sku">SKU: PRD-004</span>
-                                                                    <span class="qty">Qty: 1</span>
-                                                                </div>
-                                                            </div>
-                                                            <div class="item-price">$299.99</div>
-                                                        </div>
-
-                                                        <div class="item">
-                                                            <img src="images/product-5.webp" alt="Product"
-                                                                loading="lazy">
-                                                            <div class="item-info">
-                                                                <h6>Quis nostrud exercitation</h6>
-                                                                <div class="item-meta">
-                                                                    <span class="sku">SKU: PRD-005</span>
-                                                                    <span class="qty">Qty: 1</span>
-                                                                </div>
-                                                            </div>
-                                                            <div class="item-price">$159.99</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="detail-section">
-                                                    <h5>Price Details</h5>
-                                                    <div class="price-breakdown">
-                                                        <div class="price-row">
-                                                            <span>Subtotal</span>
-                                                            <span>$459.98</span>
-                                                        </div>
-                                                        <div class="price-row">
-                                                            <span>Shipping</span>
-                                                            <span>$9.99</span>
-                                                        </div>
-                                                        <div class="price-row">
-                                                            <span>Tax</span>
-                                                            <span>$38.02</span>
-                                                        </div>
-                                                        <div class="price-row total">
-                                                            <span>Total</span>
-                                                            <span>$459.99</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="detail-section">
-                                                    <h5>Shipping Address</h5>
-                                                    <div class="address-info">
-                                                        <p>Sarah Anderson<br>123 Main Street<br>Apt 4B<br>New York,
-                                                            NY 10001<br>United States</p>
-                                                        <p class="contact">+1 (555) 123-4567</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Order Card 3 -->
-                                    <div class="order-card" data-aos="fade-up" data-aos-delay="300">
-                                        <div class="order-header">
-                                            <div class="order-id">
-                                                <span class="label">Order ID:</span>
-                                                <span class="value">#ORD-2024-1252</span>
-                                            </div>
-                                            <div class="order-date">Feb 10, 2025</div>
-                                        </div>
-                                        <div class="order-content">
-                                            <div class="product-grid">
-                                                <img src="images/product-6.webp" alt="Product" loading="lazy">
-                                            </div>
-                                            <div class="order-info">
-                                                <div class="info-row">
-                                                    <span>Status</span>
-                                                    <span class="status delivered">Delivered</span>
-                                                </div>
-                                                <div class="info-row">
-                                                    <span>Items</span>
-                                                    <span>1 item</span>
-                                                </div>
-                                                <div class="info-row">
-                                                    <span>Total</span>
-                                                    <span class="price">$129.99</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="order-footer">
-                                            <button type="button" class="btn-review">Write Review</button>
-                                            <button type="button" class="btn-details">View Details</button>
-                                        </div>
-                                    </div>
-
-                                    <!-- Order Card 4 -->
-                                    <div class="order-card" data-aos="fade-up" data-aos-delay="400">
-                                        <div class="order-header">
-                                            <div class="order-id">
-                                                <span class="label">Order ID:</span>
-                                                <span class="value">#ORD-2024-1245</span>
-                                            </div>
-                                            <div class="order-date">Feb 5, 2025</div>
-                                        </div>
-                                        <div class="order-content">
-                                            <div class="product-grid">
-                                                <img src="images/product-7.webp" alt="Product" loading="lazy">
-                                                <img src="images/product-8.webp" alt="Product" loading="lazy">
-                                                <img src="images/product-9.webp" alt="Product" loading="lazy">
-                                                <span class="more-items">+2</span>
-                                            </div>
-                                            <div class="order-info">
-                                                <div class="info-row">
-                                                    <span>Status</span>
-                                                    <span class="status cancelled">Cancelled</span>
-                                                </div>
-                                                <div class="info-row">
-                                                    <span>Items</span>
-                                                    <span>5 items</span>
-                                                </div>
-                                                <div class="info-row">
-                                                    <span>Total</span>
-                                                    <span class="price">$1,299.99</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="order-footer">
-                                            <button type="button" class="btn-reorder">Reorder</button>
-                                            <button type="button" class="btn-details">View Details</button>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Pagination -->
-                                <div class="pagination-wrapper" data-aos="fade-up">
-                                    <button type="button" class="btn-prev" disabled="">
-                                        <i class="bi bi-chevron-left"></i>
-                                    </button>
-                                    <div class="page-numbers">
-                                        <button type="button" class="active">1</button>
-                                        <button type="button">2</button>
-                                        <button type="button">3</button>
-                                        <span>...</span>
-                                        <button type="button">12</button>
-                                    </div>
-                                    <button type="button" class="btn-next">
-                                        <i class="bi bi-chevron-right"></i>
-                                    </button>
+                                    @endforeach
                                 </div>
                             </div>
 

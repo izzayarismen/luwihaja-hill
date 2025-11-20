@@ -536,8 +536,8 @@
                         <h3>Informasi Kami</h3>
                         <div class="contact-info">
                             <h5><i class="bi bi-telephone"></i>Kontak</h5>
-                            <p>No. Telepopn: +62 821-1555-1822</p>
-                            <p>Email: luwihajahill@gmail.com</p>
+                            <p>No. Telepon: 0821-1555-1822</p>
+                            <p>Email: villadancafeair.luwihajahill@gmail.com</p>
                             <p>Instagram: @villadancafeair</p>
                         </div>
                         <div class="address-block my-3">

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AkomodasiController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BookingController;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WebController;
@@ -25,13 +26,10 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/logout', [AuthController::class, 'getLogout']);
 
-    Route::get('/booking', function() {
-        return view('booking', [
-                'title' => 'Booking',
-            ]);
-    });
+    Route::get('/booking/{id}', [BookingController::class, 'getBooking']);
+    Route::post('/booking/{id}', [BookingController::class, 'postBooking']);
 
-    Route::get('/payment', function() {
+    Route::get('/payment/{order_id}', function() {
         return view('payment', [
                 'title' => 'Booking',
             ]);

@@ -22,14 +22,12 @@
                     <a class="nav-link" data-bs-toggle="tab" href="#orders">
                         <i class="bi bi-box-seam"></i>
                         <span>Pesanan Saya</span>
-                        <span class="badge">3</span>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" data-bs-toggle="tab" href="#reviews">
                         <i class="bi bi-star"></i>
                         <span>Ulasan Saya</span>
-                        <span class="badge">1</span>
                     </a>
                 </li>
             </ul>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -10,8 +11,11 @@ class ProfileController extends Controller
 {
     public function getProfile()
     {
+        $pesanan_saya = Order::where('user_id', Auth::user()->id)->with('akomodasi')->get();
+
         return view('profile', [
             'title' => 'Profil',
+            'pesanan_saya' => $pesanan_saya
         ]);
     }
 
