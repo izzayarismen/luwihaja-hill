@@ -50,4 +50,37 @@ class BookingController extends Controller
 
         return redirect('/payment/'.$oder->order_id)->with('success', 'Booking berhasil!');
     }
+
+    public function getPayment($order_id)
+    {
+        $order = Order::where('order_id', $order_id)->first();
+
+        if(!$order) {
+            return abort(404);
+        }
+
+        return view('payment', [
+            'title' => 'Payment',
+            'order' => $order
+        ]);
+    }
+
+    public function postPayment($order_id, Request $request)
+    {
+        $order = Order::where('order_id', $order_id)->first();
+
+        if(!$order) {
+            return abort(404);
+        }
+
+        $filename = 'payment-'.$order_id.'.'.$request->bukti_pembayaran->getClientOriginalExtension();
+        $request->bukti_pembayaran->move(public_path('images/payment'), $filename);
+
+        $order->update([
+            'bukti_pembayaran' => '/images/payment/'.$filename,
+            'status' => 'pending'
+        ]);
+
+        return redirect('/profile')->with('success', 'Pembayaran berhasil!');
+    }
 }

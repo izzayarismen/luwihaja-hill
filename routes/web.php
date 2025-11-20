@@ -19,23 +19,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth')->group(function () {
-    // Profile
-    Route::get('/profile', [ProfileController::class, 'getProfile']);
-    Route::put('/profile', [ProfileController::class, 'updateProfile']);
-
-    Route::get('/logout', [AuthController::class, 'getLogout']);
-
-    Route::get('/booking/{id}', [BookingController::class, 'getBooking']);
-    Route::post('/booking/{id}', [BookingController::class, 'postBooking']);
-
-    Route::get('/payment/{order_id}', function() {
-        return view('payment', [
-                'title' => 'Booking',
-            ]);
-    });
-});
-
 Route::middleware('guest')->group(function () {
     // Register
     Route::get('/register', [AuthController::class, 'getRegister']);
@@ -45,6 +28,23 @@ Route::middleware('guest')->group(function () {
     Route::get('/login', [AuthController::class, 'getLogin'])->name('login');
     Route::post('/login', [AuthController::class, 'postLogin']);
 
+});
+
+Route::middleware('auth')->group(function () {
+    // Profile
+    Route::get('/profile', [ProfileController::class, 'getProfile']);
+    Route::put('/profile', [ProfileController::class, 'updateProfile']);
+
+    // Logout
+    Route::get('/logout', [AuthController::class, 'getLogout']);
+
+    // Booking
+    Route::get('/booking/{id}', [BookingController::class, 'getBooking']);
+    Route::post('/booking/{id}', [BookingController::class, 'postBooking']);
+
+    // Payment
+    Route::get('/payment/{order_id}', [BookingController::class, 'getPayment']);
+    Route::post('/payment/{order_id}', [BookingController::class, 'postPayment']);
 });
 
 Route::get('/', [WebController::class, 'beranda']);

@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->string('order_id');
+            $table->string('order_id')->unique();
             $table->string('akomodasi_id');
             $table->string('user_id');
             $table->date('tanggal_masuk');
@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('telepon_pemesan');
             $table->string('total_harga');
             $table->string('bukti_pembayaran')->nullable();
-            $table->string('status')->default('pending');
+            $table->string('status')->default('unpayed');
             $table->timestamps();
         });
     }

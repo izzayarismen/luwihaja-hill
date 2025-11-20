@@ -1,5 +1,9 @@
 @extends('layouts/profile')
 
+@php
+    use Carbon\Carbon;
+@endphp
+
 @section('content')
     <section id="checkout" class="checkout section">
 
@@ -10,43 +14,47 @@
                     <!-- Order Summary -->
                     <div class="order-summary" data-aos="fade-left" data-aos-delay="200">
                         <div class="order-summary-header">
-                            <h3>Order Summary</h3>
-                            <span class="item-count">2 Items</span>
+                            <h3>Ringkasan Pesanan</h3>
+                            {{-- <span class="item-count">2 Items</span> --}}
                         </div>
 
                         <div class="order-summary-content">
                             <div class="order-items">
                                 <div class="order-item">
                                     <div class="order-item-image">
-                                        <img src="images/product-1.webp" alt="Product" class="img-fluid">
+                                        <img src="{{ $order->akomodasi->gambar }}" alt="Product" class="img-fluid">
                                     </div>
                                     <div class="order-item-details">
-                                        <h4>Lorem Ipsum Dolor</h4>
-                                        <p class="order-item-variant">Color: Black | Size: M</p>
-                                        <div class="order-item-price">
-                                            <span class="quantity">1 ×</span>
-                                            <span class="price">$89.99</span>
-                                        </div>
+                                        <h4>{{ $order->akomodasi->tipe }}</h4>
+                                        <p class="order-item-variant"></p>
+                                        <p class="order-item-variant">Masuk: {{ Carbon::parse($order->tanggal_masuk)->translatedFormat('D, d M Y') }}</p>
+                                        <p class="order-item-variant">Keluar: {{ Carbon::parse($order->tanggal_keluar)->translatedFormat('D, d M Y') }}</p>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="order-totals">
                                 <div class="order-subtotal d-flex justify-content-between">
-                                    <span>Subtotal</span>
-                                    <span>$209.97</span>
+                                    <span>Harga Asli</span>
+                                    @if ($order->akomodasi->harga_diskon != null)
+                                    <span style="text-decoration: line-through">{{ @currency($order->akomodasi->harga_asli) }}</span>
+                                    @else
+                                    <span>{{ @currency($order->akomodasi->harga_asli) }}</span>
+                                    @endif
                                 </div>
+                                @if ($order->akomodasi->harga_diskon != null)
                                 <div class="order-shipping d-flex justify-content-between">
-                                    <span>Shipping</span>
-                                    <span>$9.99</span>
+                                    <span>Harga Diskon</span>
+                                    <span>{{ @currency($order->akomodasi->harga_diskon) }}</span>
                                 </div>
+                                @endif
                                 <div class="order-tax d-flex justify-content-between">
-                                    <span>Tax</span>
-                                    <span>$21.00</span>
+                                    <span>Jumlah Malam</span>
+                                    <span>{{ Carbon::parse($order->tanggal_masuk)->diffInDays(Carbon::parse($order->tanggal_keluar)) }} Malam</span>
                                 </div>
                                 <div class="order-total d-flex justify-content-between">
-                                    <span>Total</span>
-                                    <span>$240.96</span>
+                                    <span>Total Harga</span>
+                                    <span>{{ @currency($order->total_harga) }}</span>
                                 </div>
                             </div>
 
@@ -57,7 +65,8 @@
                 <div class="col-lg-7">
                     <!-- Checkout Form -->
                     <div class="checkout-container" data-aos="fade-up">
-                        <form class="checkout-form">
+                        <form action="/payment/{{ $order->order_id }}" method="POST" enctype="multipart/form-data">
+                        @csrf
                             <!-- Payment Method -->
                             <div class="checkout-section" id="payment-method">
                                 <div class="section-header">
@@ -67,7 +76,7 @@
                                 <div class="section-content">
                                     <div class="payment-options">
                                         <div class="payment-option active">
-                                            <input type="radio" name="payment-method" id="credit-card" checked="">
+                                            <input type="radio" id="credit-card" checked="">
                                             <label for="credit-card">
                                                 <span class="payment-icon"><i
                                                         class="bi bi-credit-card-2-front"></i></span>
@@ -75,7 +84,7 @@
                                             </label>
                                         </div>
                                         <div class="payment-option">
-                                            <input type="radio" name="payment-method" id="paypal">
+                                            <input type="radio" id="paypal">
                                             <label for="paypal">
                                                 <span class="payment-icon"><i class="bi bi-qr-code-scan"></i></span>
                                                 <span class="payment-label">QRIS</span>
@@ -87,7 +96,7 @@
                                         <div class="form-group">
                                             <label for="card-number">No. Rekening</label>
                                             <div class="card-number-wrapper">
-                                                <input type="text" class="form-control" name="card-number"
+                                                <input type="text" class="form-control"
                                                     id="card-number" value="7360334401" disabled>
                                                 <div class="card-icons">
                                                     <i class="bi bi-credit-card"></i>
@@ -97,7 +106,7 @@
                                         <div class="form-group">
                                             <label for="card-name">Atas Nama</label>
                                             <div class="card-number-wrapper">
-                                                <input type="text" class="form-control" name="card-name" id="card-name"
+                                                <input type="text" class="form-control" id="card-name"
                                                     value="Lulu Fatimah" disabled>
                                                 <div class="card-icons">
                                                     <i class="bi bi-person"></i>
@@ -120,27 +129,12 @@
                                     <h3>Upload Bukti Pembayaran</h3>
                                 </div>
                                 <div class="section-content">
-                                    <div class="row">
-                                        <div class="col-md-6 form-group">
-                                            <label for="first-name">First Name</label>
-                                            <input type="text" name="first-name" class="form-control" id="first-name"
-                                                placeholder="Your First Name" required="">
-                                        </div>
-                                        <div class="col-md-6 form-group">
-                                            <label for="last-name">Last Name</label>
-                                            <input type="text" name="last-name" class="form-control" id="last-name"
-                                                placeholder="Your Last Name" required="">
-                                        </div>
-                                    </div>
                                     <div class="form-group">
-                                        <label for="email">Email Address</label>
-                                        <input type="email" class="form-control" name="email" id="email"
-                                            placeholder="Your Email" required="">
+                                        <label for="bukti_pembayaran">Upload Bukti Pembayaran</label>
+                                        <input type="file" class="form-control" name="bukti_pembayaran" id="bukti_pembayaran" accept="image/*" required>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="phone">Phone Number</label>
-                                        <input type="tel" class="form-control" name="phone" id="phone"
-                                            placeholder="Your Phone Number" required="">
+                                    <div id="preview-wrapper" class="text-center" hidden>
+                                        <img id="preview-image" class="img-fluid" src="" alt="Preview" style="max-width: 200px;">
                                     </div>
                                 </div>
                             </div>
@@ -164,8 +158,8 @@
                                     </div>
                                     <div class="place-order-container">
                                         <button type="submit" class="btn btn-primary place-order-btn">
-                                            <span class="btn-text">Place Order</span>
-                                            <span class="btn-price">$240.96</span>
+                                            <span class="btn-text">Kirim Bukti Pembayaran</span>
+                                            <span class="btn-price">{{ @currency($order->total_harga) }}</span>
                                         </button>
                                     </div>
                                 </div>
@@ -179,4 +173,23 @@
         </div>
 
     </section><!-- /Checkout Section -->
+    <script>
+        document.getElementById("bukti_pembayaran").addEventListener("change", function(event) {
+            const file = event.target.files[0];
+
+            if (file) {
+                const previewWrapper = document.getElementById("preview-wrapper");
+                const previewImage = document.getElementById("preview-image");
+
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    previewImage.src = e.target.result;
+
+                    // remove attribute hidden
+                    previewWrapper.removeAttribute("hidden");
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
 @endsection

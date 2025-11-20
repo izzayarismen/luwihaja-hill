@@ -11,7 +11,7 @@ class ProfileController extends Controller
 {
     public function getProfile()
     {
-        $pesanan_saya = Order::where('user_id', Auth::user()->id)->with('akomodasi')->get();
+        $pesanan_saya = Order::where('user_id', Auth::user()->id)->with('akomodasi')->orderBy('id', 'desc')->get();
 
         return view('profile', [
             'title' => 'Profil',

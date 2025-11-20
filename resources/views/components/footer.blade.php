@@ -15,7 +15,7 @@
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6 footer-links">
-                    <h4>Lihat semua</h4>
+                    <h4>Navigasi</h4>
                     <ul>
                         <li><a href="/">Beranda</a></li>
                         <li><a href="/tentang-kami">Tentang Kami</a></li>

@@ -103,10 +103,6 @@
                                 <div class="section-header" data-aos="fade-up">
                                     <h2>Pesanan Saya</h2>
                                     <div class="header-actions">
-                                        <div class="search-box">
-                                            <i class="bi bi-search"></i>
-                                            <input type="text" placeholder="Search orders...">
-                                        </div>
                                         <div class="dropdown">
                                             <button class="filter-btn" data-bs-toggle="dropdown">
                                                 <i class="bi bi-funnel"></i>
@@ -114,17 +110,17 @@
                                             </button>
                                             <ul class="dropdown-menu">
                                                 <li><a class="dropdown-item" href="#">All Orders</a></li>
-                                                <li><a class="dropdown-item" href="#">Processing</a></li>
-                                                <li><a class="dropdown-item" href="#">Shipped</a></li>
-                                                <li><a class="dropdown-item" href="#">Delivered</a></li>
-                                                <li><a class="dropdown-item" href="#">Cancelled</a></li>
+                                                <li><a class="dropdown-item" href="#">Belum Dibayar</a></li>
+                                                <li><a class="dropdown-item" href="#">Menunggu Verifikasi</a></li>
+                                                <li><a class="dropdown-item" href="#">Terverifikasi</a></li>
+                                                <li><a class="dropdown-item" href="#">Selesai</a></li>
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="orders-grid">
-                                    @foreach ($pesanan_saya as $item)
+                                    @forelse ($pesanan_saya as $item)
                                     <!-- Order Card 1 -->
                                     <div class="order-card" data-aos="fade-up" data-aos-delay="100">
                                         <div class="order-header">
@@ -141,10 +137,12 @@
                                             <div class="order-info">
                                                 <div class="info-row">
                                                     <span>Status</span>
-                                                    @if ($item->status == 'pending')
-                                                    <span class="status processing">Pending</span>
+                                                    @if ($item->status == 'unpayed')
+                                                    <span class="status cancelled">Belum Membayar</span>
+                                                    @elseif ($item->status == 'pending')
+                                                    <span class="status processing">Menunggu Verifikasi</span>
                                                     @else
-                                                    <span class="status delivered">Verified</span>
+                                                    <span class="status delivered">Terverifikasi</span>
                                                     @endif
                                                 </div>
                                                 <div class="info-row">
@@ -322,7 +320,9 @@
                                             </div>
                                         </div>
                                     </div>
-                                    @endforeach
+                                    @empty
+                                    <p class="text-center">Belum ada pesanan.</p>
+                                    @endforelse
                                 </div>
                             </div>
 
