@@ -26,13 +26,13 @@
                             <!-- Settings Tab -->
                             <div class="tab-pane fade show active" id="settings">
                                 <div class="section-header" data-aos="fade-up">
-                                    <h2>Account Settings</h2>
+                                    <h2>Pengaturan Akun</h2>
                                 </div>
 
                                 <div class="settings-content">
                                     <!-- Personal Information -->
                                     <div class="settings-section" data-aos="fade-up">
-                                        <h3>Personal Information</h3>
+                                        <h3>Informasi Pribadi</h3>
                                         <form class="settings-form" action="/profile" method="POST">
                                             @method('PUT')
                                             @csrf
@@ -48,45 +48,42 @@
                                                         value="{{ Auth::user()->email }}" required>
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <label for="phone" class="form-label">Phone</label>
+                                                    <label for="phone" class="form-label">Nomor Telepon</label>
                                                     <input type="tel" name="telepon" class="form-control" id="phone"
                                                         value="{{ Auth::user()->telepon }}" required>
                                                 </div>
                                             </div>
 
                                             <div class="form-buttons">
-                                                <button type="submit" class="btn-save">Save Changes</button>
+                                                <button type="submit" class="btn-save">Simpan Perubahan</button>
                                             </div>
                                         </form>
                                     </div>
 
                                     <!-- Security Settings -->
                                     <div class="settings-section" data-aos="fade-up" data-aos-delay="200">
-                                        <h3>Security</h3>
+                                        <h3>Keamanan</h3>
                                         <form class="php-email-form settings-form">
                                             <div class="row g-3">
                                                 <div class="col-md-12">
-                                                    <label for="currentPassword" class="form-label">Current
-                                                        Password</label>
+                                                    <label for="currentPassword" class="form-label">Kata Sandi Saat Ini</label>
                                                     <input type="password" class="form-control" id="currentPassword"
                                                         required="">
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <label for="newPassword" class="form-label">New
-                                                        Password</label>
+                                                    <label for="newPassword" class="form-label">Kata Sandi Baru</label>
                                                     <input type="password" class="form-control" id="newPassword"
                                                         required="">
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <label for="confirmPassword" class="form-label">Confirm
-                                                        Password</label>
+                                                    <label for="confirmPassword" class="form-label">xKonfirmasi Kata Sandi</label>
                                                     <input type="password" class="form-control" id="confirmPassword"
                                                         required="">
                                                 </div>
                                             </div>
 
                                             <div class="form-buttons">
-                                                <button type="submit" class="btn-save">Update Password</button>
+                                                <button type="submit" class="btn-save">Perbarui Kata Sandi</button>
                                             </div>
 
                                             <div class="loading">Loading</div>
@@ -109,7 +106,7 @@
                                                 <span>Filter</span>
                                             </button>
                                             <ul class="dropdown-menu">
-                                                <li><a class="dropdown-item" href="#">All Orders</a></li>
+                                                <li><a class="dropdown-item" href="#">Semua Pesanan</a></li>
                                                 <li><a class="dropdown-item" href="#">Belum Dibayar</a></li>
                                                 <li><a class="dropdown-item" href="#">Menunggu Verifikasi</a></li>
                                                 <li><a class="dropdown-item" href="#">Terverifikasi</a></li>
@@ -138,7 +135,7 @@
                                                 <div class="info-row">
                                                     <span>Status</span>
                                                     @if ($item->status == 'unpayed')
-                                                    <span class="status cancelled">Belum Membayar</span>
+                                                    <span class="status cancelled">Belum Dibayar</span>
                                                     @elseif ($item->status == 'pending')
                                                     <span class="status processing">Menunggu Verifikasi</span>
                                                     @else
@@ -161,22 +158,20 @@
                                         </div>
                                         <div class="order-footer">
                                             <button type="button" class="btn-track" data-bs-toggle="collapse"
-                                                data-bs-target="#tracking1" aria-expanded="false">Track
-                                                Order</button>
+                                                data-bs-target="#tracking-{{$item->id}}" aria-expanded="false">Lihat Status</button>
                                             <button type="button" class="btn-details" data-bs-toggle="collapse"
-                                                data-bs-target="#details1" aria-expanded="false">View
-                                                Details</button>
+                                                data-bs-target="#details1" aria-expanded="false">Cek Tiket</button>
                                         </div>
 
                                         <!-- Order Tracking -->
-                                        <div class="collapse tracking-info" id="tracking1">
+                                        <div class="collapse tracking-info" id="tracking-{{$item->id}}">
                                             <div class="tracking-timeline">
                                                 <div class="timeline-item completed">
                                                     <div class="timeline-icon">
                                                         <i class="bi bi-check-circle-fill"></i>
                                                     </div>
                                                     <div class="timeline-content">
-                                                        <h5>Order Confirmed</h5>
+                                                        <h5>Belum Dibayar</h5>
                                                         <p>Your order has been received and confirmed</p>
                                                         <span class="timeline-date">Feb 20, 2025 - 10:30 AM</span>
                                                     </div>
@@ -187,7 +182,7 @@
                                                         <i class="bi bi-check-circle-fill"></i>
                                                     </div>
                                                     <div class="timeline-content">
-                                                        <h5>Processing</h5>
+                                                        <h5>Menunggu Verifikasi</h5>
                                                         <p>Your order is being prepared for shipment</p>
                                                         <span class="timeline-date">Feb 20, 2025 - 2:45 PM</span>
                                                     </div>
@@ -198,7 +193,7 @@
                                                         <i class="bi bi-box-seam"></i>
                                                     </div>
                                                     <div class="timeline-content">
-                                                        <h5>Packaging</h5>
+                                                        <h5>Terverifikasi</h5>
                                                         <p>Your items are being packaged for shipping</p>
                                                         <span class="timeline-date">Feb 20, 2025 - 4:15 PM</span>
                                                     </div>
@@ -209,20 +204,10 @@
                                                         <i class="bi bi-truck"></i>
                                                     </div>
                                                     <div class="timeline-content">
-                                                        <h5>In Transit</h5>
+                                                        <h5>Selesai</h5>
                                                         <p>Expected to ship within 24 hours</p>
                                                     </div>
-                                                </div>
-
-                                                <div class="timeline-item">
-                                                    <div class="timeline-icon">
-                                                        <i class="bi bi-house-door"></i>
-                                                    </div>
-                                                    <div class="timeline-content">
-                                                        <h5>Delivery</h5>
-                                                        <p>Estimated delivery: Feb 22, 2025</p>
-                                                    </div>
-                                                </div>
+                                                </div>                                                                       
                                             </div>
                                         </div>
 

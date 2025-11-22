@@ -35,7 +35,7 @@
             <div class="menu-footer">
                 <a href="/logout" class="logout-link">
                     <i class="bi bi-box-arrow-right"></i>
-                    <span>Log Out</span>
+                    <span>Keluar</span>
                 </a>
             </div>
         </nav>
