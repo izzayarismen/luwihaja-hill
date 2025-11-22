@@ -6,6 +6,7 @@ use App\Models\Order;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
@@ -21,11 +22,13 @@ class ProfileController extends Controller
 
     public function updateProfile(Request $request)
     {
-        if(!$request->nama && !$request->email && !$request->telepon) {
-            return back()->with('error', 'Nama lengkap, Email, dan No. Telepon tidak boleh kosong!');
-        }
+        $request->validate([
+            'nama' => 'required',
+            'email' => 'required|email',
+            'telepon' => 'required|numeric'
+        ]);
 
-        $user = User::where('email', $request->user()->email)->first();
+        $user = User::where('id', Auth::user()->id)->first();
 
         $user->update([
             'nama' => $request->nama,
@@ -38,11 +41,21 @@ class ProfileController extends Controller
 
     public function updatePassword(Request $request)
     {
-        if(!$request->password) {
-            return back()->with('error', 'Password tidak boleh kosong!');
+        $request->validate([
+            'current_password' => 'required',
+            'password' => 'required',
+            'confirm_password' => 'required'
+        ]);
+
+        if (!Hash::check($request->current_password, Auth::user()->password)) {
+            return back()->with('error', 'Password saat ini salah!');
         }
 
-        $user = User::where('email', $request->user()->email)->first();
+        if ($request->password != $request->confirm_password) {
+            return back()->with('error', 'Password konfirmasi tidak cocok!');
+        }
+
+        $user = User::where('id', Auth::user()->id)->first();
 
         $user->update([
             'password' => bcrypt($request->password)

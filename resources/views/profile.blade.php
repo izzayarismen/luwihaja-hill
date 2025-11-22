@@ -31,6 +31,32 @@
 
                                 <div class="settings-content">
                                     <!-- Personal Information -->
+                                    @if (session('success'))
+                                        <div class="bg-success border border-success text-white px-4 py-3 rounded relative mb-4"
+                                            role="alert">
+                                            <span class="block sm:inline">{{ session('success') }}</span>
+                                        </div>
+                                    @endif
+
+                                    @if (session('error'))
+                                        <div class="bg-danger border border-danger text-white px-4 py-3 rounded relative mb-4"
+                                            role="alert">
+                                            <span class="block sm:inline">{{ session('error') }}</span>
+                                        </div>
+                                    @endif
+
+                                    {{-- Tampilkan validasi error jika ada --}}
+                                    @if ($errors->any())
+                                        <div class="bg-danger border border-danger text-white px-4 py-3 rounded relative mb-4"
+                                            role="alert">
+                                            <strong class="font-bold">Oops! Ada kesalahan:</strong>
+                                            <ul class="mt-2 list-disc list-inside">
+                                                @foreach ($errors->all() as $error)
+                                                    <li>{{ $error }}</li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                    @endif
                                     <div class="settings-section" data-aos="fade-up">
                                         <h3>Informasi Pribadi</h3>
                                         <form class="settings-form" action="/profile" method="POST">
@@ -63,32 +89,26 @@
                                     <!-- Security Settings -->
                                     <div class="settings-section" data-aos="fade-up" data-aos-delay="200">
                                         <h3>Keamanan</h3>
-                                        <form class="php-email-form settings-form">
+                                        <form class="settings-form" action="/profile/password" method="POST">
+                                            @csrf
+                                            @method('PUT')
                                             <div class="row g-3">
                                                 <div class="col-md-12">
                                                     <label for="currentPassword" class="form-label">Kata Sandi Saat Ini</label>
-                                                    <input type="password" class="form-control" id="currentPassword"
-                                                        required="">
+                                                    <input type="password" name="current_password" class="form-control" id="currentPassword" required>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label for="newPassword" class="form-label">Kata Sandi Baru</label>
-                                                    <input type="password" class="form-control" id="newPassword"
-                                                        required="">
+                                                    <input type="password" name="password" class="form-control" id="newPassword" required>
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <label for="confirmPassword" class="form-label">xKonfirmasi Kata Sandi</label>
-                                                    <input type="password" class="form-control" id="confirmPassword"
-                                                        required="">
+                                                    <label for="confirmPassword" class="form-label">Konfirmasi Kata Sandi</label>
+                                                    <input type="password" name="confirm_password" class="form-control" id="confirmPassword" required>
                                                 </div>
                                             </div>
 
                                             <div class="form-buttons">
                                                 <button type="submit" class="btn-save">Perbarui Kata Sandi</button>
-                                            </div>
-
-                                            <div class="loading">Loading</div>
-                                            <div class="error-message"></div>
-                                            <div class="sent-message">Your password has been updated successfully!
                                             </div>
                                         </form>
                                     </div>
@@ -138,8 +158,10 @@
                                                     <span class="status cancelled">Belum Dibayar</span>
                                                     @elseif ($item->status == 'pending')
                                                     <span class="status processing">Menunggu Verifikasi</span>
-                                                    @else
+                                                    @elseif ($item->status == 'verified')
                                                     <span class="status delivered">Terverifikasi</span>
+                                                    @else
+                                                    <span class="status shipped">Selesai</span>
                                                     @endif
                                                 </div>
                                                 <div class="info-row">
@@ -166,45 +188,46 @@
                                         <!-- Order Tracking -->
                                         <div class="collapse tracking-info" id="tracking-{{$item->id}}">
                                             <div class="tracking-timeline">
-                                                <div class="timeline-item completed">
+                                                <div class="timeline-item {{ $item->status == 'unpayed' ? 'active' : ($item->status == 'pending' || $item->status == 'verified' || $item->status == 'finished' ? 'completed' : '') }}">
                                                     <div class="timeline-icon">
+                                                        @if ($item->status == 'pending' || $item->status == 'verified' || $item->status == 'finished')
                                                         <i class="bi bi-check-circle-fill"></i>
+                                                        @else
+                                                        <i class="bi bi-cash-stack"></i>
+                                                        @endif
                                                     </div>
                                                     <div class="timeline-content">
-                                                        <h5>Belum Dibayar</h5>
+                                                        <h5>{{ $item->status != 'unpayed' ? 'Sudah' : 'Belum' }} Dibayar</h5>
                                                         <p>Your order has been received and confirmed</p>
                                                         <span class="timeline-date">Feb 20, 2025 - 10:30 AM</span>
                                                     </div>
                                                 </div>
 
-                                                <div class="timeline-item completed">
+                                                <div class="timeline-item {{ $item->status == 'pending' ? 'active' : ($item->status == 'verified' || $item->status == 'finished' ? 'completed' : '') }}">
                                                     <div class="timeline-icon">
+                                                        @if ($item->status == 'verified' || $item->status == 'finished')
                                                         <i class="bi bi-check-circle-fill"></i>
+                                                        @else
+                                                        <i class="bi bi-hourglass-split"></i>
+                                                        @endif
                                                     </div>
                                                     <div class="timeline-content">
-                                                        <h5>Menunggu Verifikasi</h5>
+                                                        <h5>{{ $item->status == 'verified' || $item->status == 'finished' ? 'Terverifikasi' : 'Menunggu Verifikasi' }}</h5>
                                                         <p>Your order is being prepared for shipment</p>
                                                         <span class="timeline-date">Feb 20, 2025 - 2:45 PM</span>
                                                     </div>
                                                 </div>
 
-                                                <div class="timeline-item active">
+                                                <div class="timeline-item {{ $item->status == 'finished' ? 'completed' : ($item->status == 'verified' ? 'active' : '') }}">
                                                     <div class="timeline-icon">
-                                                        <i class="bi bi-box-seam"></i>
+                                                        @if ($item->status == 'finished')
+                                                        <i class="bi bi-check-circle-fill"></i>
+                                                        @else
+                                                        <i class="bi bi-moon-stars"></i>
+                                                        @endif
                                                     </div>
                                                     <div class="timeline-content">
-                                                        <h5>Terverifikasi</h5>
-                                                        <p>Your items are being packaged for shipping</p>
-                                                        <span class="timeline-date">Feb 20, 2025 - 4:15 PM</span>
-                                                    </div>
-                                                </div>
-
-                                                <div class="timeline-item">
-                                                    <div class="timeline-icon">
-                                                        <i class="bi bi-truck"></i>
-                                                    </div>
-                                                    <div class="timeline-content">
-                                                        <h5>Selesai</h5>
+                                                        <h5>{{ $item->status == 'finished' ? 'Selesai' : 'Menunggu Check-in' }}</h5>
                                                         <p>Expected to ship within 24 hours</p>
                                                     </div>
                                                 </div>
