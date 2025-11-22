@@ -20,7 +20,7 @@ class FaqController extends Controller
 
         // Periksa apakah ada parameter 'edit' di URL (cth: ...?edit=3)
         if ($request->has('edit')) {
-            $faqToEdit = Faq::find($request->edit);
+            $faqToEdit = Faq::findOrFail($request->edit);
         }
 
         return view('admin/faq-ulasan', [
@@ -85,7 +85,7 @@ class FaqController extends Controller
             'jawaban' => 'required|string',
         ]);
 
-        $faq = Faq::find($id);
+        $faq = Faq::findOrFail($id);
         $faq->update([
             'pertanyaan' => $request->pertanyaan,
             'jawaban' => $request->jawaban
@@ -99,7 +99,7 @@ class FaqController extends Controller
      */
     public function destroy(string $id)
     {
-        $faq = Faq::find($id);
+        $faq = Faq::findOrFail($id);
         $faq->delete();
 
         return redirect('/admin/faq-ulasan')->with('success', 'FAQ berhasil dihapus!');

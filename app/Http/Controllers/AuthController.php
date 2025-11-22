@@ -57,7 +57,7 @@ class AuthController extends Controller
             if($request->user()->role == 'admin') {
                 return redirect('/admin')->with('success', 'Berhasil Sign in Admin!');
             } else {
-                return redirect('/')->with('success', 'Berhasil Sign in Tutor!');
+                return redirect()->intended('/')->with('success', 'Berhasil Sign in!');
             }
         }
 

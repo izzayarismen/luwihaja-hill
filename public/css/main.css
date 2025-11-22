@@ -3870,10 +3870,22 @@ section,
   background-color: transparent;
 }
 
+.btn-outline-primary {
+    border: 2px solid var(--accent-color);
+    color: var(--accent-color);
+    background-color: transparent;
+}
+
 .rooms-2 .room-card .room-content .room-actions .btn.btn-outline-primary:hover {
   background-color: var(--accent-color);
   color: var(--contrast-color);
 }
+
+.btn-outline-primary:hover {
+    background-color: var(--accent-color);
+    color: var(--contrast-color);
+    border: solid
+ }
 
 .rooms-2 .pagination-wrapper .pagination .page-item {
   margin: 0 2px;

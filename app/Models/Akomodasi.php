@@ -24,4 +24,10 @@ class Akomodasi extends Model
         'smoking',
         'rekomendasi',
     ];
+
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
+
 }

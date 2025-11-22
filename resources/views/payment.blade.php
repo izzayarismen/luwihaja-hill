@@ -76,7 +76,7 @@
                                 <div class="section-content">
                                     <div class="payment-options">
                                         <div class="payment-option active">
-                                            <input type="radio" id="credit-card" checked="">
+                                            <input type="radio" id="credit-card" checked name="payment_method">
                                             <label for="credit-card">
                                                 <span class="payment-icon"><i
                                                         class="bi bi-credit-card-2-front"></i></span>
@@ -84,7 +84,7 @@
                                             </label>
                                         </div>
                                         <div class="payment-option">
-                                            <input type="radio" id="paypal">
+                                            <input type="radio" id="paypal" name="payment_method">
                                             <label for="paypal">
                                                 <span class="payment-icon"><i class="bi bi-qr-code-scan"></i></span>
                                                 <span class="payment-label">QRIS</span>

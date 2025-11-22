@@ -87,19 +87,26 @@
 
                         <div class="booking-form">
                             <form action="/booking/{{ $akomodasi->id }}?tanggal_masuk={{ request('tanggal_masuk') }}&tanggal_keluar={{ request('tanggal_keluar') }}" method="GET">
+                                @if (session('error'))
+                                    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4"
+                                        role="alert">
+                                        <span class="block sm:inline">{{ session('error') }}</span>
+                                    </div>
+                                @endif
                                 <div class="row">
                                     <div class="col-12 mb-3">
                                         <label for="checkin-date" class="form-label">Tanggal Masuk</label>
-                                        <input type="date" class="form-control" id="checkin-date" name="tanggal_masuk"
-                                            required>
+                                        <input type="text" class="form-control" id="checkin-date" name="tanggal_masuk" min="{{ date('Y-m-d') }}" required autocomplete="off">
                                     </div>
                                     <div class="col-12 mb-3">
                                         <label for="checkout-date" class="form-label">Tanggal Keluar</label>
-                                        <input type="date" class="form-control" id="checkout-date" name="tanggal_keluar"
-                                            required>
+                                        <input type="text" class="form-control" id="checkout-date" name="tanggal_keluar" min="{{ date('Y-m-d') }}" required autocomplete="off">
+                                        <small id="date-error" style="color:red; display:none;">
+                                            Tanggal keluar harus setelah tanggal masuk.
+                                        </small>
                                     </div>
                                 </div>
-                                <button type="submit" class="btn btn-primary btn-book">
+                                <button type="submit" class="btn btn-primary btn-book" id="submit-btn">
                                     <i class="bi bi-calendar-check me-2"></i>
                                     Pesan Sekarang
                                 </button>
@@ -313,5 +320,57 @@
 
         </div>
 
-    </section><!-- /Room Details Section -->
+    </section>
 @endsection
+
+@push('scripts')
+<script>
+
+
+    const bookedRanges = @json($order);
+    const disabledDates = [];
+
+    bookedRanges.forEach(range => {
+        let start = new Date(range.tanggal_masuk);
+        const end = new Date(range.tanggal_keluar);
+
+        while (start < end) {
+            disabledDates.push(start.toISOString().split("T")[0]);
+            start.setDate(start.getDate() + 1);
+        }
+    });
+
+    const checkinInput = document.getElementById("checkin-date");
+    const checkoutInput = document.getElementById("checkout-date");
+    const dateError = document.getElementById("date-error");
+    const submitBtn = document.getElementById("submit-btn");
+
+    function validateDates() {
+        const checkin = new Date(checkinInput.value);
+        const checkout = new Date(checkoutInput.value);
+
+        // Reset jika input kosong
+        if (!checkinInput.value || !checkoutInput.value) {
+            checkoutInput.style.borderColor = "";
+            dateError.style.display = "none";
+            submitBtn.disabled = false;
+            return;
+        }
+
+        if (checkout <= checkin) {
+            // invalid → merah + tampilkan error
+            checkoutInput.style.borderColor = "red";
+            dateError.style.display = "block";
+            submitBtn.disabled = true;
+        } else {
+            // valid → reset merah + sembunyikan error
+            checkoutInput.style.borderColor = "";
+            dateError.style.display = "none";
+            submitBtn.disabled = false;
+        }
+    }
+
+    checkinInput.addEventListener("change", validateDates);
+    checkoutInput.addEventListener("change", validateDates);
+</script>
+@endpush

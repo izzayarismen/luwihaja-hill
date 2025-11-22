@@ -49,7 +49,7 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label for="phone" class="form-label">Nomor Telepon</label>
-                                                    <input type="tel" name="telepon" class="form-control" id="phone"
+                                                    <input type="tel" name="telepon" class="form-control" pattern="[0-9]+"
                                                         value="{{ Auth::user()->telepon }}" required>
                                                 </div>
                                             </div>
@@ -207,7 +207,7 @@
                                                         <h5>Selesai</h5>
                                                         <p>Expected to ship within 24 hours</p>
                                                     </div>
-                                                </div>                                                                       
+                                                </div>
                                             </div>
                                         </div>
 

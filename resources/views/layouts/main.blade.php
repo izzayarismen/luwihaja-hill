@@ -21,6 +21,7 @@
         <link href="/css/swiper-bundle.min.css" rel="stylesheet">
         <link href="/css/glightbox.min.css" rel="stylesheet">
         <link href="/css/drift-basic.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 
         <link href="/css/main.css" rel="stylesheet">
     </head>
@@ -49,6 +50,46 @@
 
         <script src="/js/main.js"></script>
         <script defer="" src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" data-cf-beacon="{" version":"2024.11.0","token":"68c5ca450bae485a842ff76066d69420","server_timing":{"name":{"cfcachestatus":true,"cfedge":true,"cfextpri":true,"cfl4":true,"cforigin":true,"cfspeedbrain":true},"location_startswith":null}}"="" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+        @stack('scripts')
+        <script>
+            flatpickr("#daterange", {
+                mode: "range",
+                dateFormat: "Y-m-d",
+                minDate: "today",
+                defaultDate: [
+                    "{{ request('tanggal_masuk') }}",
+                    "{{ request('tanggal_keluar') }}"
+                ],
+                onChange: function(selectedDates, dateStr, instance) {
+                    if (selectedDates.length === 2) {
+                        document.getElementById("checkin").value = instance.formatDate(selectedDates[0], "Y-m-d");
+                        document.getElementById("checkout").value = instance.formatDate(selectedDates[1], "Y-m-d");
+                    }
+                }
+            });
+
+            document.getElementById("checkin").value = "{{ request('tanggal_masuk') }}";
+            document.getElementById("checkout").value = "{{ request('tanggal_keluar') }}";
+        </script>
+
+        <script>
+            flatpickr("#checkin-date", {
+                dateFormat: "Y-m-d",
+                disable: disabledDates,
+                minDate: "today",
+                defaultDate: null,
+                allowInput: true
+            });
+
+            flatpickr("#checkout-date", {
+                dateFormat: "Y-m-d",
+                disable: disabledDates,
+                minDate: "today",
+                defaultDate: null,
+                allowInput: true
+            });
+        </script>
 
     </body>
 </html>
