@@ -33,7 +33,7 @@
                                     <div class="col-lg-6 col-12 mb-3 mb-lg-0">
                                         <div class="product-info d-flex align-items-center">
                                             <div class="product-image">
-                                                <img src="{{ $akomodasi->gambar }}" alt="Product" class="img-fluid"
+                                                <img src="{{ trim(explode(',', $akomodasi->gambar)[0]) }}" alt="Product" class="img-fluid"
                                                     loading="lazy">
                                             </div>
                                             <div class="product-details">

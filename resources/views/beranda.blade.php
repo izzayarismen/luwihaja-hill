@@ -239,7 +239,7 @@
                             <div class="col-12 mb-4" data-aos="slide-left" data-aos-delay="{{ 250 + $index * 50 }}">
                                 <div class="room-showcase-card compact">
                                     <div class="compact-image">
-                                        <img src="{{ $item->gambar }}" alt="{{ $item->tipe }}" class="img-fluid" style="aspect-ratio: 1 / 1; object-fit: cover;">
+                                        <img src="{{ trim(explode(',', $item->gambar)[0]) }}" alt="{{ $item->tipe }}" class="img-fluid" style="aspect-ratio: 1 / 1; object-fit: cover;">
                                     </div>
                                     <div class="compact-content">
                                         <h4>{{ $item->tipe }}</h4>

@@ -149,7 +149,7 @@
                                         </div>
                                         <div class="order-content">
                                             <div class="product-grid">
-                                                <img src="{{ $item->akomodasi->gambar }}" alt="Product" loading="lazy">
+                                                <img src="{{ trim(explode(',', $item->akomodasi->gambar)[0]) }}" alt="Product" loading="lazy">
                                             </div>
                                             <div class="order-info">
                                                 <div class="info-row">

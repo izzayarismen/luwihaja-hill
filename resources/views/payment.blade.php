@@ -22,7 +22,7 @@
                             <div class="order-items">
                                 <div class="order-item">
                                     <div class="order-item-image">
-                                        <img src="{{ $order->akomodasi->gambar }}" alt="Product" class="img-fluid">
+                                        <img src="{{ trim(explode(',', $order->akomodasi->gambar)[0]) }}" alt="Product" class="img-fluid">
                                     </div>
                                     <div class="order-item-details">
                                         <h4>{{ $order->akomodasi->tipe }}</h4>
