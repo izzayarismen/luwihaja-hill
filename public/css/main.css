@@ -1762,7 +1762,7 @@ section,
 .rooms-showcase .discover-all-btn:hover {
   color: var(--contrast-color);
   transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(54, 144, 231, 0.3);
+  box-shadow: 0 8px 25px var(--accent-color);
 }
 
 .rooms-showcase .discover-all-btn:hover:before {

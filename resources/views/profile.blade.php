@@ -181,8 +181,10 @@
                                         <div class="order-footer">
                                             <button type="button" class="btn-track" data-bs-toggle="collapse"
                                                 data-bs-target="#tracking-{{$item->id}}" aria-expanded="false">Lihat Status</button>
-                                            <button type="button" class="btn-details" data-bs-toggle="collapse"
-                                                data-bs-target="#details1" aria-expanded="false">Cek Tiket</button>
+                                                @if ($item->status == 'verified' || $item->status == 'finished')
+                                                <button type="button" class="btn-details" data-bs-toggle="collapse"
+                                            data-bs-target="#details1" aria-expanded="false">Cek Tiket</button>
+                                            @endif
                                         </div>
 
                                         <!-- Order Tracking -->
@@ -198,11 +200,16 @@
                                                     </div>
                                                     <div class="timeline-content">
                                                         <h5>{{ $item->status != 'unpayed' ? 'Sudah' : 'Belum' }} Dibayar</h5>
-                                                        <p>Your order has been received and confirmed</p>
+                                                        @if ($item->status != 'unpayed')
+                                                        <p>Pembayaran berhasil. Lihat bukti transfer <a href="{{ $item->bukti_pembayaran }}" target="_blank">[di sini]</a>.</p>
+                                                        @else
+                                                        <p>Menunggu pembayaran. Selesaikan transaksi Anda segera <a href="/payment/{{ $item->order_id }}">[di sini]</a>.</p>
+                                                        @endif
                                                         <span class="timeline-date">Feb 20, 2025 - 10:30 AM</span>
                                                     </div>
                                                 </div>
 
+                                                @if ($item->status == 'pending' || $item->status == 'verified' || $item->status == 'finished')
                                                 <div class="timeline-item {{ $item->status == 'pending' ? 'active' : ($item->status == 'verified' || $item->status == 'finished' ? 'completed' : '') }}">
                                                     <div class="timeline-icon">
                                                         @if ($item->status == 'verified' || $item->status == 'finished')
@@ -211,13 +218,20 @@
                                                         <i class="bi bi-hourglass-split"></i>
                                                         @endif
                                                     </div>
+
                                                     <div class="timeline-content">
                                                         <h5>{{ $item->status == 'verified' || $item->status == 'finished' ? 'Terverifikasi' : 'Menunggu Verifikasi' }}</h5>
-                                                        <p>Your order is being prepared for shipment</p>
+                                                        @if ($item->status == 'verified' || $item->status == 'finished')
+                                                        <p>Pesanan dikonfirmasi. Silakan lihat E-Tiket Anda pada menu Cek Tiket.</p>
+                                                        @else
+                                                        <p>Sedang diverifikasi admin. Jika dalam 24 jam status belum berubah, mohon hubungi kami <a href="wa.me/6282115551822"></a>[di sini].</p>
+                                                        @endif
                                                         <span class="timeline-date">Feb 20, 2025 - 2:45 PM</span>
                                                     </div>
                                                 </div>
+                                                @endif
 
+                                                @if ($item->status == 'verified' || $item->status == 'finished')
                                                 <div class="timeline-item {{ $item->status == 'finished' ? 'completed' : ($item->status == 'verified' ? 'active' : '') }}">
                                                     <div class="timeline-icon">
                                                         @if ($item->status == 'finished')
@@ -228,9 +242,14 @@
                                                     </div>
                                                     <div class="timeline-content">
                                                         <h5>{{ $item->status == 'finished' ? 'Selesai' : 'Menunggu Check-in' }}</h5>
-                                                        <p>Expected to ship within 24 hours</p>
+                                                        @if ($item->status == 'finished')
+                                                        <p>Pesanan selesai. Terima kasih telah menginap.</p>
+                                                        @else
+                                                        <p>Siap untuk check-in pada [{{ Carbon::parse($item->tanggal_masuk)->translatedFormat('D, d M Y') }}], pukul 14:00 - 21:00 WIB.</p>
+                                                        @endif
                                                     </div>
                                                 </div>
+                                                @endif
                                             </div>
                                         </div>
 
