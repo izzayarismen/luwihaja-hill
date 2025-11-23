@@ -82,7 +82,7 @@
                             <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
                                 <div class="room-card">
                                     <div class="room-image">
-                                        <img src="{{ $item->gambar }}" alt="{{ $item->tipe }}" class="img-fluid">
+                                        <img src="{{ trim(explode(',', $item->gambar)[0]) }}" alt="{{ $item->tipe }}" class="img-fluid">
                                         @if ($item->harga_diskon != null)
                                             <div class="room-badge">Sedang Diskon</div>
                                         @endif
@@ -94,7 +94,7 @@
                                     </div>
                                     <div class="room-content">
                                         <h4>{{ $item->tipe }}</h4>
-                                        <p>{{ $item->deskripsi }}</p>
+                                        <p>{{ Str::limit($item->deskripsi, 100) }}</p>
                                         <div class="room-features">
                                             <span><i class="bi bi-people"></i>{{ $item->jumlah_tamu }} Tamu</span>
                                             <span><i class="bi bi-moon"></i>{{ $item->tipe_kasur }} Bed</span>

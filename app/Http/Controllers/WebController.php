@@ -10,7 +10,7 @@ class WebController extends Controller
 {
     public function beranda()
     {
-        $akomodasi = Akomodasi::all();
+        $akomodasi = Akomodasi::orderBy('id', 'desc')->get();
         $rekomendasi = Akomodasi::where('rekomendasi', True)->get();
         $faq = Faq::all();
 
@@ -24,7 +24,7 @@ class WebController extends Controller
 
     public function tentang_kami()
     {
-        $akomodasi = Akomodasi::all();
+        $akomodasi = Akomodasi::orderBy('id', 'desc')->get();
 
         return view('tentang-kami', [
             'active' => 'tentang-kami',

@@ -79,14 +79,14 @@
                 <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
                     <div class="room-card">
                         <div class="room-image">
-                            <img src="{{ $item->gambar }}" alt="Deluxe Room" class="img-fluid">
+                            <img src="{{ trim(explode(',', $item->gambar)[0]) }}" alt="Deluxe Room" class="img-fluid">
                             <div class="room-overlay">
                                 <a href="/akomodasi/{{ $item->id }}" class="btn-explore">Lihat akomodasi</a>
                             </div>
                         </div>
                         <div class="room-content">
-                            <h4>{{ $item->tipe }}</h4>
-                            <p class="room-description">{{ $item->deskripsi }}</p>
+                            <h4>{{ Str::limit($item->tipe, 30) }}</h4>
+                            <p class="room-description">{{ Str::limit($item->deskripsi, 100) }}</p>
                             <div class="room-features">
                                 <span><i class="bi bi-people"></i>{{ $item->jumlah_tamu }} Tamu</span>
                                 <span><i class="bi bi-moon"></i>{{ $item->tipe_kasur }} Bed</span>

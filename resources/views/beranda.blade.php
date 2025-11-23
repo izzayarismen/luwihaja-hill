@@ -1,3 +1,7 @@
+@php
+    use Illuminate\Support\Str;
+@endphp
+
 @extends('layouts/main')
 
 @section('content')
@@ -162,11 +166,11 @@
                         </div>
                         @endif
                         <div class="offer-image">
-                            <img src="{{ $item->gambar }}" alt="Weekend Getaway" class="img-fluid">
+                            <img src="{{ trim(explode(',', $item->gambar)[0]) }}" alt="Weekend Getaway" class="img-fluid">
                         </div>
                         <div class="offer-content">
-                            <h3>{{ $item->tipe }}</h3>
-                            <p>{{ $item->deskripsi }}</p>
+                            <h3>{{ Str::limit($item->tipe, 35) }}</h3>
+                            <p>{{ Str::limit($item->deskripsi, 60) }}</p>
                             <div class="offer-details">
                                 <div class="price-info">
                                     @if ($item->harga_diskon != null)
@@ -202,18 +206,13 @@
                         <div class="col-lg-6 col-md-6 mb-4" data-aos="zoom-in" data-aos-delay="200">
                             <div class="room-showcase-card featured">
                                 <div class="room-hero-image">
-                                    <img src="{{ $item->gambar }}" alt="{{ $item->tipe }}" class="img-fluid" style="aspect-ratio: 1 / 1; object-fit: cover;">
+                                    <img src="{{ trim(explode(',', $item->gambar)[0]) }}" alt="{{ $item->tipe }}" class="img-fluid" style="aspect-ratio: 1 / 1; object-fit: cover;">
                                 </div>
                                 <div class="room-info">
                                     <div class="room-header">
                                         <h3>{{ $item->tipe }}</h3>
-                                        <div class="rating">
-                                            @for($i = 0; $i < 5; $i++)
-                                                <i class="bi bi-star-fill"></i>
-                                            @endfor
-                                        </div>
                                     </div>
-                                    <p class="room-excerpt">{{ $item->deskripsi }}</p>
+                                    <p class="room-excerpt">{{ Str::limit($item->deskripsi, 150) }}</p>
                                     <div class="room-amenities">
                                         <span><i class="bi bi-people"></i>{{ $item->jumlah_tamu }} Tamu</span>
                                         <span><i class="bi bi-moon"></i>{{ $item->tipe_kasur }} Bed</span>

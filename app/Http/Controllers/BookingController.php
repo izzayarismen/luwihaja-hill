@@ -81,6 +81,6 @@ class BookingController extends Controller
             'status' => 'pending'
         ]);
 
-        return redirect('/profile')->with('success', 'Pembayaran berhasil!');
+        return redirect('/profile')->with('success', 'Pembayaran berhasil, Cek menu Pesanan Saya untuk melihat status!');
     }
 }
