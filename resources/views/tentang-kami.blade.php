@@ -9,7 +9,7 @@
                 tak terlupakan.</p>
             <nav class="breadcrumbs">
                 <ol>
-                    <li><a href="index.html">Beranda</a></li>
+                    <li><a href="/">Beranda</a></li>
                     <li class="current">Tentang Kami</li>
                 </ol>
             </nav>

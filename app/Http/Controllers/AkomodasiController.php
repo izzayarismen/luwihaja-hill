@@ -106,10 +106,16 @@ class AkomodasiController extends Controller
         $akomodasi = Akomodasi::findOrFail($id);
         $order = Order::where('akomodasi_id', $id)->get(['tanggal_masuk', 'tanggal_keluar']);
 
+        $fasilitas = [];
+        if ($akomodasi->fasilitas) {
+            $fasilitas = array_map('trim', explode(',', $akomodasi->fasilitas));
+        }
+
         return view('detail-akomodasi', [
             'active' => 'akomodasi',
             'akomodasi' => $akomodasi,
-            'order' => $order
+            'order' => $order,
+            'fasilitas' => $fasilitas
         ]);
     }
 

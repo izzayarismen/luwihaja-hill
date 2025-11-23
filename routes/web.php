@@ -19,6 +19,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/', [WebController::class, 'beranda']);
+Route::get('/tentang-kami', [WebController::class, 'tentang_kami']);
+Route::resource('/akomodasi', AkomodasiController::class);
+
 Route::middleware('guest')->group(function () {
     // Register
     Route::get('/register', [AuthController::class, 'getRegister']);
@@ -48,25 +52,17 @@ Route::middleware('auth')->group(function () {
     // Payment
     Route::get('/payment/{order_id}', [BookingController::class, 'getPayment']);
     Route::post('/payment/{order_id}', [BookingController::class, 'postPayment']);
-});
 
-Route::get('/', [WebController::class, 'beranda']);
-Route::get('/tentang-kami', [WebController::class, 'tentang_kami']);
-Route::resource('/akomodasi', AkomodasiController::class);
+    Route::prefix('admin')->group(function () {
+        Route::get('/', function() {
+            return view('admin.index');
+        });
 
+        Route::get('/produk', function() {
+            return view('admin.produk');
+        });
 
-
-Route::get('/admin', function() {
-    return view('admin/index', [
-            'active' => 'admin',
-        ]);
-});
-
-
-Route::get('/admin/produk', function() {
-    return view('admin/produk', [
-            'active' => 'admin',
-        ]);
+    });
 });
 
 Route::get('/admin/verifikasi', function() {

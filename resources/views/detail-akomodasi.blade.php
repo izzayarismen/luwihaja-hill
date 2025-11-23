@@ -134,14 +134,14 @@
                                 <button class="nav-link" id="reviews-tab" data-bs-toggle="tab"
                                     data-bs-target="#room-details-reviews" type="button" role="tab">Ulasan</button>
                             </li>
-                            
+
                         </ul>
 
                         <div class="tab-content mt-4" id="roomTabsContent">
                             <div class="tab-pane fade show active" id="room-details-overview" role="tabpanel">
                                 <div class="row">
                                     <div class="col-lg-8">
-                                        <h3> Deskripsi Kamar</h3>
+                                        <h3>Deskripsi Kamar</h3>
                                         <p class="room-description">
                                             {{ $akomodasi->deskripsi }}
                                         </p>
@@ -150,32 +150,32 @@
                                             <div class="feature-item">
                                                 <i class="bi bi-people"></i>
                                                 <div class="feature-info">
-                                                    <h5>Kapasitas Maksimal</h5>
-                                                    <p>4 Guests</p>
+                                                    <h5>Jumlah Tamu</h5>
+                                                    <p>{{ $akomodasi->jumlah_tamu }} Orang</p>
                                                 </div>
                                             </div>
                                             <div class="feature-item">
                                                 <i class="bi bi-arrows-fullscreen"></i>
                                                 <div class="feature-info">
                                                     <h5>Luas Kamar</h5>
-                                                    <p>85 sqm</p>
+                                                    <p>{{ $akomodasi->luas }} m²</p>
                                                 </div>
                                             </div>
                                             <div class="feature-item">
                                                 <i class="bi bi-moon"></i>
                                                 <div class="feature-info">
                                                     <h5>Tipe Kasur</h5>
-                                                    <p>King Bed</p>
-                                                </div>
-                                            </div>
-                                            <div class="feature-item">
-                                                <i class="bi bi-eye"></i>
-                                                <div class="feature-info">
-                                                    <h5>View</h5>
-                                                    <p>City Skyline</p>
+                                                    <p>{{ $akomodasi->tipe_kasur }} Bed</p>
                                                 </div>
                                             </div>
                                         </div>
+
+                                        <h4 class="mt-4">Fasilitas</h4>
+                                        <ul>
+                                            @foreach ($fasilitas as $item)
+                                            <li>{{ $item }}</li>
+                                            @endforeach
+                                        </ul>
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="room-stats">
@@ -242,7 +242,7 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
 
                             <div class="tab-pane fade" id="room-details-reviews" role="tabpanel">
                                 <div class="reviews-section">

@@ -93,7 +93,7 @@
 
                         </svg>
 
-                        Sign out
+                        Logout
                     </a>
                 </div>
             </div>
