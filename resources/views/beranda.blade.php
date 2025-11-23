@@ -106,7 +106,7 @@
                     <div class="amenity-card">
                         <div class="card-header">
                             <div class="amenity-icon">
-                                <i class="bi bi-bicycle"></i>
+                                <i class="bi bi-wifi"></i>
                             </div>
                             <h4>Free WiFi & Minuman Hangat</h4>
                         </div>
@@ -119,7 +119,7 @@
                     <div class="amenity-card">
                         <div class="card-header">
                             <div class="amenity-icon">
-                                <i class="bi bi-wifi"></i>
+                                <i class="bi bi-fire"></i>
                             </div>
                             <h4> Area Api Unggun & Aktivitas Seru</h4>
                         </div>
@@ -132,7 +132,7 @@
                     <div class="amenity-card">
                         <div class="card-header">
                             <div class="amenity-icon">
-                                <i class="bi bi-shield-check"></i>
+                                <i class="bi bi-shop-window"></i>
                             </div>
                             <h4>Cafe & Mini Market</h4>
                         </div>
@@ -282,7 +282,7 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="event-card" data-aos="zoom-in" data-aos-delay="100">
                         <div class="event-image">
-                            <img src="images/event-6.webp" alt="Wedding Celebration" class="img-fluid">
+                            <img src="https://s-light.tiket.photos/t/01E25EBZS3W0FY9GTG6C42E1SE/t_htl-mobile/tix-hotel/images-web/2022/09/09/03a94f40-3349-43b3-a55c-2e1874003101-1662721275974-2df2bb51131989fbf92ede3278ab8a34.jpg" alt="Cafe Air" class="img-fluid">
                             <div class="event-overlay">
                                 <h4>Cafe Air</h4>
                                 <p>Nikmati hidangan lezat dan minuman segar di Cafe Air kami yang asri.</p>
@@ -293,7 +293,7 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="event-card" data-aos="zoom-in" data-aos-delay="200">
                         <div class="event-image">
-                            <img src="images/event-3.webp" alt="Corporate Events" class="img-fluid">
+                            <img src="images/pemandian.png" alt="Corporate Events" class="img-fluid">
                             <div class="event-overlay">
                                 <h4>Pemandian Cafe Air</h4>
                                 <p>Rasakan kesegaran alami air sungai jernih yang mengalir di area kami.</p>
@@ -304,7 +304,7 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="event-card" data-aos="zoom-in" data-aos-delay="300">
                         <div class="event-image">
-                            <img src="images/event-7.webp" alt="Private Celebrations" class="img-fluid">
+                            <img src="images/kenzmart.png" alt="Private Celebrations" class="img-fluid">
                             <div class="event-overlay">
                                 <h4>Kenz Mart</h4>
                                 <p>Penuhi kebutuhan ringan dan camilan Anda dengan praktis di Kenz Mart kami</p>
@@ -315,7 +315,7 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="event-card" data-aos="zoom-in" data-aos-delay="100">
                         <div class="event-image">
-                            <img src="images/event-2.webp" alt="Conference Facilities" class="img-fluid">
+                            <img src="https://s-light.tiket.photos/t/01E25EBZS3W0FY9GTG6C42E1SE/t_htl-mobile/tix-hotel/images-web/2022/09/09/c75f4f44-4cb3-4987-b6ee-ef03372bc286-1662723042514-f4ed4c0963815cfcefe044b1a32e7eeb.jpg" alt="Musholla" class="img-fluid">
                             <div class="event-overlay">
                                 <h4>Musholla</h4>
                                 <p>Kenyamanan beribadah di tengah suasana alam yang tenang.</p>
@@ -326,7 +326,7 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="event-card" data-aos="zoom-in" data-aos-delay="200">
                         <div class="event-image">
-                            <img src="images/event-9.webp" alt="Social Gatherings" class="img-fluid">
+                            <img src="images/api_unggun.png" alt="Social Gatherings" class="img-fluid">
                             <div class="event-overlay">
                                 <h4>Api Unggun</h4>
                                 <p>Ciptakan momen hangat dan akrab di bawah bintang-bintang.</p>
@@ -337,7 +337,7 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="event-card" data-aos="zoom-in" data-aos-delay="300">
                         <div class="event-image">
-                            <img src="images/event-10.webp" alt="Corporate Retreats" class="img-fluid">
+                            <img src="images/tubing.png" alt="Corporate Retreats" class="img-fluid">
                             <div class="event-overlay">
                                 <h4>Tubing Air</h4>
                                 <p>Bukan hanya untuk berenang, nikmati juga pengalaman seru mencoba wahana tubing di aliran sungai kami yang menantang</p>

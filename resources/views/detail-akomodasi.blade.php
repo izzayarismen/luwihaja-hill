@@ -124,12 +124,17 @@
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link active" id="overview-tab" data-bs-toggle="tab"
                                     data-bs-target="#room-details-overview" type="button"
-                                    role="tab">Overview</button>
+                                    role="tab">Gambaran Umum</button>
                             </li>
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link" id="reviews-tab" data-bs-toggle="tab"
-                                    data-bs-target="#room-details-reviews" type="button" role="tab">Reviews</button>
+                                    data-bs-target="#room-details-kebijakan" type="button" role="tab">Kebijakan Lainnya</button>
                             </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="reviews-tab" data-bs-toggle="tab"
+                                    data-bs-target="#room-details-reviews" type="button" role="tab">Ulasan</button>
+                            </li>
+                            
                         </ul>
 
                         <div class="tab-content mt-4" id="roomTabsContent">
@@ -145,21 +150,21 @@
                                             <div class="feature-item">
                                                 <i class="bi bi-people"></i>
                                                 <div class="feature-info">
-                                                    <h5>Max Occupancy</h5>
+                                                    <h5>Kapasitas Maksimal</h5>
                                                     <p>4 Guests</p>
                                                 </div>
                                             </div>
                                             <div class="feature-item">
                                                 <i class="bi bi-arrows-fullscreen"></i>
                                                 <div class="feature-info">
-                                                    <h5>Room Size</h5>
+                                                    <h5>Luas Kamar</h5>
                                                     <p>85 sqm</p>
                                                 </div>
                                             </div>
                                             <div class="feature-item">
                                                 <i class="bi bi-moon"></i>
                                                 <div class="feature-info">
-                                                    <h5>Bed Type</h5>
+                                                    <h5>Tipe Kasur</h5>
                                                     <p>King Bed</p>
                                                 </div>
                                             </div>
@@ -187,6 +192,57 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <div class="tab-pane fade show" id="room-details-kebijakan" role="tabpanel">
+                                <div class="row">
+                                    <div class="col-lg-8">
+                                        <h4>Anak</h4>
+                                        <ul>
+                                            <li>Tamu umur berapa pun bisa menginap di sini.</li>
+                                            <li>Anak-anak 5 tahun ke atas dianggap sebagai tamu dewasa.</li>
+                                            <li>Pastikan umur anak yang menginap sesuai dengan detail pemesanan. Jika berbeda, tamu mungkin akan dikenakan biaya tambahan saat check-in.</li>
+                                        </ul>
+                                        <h4>Ketentuan status pernikahan</h4>
+                                        <ul>
+                                            <li>Tamu yang datang berpasangan harus menunjukkan buku nikah saat check-in.</li>
+                                        </ul>
+                                        <h4>Deposit</h4>
+                                        <ul>
+                                            <li>Tamu tidak perlu membayar deposit saat check-in.</li>
+                                        </ul>
+                                        <h4>Umur</h4>
+                                        <ul>
+                                            <li>Tamu umur berapa pun bisa menginap di sini.</li>
+                                        </ul>
+                                        <h4>Sarapan</h4>
+                                        <ul>
+                                            <li>Sarapan tidak tersedia.</li>
+                                        </ul>
+                                        <h4>Hewan peliharaan</h4>
+                                        <ul>
+                                            <li>Tidak diperbolehkan membawa hewan peliharaan.</li>
+                                        </ul>
+                                        <h4>Alkohol</h4>
+                                        <ul>
+                                            <li>Minuman beralkohol tidak diperbolehkan.</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="room-stats">
+                                            <h4>Quick Stats</h4>
+                                            <div class="stat-item">
+                                                <span class="stat-label">Check-in:</span>
+                                                <span class="stat-value">{{ $akomodasi->checkin }}</span>
+                                            </div>
+                                            <div class="stat-item">
+                                                <span class="stat-label">Check-out:</span>
+                                                <span class="stat-value">{{ $akomodasi->checkout }}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
 
                             <div class="tab-pane fade" id="room-details-reviews" role="tabpanel">
                                 <div class="reviews-section">

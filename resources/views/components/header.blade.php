@@ -12,9 +12,9 @@
             <li><a href="/#faq" class="{{ $active == 'faq' ? 'active' : '' }}">FAQ</a></li>
             <li><a href="/#lokasi" class="{{ $active == 'lokasi' ? 'active' : '' }}">Lokasi</a></li>
             @auth
-            <li><a href="/profile">Profile</a></li>
+            <li><a href="/profile" class="hideOnDesktop">Profile</a></li>
             @else
-            <li><a href="/login">Login</a></li>
+            <li><a href="/login" class="hideOnDesktop">Login</a></li>
             @endauth
             </ul>
             <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>

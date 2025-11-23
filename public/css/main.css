@@ -225,6 +225,12 @@ h6 {
   --background-color: #2C3930;
 }
 
+@media (min-width: 576px) {
+  .hideOnDesktop {
+    display: none !important;
+  }
+}
+
 /*--------------------------------------------------------------
 # Navigation Menu
 --------------------------------------------------------------*/
