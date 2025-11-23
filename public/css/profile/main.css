@@ -6816,9 +6816,6 @@ section,
 }
 
 .account .content-area .orders-grid .order-card .order-details .details-content .detail-section .price-breakdown .price-row.total {
-  padding-top: 12px;
-  margin-top: 4px;
-  border-top: 1px solid rgba(0, 0, 0, 0.06);
   font-weight: 600;
   color: var(--accent-color);
 }

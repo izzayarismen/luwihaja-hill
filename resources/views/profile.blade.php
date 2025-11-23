@@ -182,8 +182,7 @@
                                             <button type="button" class="btn-track" data-bs-toggle="collapse"
                                                 data-bs-target="#tracking-{{$item->id}}" aria-expanded="false">Lihat Status</button>
                                                 @if ($item->status == 'verified' || $item->status == 'finished')
-                                                <button type="button" class="btn-details" data-bs-toggle="collapse"
-                                            data-bs-target="#details1" aria-expanded="false">Cek Tiket</button>
+                                                <button type="button" class="btn-details" data-bs-toggle="collapse" data-bs-target="#details{{ $item->id }}" aria-expanded="false">Cek Tiket</button>
                                             @endif
                                         </div>
 
@@ -254,94 +253,56 @@
                                         </div>
 
                                         <!-- Order Details -->
-                                        <div class="collapse order-details" id="details1">
+                                        <div class="collapse order-details" id="details{{ $item->id }}">
                                             <div class="details-content">
                                                 <div class="detail-section">
-                                                    <h5>Order Information</h5>
+                                                    <h5>E-Tiket #{{ $item->order_id }}</h5>
                                                     <div class="info-grid">
                                                         <div class="info-item">
-                                                            <span class="label">Payment Method</span>
-                                                            <span class="value">Credit Card (**** 4589)</span>
+                                                            <span class="label">Nama Pemesan</span>
+                                                            <span class="value">{{ $item->nama_pemesan }}</span>
                                                         </div>
                                                         <div class="info-item">
-                                                            <span class="label">Shipping Method</span>
-                                                            <span class="value">Express Delivery (2-3 days)</span>
+                                                            <span class="label">Alamat Email</span>
+                                                            <span class="value">{{ $item->email_pemesan }}</span>
+                                                        </div>
+                                                        <div class="info-item">
+                                                            <span class="label">Nomor Telepon</span>
+                                                            <span class="value">{{ $item->telepon_pemesan }}</span>
                                                         </div>
                                                     </div>
                                                 </div>
 
                                                 <div class="detail-section">
-                                                    <h5>Items (3)</h5>
+                                                    <h5>Akomodasi</h5>
                                                     <div class="order-items">
                                                         <div class="item">
-                                                            <img src="images/product-1.webp" alt="Product"
+                                                            <img src="{{ trim(explode(',', $item->akomodasi->gambar)[0]) }}" alt="Product"
                                                                 loading="lazy">
                                                             <div class="item-info">
-                                                                <h6>Lorem ipsum dolor sit amet</h6>
+                                                                <h6>{{ $item->akomodasi->tipe }}</h6>
                                                                 <div class="item-meta">
-                                                                    <span class="sku">SKU: PRD-001</span>
-                                                                    <span class="qty">Qty: 1</span>
+                                                                    <span class="sku">{{ Carbon::parse($item->tanggal_masuk)->translatedFormat('D, d M Y') }}</span>
+                                                                    <span>-</span>
+                                                                    <span class="qty">{{ Carbon::parse($item->tanggal_masuk)->translatedFormat('D, d M Y') }}</span>
                                                                 </div>
                                                             </div>
-                                                            <div class="item-price">$899.99</div>
-                                                        </div>
-
-                                                        <div class="item">
-                                                            <img src="images/product-2.webp" alt="Product"
-                                                                loading="lazy">
-                                                            <div class="item-info">
-                                                                <h6>Consectetur adipiscing elit</h6>
-                                                                <div class="item-meta">
-                                                                    <span class="sku">SKU: PRD-002</span>
-                                                                    <span class="qty">Qty: 2</span>
-                                                                </div>
+                                                            <div class="item-price">
+                                                                <i class="bi bi-moon-stars"></i>
+                                                                <span class="mx-1"></span>
+                                                                {{ Carbon::parse($item->tanggal_masuk)->diffInDays(Carbon::parse($item->tanggal_keluar)) }} Malam
                                                             </div>
-                                                            <div class="item-price">$599.95</div>
-                                                        </div>
-
-                                                        <div class="item">
-                                                            <img src="images/product-3.webp" alt="Product"
-                                                                loading="lazy">
-                                                            <div class="item-info">
-                                                                <h6>Sed do eiusmod tempor</h6>
-                                                                <div class="item-meta">
-                                                                    <span class="sku">SKU: PRD-003</span>
-                                                                    <span class="qty">Qty: 1</span>
-                                                                </div>
-                                                            </div>
-                                                            <div class="item-price">$129.99</div>
                                                         </div>
                                                     </div>
                                                 </div>
 
                                                 <div class="detail-section">
-                                                    <h5>Price Details</h5>
+                                                    <h5>Pembayaran</h5>
                                                     <div class="price-breakdown">
-                                                        <div class="price-row">
-                                                            <span>Subtotal</span>
-                                                            <span>$1,929.93</span>
-                                                        </div>
-                                                        <div class="price-row">
-                                                            <span>Shipping</span>
-                                                            <span>$15.99</span>
-                                                        </div>
-                                                        <div class="price-row">
-                                                            <span>Tax</span>
-                                                            <span>$159.98</span>
-                                                        </div>
                                                         <div class="price-row total">
-                                                            <span>Total</span>
-                                                            <span>$2,105.90</span>
+                                                            <span>Total Harga</span>
+                                                            <span>{{ @currency($item->total_harga) }}</span>
                                                         </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="detail-section">
-                                                    <h5>Shipping Address</h5>
-                                                    <div class="address-info">
-                                                        <p>Sarah Anderson<br>123 Main Street<br>Apt 4B<br>New York,
-                                                            NY 10001<br>United States</p>
-                                                        <p class="contact">+1 (555) 123-4567</p>
                                                     </div>
                                                 </div>
                                             </div>

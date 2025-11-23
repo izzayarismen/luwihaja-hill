@@ -89,7 +89,7 @@
                                     <div class="col-md-6">
                                         <label for="email" class="form-label">Email</label>
                                         <input type="email" name="email_pemesan" class="form-control" id="email"
-                                            value="{{ Auth::user()->email }}" required>
+                                            value="{{ Auth::user()->email }}" disabled required>
                                     </div>
                                     <div class="col-md-6">
                                         <label for="phone" class="form-label">Phone</label>
