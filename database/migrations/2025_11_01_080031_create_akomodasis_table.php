@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('akomodasis', function (Blueprint $table) {
             $table->id();
-            $table->string('gambar');
+            $table->text('gambar');
             $table->string('tipe');
-            $table->string('deskripsi');
+            $table->text('deskripsi');
             $table->integer('harga_asli');
             $table->integer('harga_diskon')->nullable();
             $table->string('checkin');
@@ -23,7 +23,7 @@ return new class extends Migration
             $table->integer('jumlah_tamu');
             $table->integer('luas');
             $table->string('tipe_kasur');
-            $table->string('fasilitas');
+            $table->text('fasilitas');
             $table->boolean('smoking');
             $table->boolean('rekomendasi');
             $table->timestamps();

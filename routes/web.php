@@ -4,6 +4,7 @@ use App\Http\Controllers\AkomodasiController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\FaqController;
+use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WebController;
 use Illuminate\Support\Facades\Route;
@@ -58,9 +59,7 @@ Route::middleware('auth')->group(function () {
             return view('admin.index');
         });
 
-        Route::get('/produk', function() {
-            return view('admin.produk');
-        });
+        Route::resource('/produk', ProdukController::class);
 
     });
 });
