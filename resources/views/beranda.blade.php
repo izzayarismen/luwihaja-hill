@@ -314,7 +314,7 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="event-card" data-aos="zoom-in" data-aos-delay="100">
                         <div class="event-image">
-                            <img src="https://s-light.tiket.photos/t/01E25EBZS3W0FY9GTG6C42E1SE/t_htl-mobile/tix-hotel/images-web/2022/09/09/c75f4f44-4cb3-4987-b6ee-ef03372bc286-1662723042514-f4ed4c0963815cfcefe044b1a32e7eeb.jpg" alt="Musholla" class="img-fluid">
+                            <img src="https://s-light.tiket.photos/t/01E25EBZS3W0FY9GTG6C42E1SE/t_htl-dskt/tix-hotel/images-web/2023/06/05/77f0f2dd-2c75-4994-9a75-b4f08c5daed0-1685960937031-28e42c0d8d45a691bfd1fb59e786f69e.jpg" alt="Musholla" class="img-fluid">
                             <div class="event-overlay">
                                 <h4>Musholla</h4>
                                 <p>Kenyamanan beribadah di tengah suasana alam yang tenang.</p>

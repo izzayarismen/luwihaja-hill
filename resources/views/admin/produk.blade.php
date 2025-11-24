@@ -148,7 +148,7 @@ $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(valu
                                                         </p>
                                                         <p class="text-xs text-gray-500 dark:text-gray-400">Bisa pilih banyak</p>
                                                     </div>
-                                                    <input :required="!selectedProduct.id" id="file-upload" type="file" name="gambar[]" class="hidden" @change="handleFiles($event)" multiple />
+                                                    <input :required="!selectedProduct.id" id="file-upload" type="file" name="gambar[]" class="hidden" @change="handleFiles($event)" multiple accept="image/*" />
                                                 </label>
 
                                                 <div x-show="newImages.length > 0" class="mt-4">

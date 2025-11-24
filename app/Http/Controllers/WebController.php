@@ -11,7 +11,7 @@ class WebController extends Controller
     public function beranda()
     {
         $akomodasi = Akomodasi::orderBy('id', 'desc')->get();
-        $rekomendasi = Akomodasi::where('rekomendasi', True)->get();
+        $rekomendasi = Akomodasi::where('rekomendasi', True)->orderBy('id', 'desc')->get();
         $faq = Faq::all();
 
         return view('beranda', [
