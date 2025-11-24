@@ -117,21 +117,37 @@
                     <div class="pagination-wrapper mt-5" data-aos="fade-up" data-aos-delay="500">
                         <nav aria-label="Room listings pagination">
                             <ul class="pagination justify-content-center">
+                                @if ($akomodasi->onFirstPage())
                                 <li class="page-item disabled">
                                     <span class="page-link">Sebelumnya</span>
                                 </li>
-                                <li class="page-item active">
-                                    <span class="page-link">1</span>
-                                </li>
+                                @else
                                 <li class="page-item">
-                                    <a class="page-link" href="#">2</a>
+                                    <a href="{{ $akomodasi->previousPageUrl() }}" class="page-link">Sebelumnya</a>
                                 </li>
+                                @endif
+
+                                @foreach ($akomodasi->getUrlRange(1, $akomodasi->lastPage()) as $page => $url)
+                                    @if ($page == $akomodasi->currentPage())
+                                    <li class="page-item active">
+                                        <span class="page-link">{{ $page }}</span>
+                                    </li>
+                                    @else
+                                    <li class="page-item">
+                                        <a class="page-link" href="{{ $url }}">{{ $page }}</a>
+                                    </li>
+                                    @endif
+                                @endforeach
+
+                                @if ($akomodasi->hasMorePages())
                                 <li class="page-item">
-                                    <a class="page-link" href="#">3</a>
+                                    <a class="page-link" href="{{ $akomodasi->nextPageUrl() }}">Selanjutnya</a>
                                 </li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#">Selanjutnya</a>
+                                @else
+                                <li class="page-item disabled">
+                                    <span class="page-link">Selanjutnya</span>
                                 </li>
+                                @endif
                             </ul>
                         </nav>
                     </div>
