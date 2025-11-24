@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AkomodasiController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BookingController;
@@ -56,9 +57,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::prefix('admin')->middleware('auth.admin')->group(function () {
-    Route::get('/', function() {
-        return view('admin.index');
-    });
+    Route::get('/', [AdminController::class, 'dashboard']);
 
     Route::resource('/produk', ProdukController::class);
 
