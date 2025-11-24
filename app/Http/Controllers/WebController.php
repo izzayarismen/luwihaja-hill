@@ -18,7 +18,7 @@ class WebController extends Controller
 
         Order::where(function ($q) {
             $q->where('status', 'unpayed')
-              ->where('status', 'rejected');
+              ->orWhere('status', 'rejected');
         })
         ->where('updated_at', '<', Carbon::now()->subHours(24))
         ->delete();
