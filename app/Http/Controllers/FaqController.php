@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Faq;
+use App\Models\Ulasan;
+use Carbon\Carbon;
 use Illuminate\Http\Request; // Pastikan Request di-import
 
 class FaqController extends Controller
@@ -14,6 +16,19 @@ class FaqController extends Controller
     public function index(Request $request)
     {
         $faq = Faq::orderBy('id', 'desc')->get();
+        $ulasan = Ulasan::with(['akomodasi', 'user'])
+            ->orderBy('id', 'desc')
+            ->get()
+            ->map(function ($item) {
+                return [
+                    'id' => $item->id,
+                    'user' => $item->user,
+                    'akomodasi' => $item->akomodasi,
+                    'rating' => $item->rating,
+                    'ulasan' => $item->ulasan,
+                    'created_at' => Carbon::parse($item->created_at)->format('d M Y'),
+                ];
+            });
 
         // Variabel baru untuk menampung data FAQ yang akan diedit
         $faqToEdit = null;
@@ -26,7 +41,8 @@ class FaqController extends Controller
         return view('admin/faq-ulasan', [
             'active' => 'faq-ulasan',
             'faqs' => $faq,
-            'faqToEdit' => $faqToEdit // Kirim data 'edit' ke view
+            'faqToEdit' => $faqToEdit, // Kirim data 'edit' ke view
+            'ulasan' => $ulasan
         ]);
     }
 

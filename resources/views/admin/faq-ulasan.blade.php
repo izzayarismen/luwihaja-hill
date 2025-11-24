@@ -25,13 +25,7 @@
                             activeReviewFilter: 'all', // 'all', 5, 4, 3, 2, 1
                             showReviewDeleteModal: false,
                             reviewToDelete: null,
-                            reviews: [
-                                { id: 1, name: 'Christine Brooks', avatar: './images/user/user-01.png', roomType: 'Family Room (tipe sungai & dapur)', date: '14 Feb 2025', rating: 5, comment: 'menarik' },
-                                { id: 2, name: 'Rosie Pearson', avatar: './images/user/user-02.png', roomType: 'Family Room (tipe sungai)', date: '14 Feb 2025', rating: 5, comment: 'puas' },
-                                { id: 3, name: 'Darrell Caldwell', avatar: './images/user/user-03.png', roomType: 'Family Room (tipe gunung)', date: '14 Feb 2025', rating: 4, comment: 'pemandangannya bagus' },
-                                { id: 4, name: 'Gilbert Johnston', avatar: './images/user/user-04.png', roomType: 'Twin Bed', date: '14 Feb 2025', rating: 5, comment: 'gak nyesel, bagus banget' },
-                                { id: 5, name: 'Alan Cain', avatar: './images/user/user-05.png', roomType: 'Queen Bed', date: '14 Feb 2025', rating: 5, comment: 'puas' }
-                            ],
+                            reviews: {{ Js::from($ulasan) }},
                             // --- Akhir Data & State Ulasan ---
 
                             // --- FUNGSI FAQ (openAddForm, saveFaq, dll) DIHAPUS ---
@@ -273,15 +267,15 @@
                                                             x-transition
                                                             class="grid grid-cols-12 gap-4 items-center py-4 px-5 border-b border-gray-200 dark:border-gray-700 last:border-b-0">
                                                             <div class="col-span-3 flex items-center gap-3">
-                                                                <img :src="review.avatar" alt="Avatar"
+                                                                <img :src="review.akomodasi.gambar" alt="Avatar"
                                                                     class="w-10 h-10 rounded-full object-cover">
                                                                 <span class="font-medium text-gray-800 dark:text-white"
-                                                                    x-text="review.name"></span>
+                                                                    x-text="review.akomodasi.tipe"></span>
                                                             </div>
                                                             <div class="col-span-3 text-sm text-gray-600 dark:text-gray-400"
-                                                                x-text="review.roomType"></div>
+                                                                x-text="review.user.nama"></div>
                                                             <div class="col-span-1 text-sm text-gray-600 dark:text-gray-400"
-                                                                x-text="review.date"></div>
+                                                                x-text="review.created_at"></div>
 
                                                             <div
                                                                 class="col-span-1 flex items-center gap-1 text-sm text-gray-600 dark:text-gray-400">
@@ -296,7 +290,7 @@
                                                             </div>
 
                                                             <div class="col-span-3 text-sm text-gray-800 dark:text-white"
-                                                                x-text="review.comment"></div>
+                                                                x-text="review.ulasan"></div>
                                                             <div class="col-span-1 flex justify-start">
                                                                 <button @click="openReviewDeleteModal(review.id)"
                                                                     class="text-gray-400 hover:text-red-600 transition-colors p-2 rounded-full hover:bg-red-100 dark:hover:bg-red-900/20">
