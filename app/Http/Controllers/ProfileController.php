@@ -17,7 +17,7 @@ class ProfileController extends Controller
 
         Order::where(function ($q) {
             $q->where('status', 'unpayed')
-              ->orWhere('status', 'rejected');
+              ->where('status', 'rejected');
         })
         ->where('updated_at', '<', Carbon::now()->subHours(24))
         ->delete();
