@@ -64,17 +64,13 @@ Route::prefix('admin')->middleware('auth.admin')->group(function () {
 
     Route::resource('/produk', ProdukController::class);
 
-    Route::get('/verifikasi', function() {
-        return view('admin/verifikasi', [
-                'active' => 'admin',
-            ]);
-    });
-
     Route::get('/booking', function() {
         return view('admin/booking', [
                 'active' => 'admin',
             ]);
     });
+
+    Route::get('/verifikasi', [AdminController::class, 'verifikasi']);
 
     Route::resource('/faq-ulasan', FaqController::class);
 });

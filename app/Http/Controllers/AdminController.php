@@ -24,4 +24,13 @@ class AdminController extends Controller
             'belum_verifikasi' => $belum_verifikasi
         ]);
     }
+
+    public function verifikasi()
+    {
+        $orders = Order::where('status', 'pending')->get();
+        return view('admin.verifikasi', [
+            'title' => 'Verifikasi',
+            'orders' => $orders
+        ]);
+    }
 }

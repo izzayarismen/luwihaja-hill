@@ -1,3 +1,7 @@
+@php
+    use Carbon\Carbon;
+@endphp
+
 @extends('layouts/main')
 
 @section('content')
@@ -235,120 +239,41 @@
                                         <div class="col-lg-4">
                                             <div class="review-summary">
                                                 <div class="overall-rating">
-                                                    <span class="rating-number">4.9</span>
+                                                    <span class="rating-number">{{ $avg_rating }}</span>
                                                     <div class="rating-stars">
+                                                        @for($i = 1; $i <= ceil($avg_rating); $i++)
                                                         <i class="bi bi-star-fill"></i>
-                                                        <i class="bi bi-star-fill"></i>
-                                                        <i class="bi bi-star-fill"></i>
-                                                        <i class="bi bi-star-fill"></i>
-                                                        <i class="bi bi-star-fill"></i>
+                                                        @endfor
                                                     </div>
-                                                    <p class="review-count">Based on 247 reviews</p>
-                                                </div>
-
-                                                <div class="rating-breakdown">
-                                                    <div class="rating-item">
-                                                        <span class="rating-label">Cleanliness</span>
-                                                        <div class="rating-bar">
-                                                            <div class="rating-fill" style="width: 95%"></div>
-                                                        </div>
-                                                        <span class="rating-value">4.8</span>
-                                                    </div>
-                                                    <div class="rating-item">
-                                                        <span class="rating-label">Comfort</span>
-                                                        <div class="rating-bar">
-                                                            <div class="rating-fill" style="width: 98%"></div>
-                                                        </div>
-                                                        <span class="rating-value">4.9</span>
-                                                    </div>
-                                                    <div class="rating-item">
-                                                        <span class="rating-label">Service</span>
-                                                        <div class="rating-bar">
-                                                            <div class="rating-fill" style="width: 94%"></div>
-                                                        </div>
-                                                        <span class="rating-value">4.7</span>
-                                                    </div>
-                                                    <div class="rating-item">
-                                                        <span class="rating-label">Location</span>
-                                                        <div class="rating-bar">
-                                                            <div class="rating-fill" style="width: 96%"></div>
-                                                        </div>
-                                                        <span class="rating-value">4.8</span>
-                                                    </div>
+                                                    <p class="review-count">Dari {{ $total_ulasan }} Ulasan</p>
                                                 </div>
                                             </div>
                                         </div>
 
                                         <div class="col-lg-8">
                                             <div class="reviews-list">
+                                                @forelse ($ulasan as $item)
                                                 <div class="review-item">
                                                     <div class="reviewer-info">
-                                                        <img src="/images/person-f-3.webp" alt="Sarah M."
+                                                        <img src="/images/default.png" alt="Profile"
                                                             class="reviewer-avatar">
                                                         <div class="reviewer-details">
-                                                            <h5>Sarah M.</h5>
+                                                            <h5>{{ $item->user->nama }}</h5>
                                                             <div class="review-stars">
+                                                                @for($i = 1; $i <= $item->rating; $i++)
                                                                 <i class="bi bi-star-fill"></i>
-                                                                <i class="bi bi-star-fill"></i>
-                                                                <i class="bi bi-star-fill"></i>
-                                                                <i class="bi bi-star-fill"></i>
-                                                                <i class="bi bi-star-fill"></i>
+                                                                @endfor
                                                             </div>
-                                                            <span class="review-date">March 15, 2024</span>
+                                                            <span class="review-date">{{ Carbon::parse($item->created_at)->translatedFormat('D, d M Y') }}</span>
                                                         </div>
                                                     </div>
                                                     <p class="review-text">
-                                                        "Absolutely stunning suite with breathtaking city views. The marble
-                                                        bathroom was luxurious and the bed incredibly comfortable. Service
-                                                        was impeccable throughout our stay."
+                                                        {{ $item->ulasan }}
                                                     </p>
                                                 </div>
-
-                                                <div class="review-item">
-                                                    <div class="reviewer-info">
-                                                        <img src="/images/person-m-7.webp" alt="Michael R."
-                                                            class="reviewer-avatar">
-                                                        <div class="reviewer-details">
-                                                            <h5>Michael R.</h5>
-                                                            <div class="review-stars">
-                                                                <i class="bi bi-star-fill"></i>
-                                                                <i class="bi bi-star-fill"></i>
-                                                                <i class="bi bi-star-fill"></i>
-                                                                <i class="bi bi-star-fill"></i>
-                                                                <i class="bi bi-star-fill"></i>
-                                                            </div>
-                                                            <span class="review-date">February 28, 2024</span>
-                                                        </div>
-                                                    </div>
-                                                    <p class="review-text">
-                                                        "Perfect for our anniversary celebration. The suite exceeded our
-                                                        expectations in every way. The private balcony was our favorite
-                                                        feature."
-                                                    </p>
-                                                </div>
-
-                                                <div class="review-item">
-                                                    <div class="reviewer-info">
-                                                        <img src="/images/person-f-11.webp" alt="Jessica L."
-                                                            class="reviewer-avatar">
-                                                        <div class="reviewer-details">
-                                                            <h5>Jessica L.</h5>
-                                                            <div class="review-stars">
-                                                                <i class="bi bi-star-fill"></i>
-                                                                <i class="bi bi-star-fill"></i>
-                                                                <i class="bi bi-star-fill"></i>
-                                                                <i class="bi bi-star-fill"></i>
-                                                                <i class="bi bi-star"></i>
-                                                            </div>
-                                                            <span class="review-date">January 12, 2024</span>
-                                                        </div>
-                                                    </div>
-                                                    <p class="review-text">
-                                                        "Beautiful room with excellent amenities. The only minor issue was
-                                                        the check-in process took longer than expected, but the staff made
-                                                        up for it with exceptional service."
-                                                    </p>
-                                                </div>
+                                                @empty
+                                                <p class="text-center">Belum ada ulasan.</p>
+                                                @endforelse
                                             </div>
                                         </div>
                                     </div>

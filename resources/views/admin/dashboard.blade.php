@@ -38,7 +38,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="rounded-2xl border border-gray-200 bg-white p-5 dark:border-gray-800 dark:bg-white/[0.03] md:p-6">
+                                <a href="/admin/produk" class="rounded-2xl border border-gray-200 bg-white p-5 dark:border-gray-800 dark:bg-white/[0.03] md:p-6">
                                     <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-yellow-100 dark:bg-yellow-500/15">
                                         <svg class="fill-yellow-600 dark:fill-yellow-500" width="24" height="24" viewBox="0 0 24 24"
                                             fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -56,8 +56,8 @@
                                             </h4>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="rounded-2xl border border-gray-200 bg-white p-5 dark:border-gray-800 dark:bg-white/[0.03] md:p-6">
+                                </a>
+                                <a href="/admin/booking" class="rounded-2xl border border-gray-200 bg-white p-5 dark:border-gray-800 dark:bg-white/[0.03] md:p-6">
                                     <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 dark:bg-green-500/15">
                                         <svg class="fill-green-600 dark:fill-green-500" width="24" height="24" viewBox="0 0 24 24"
                                             fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -75,8 +75,8 @@
                                             </h4>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="rounded-2xl border border-gray-200 bg-white p-5 dark:border-gray-800 dark:bg-white/[0.03] md:p-6">
+                                </a>
+                                <a href="/admin/verifikasi" class="rounded-2xl border border-gray-200 bg-white p-5 dark:border-gray-800 dark:bg-white/[0.03] md:p-6">
                                     <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-red-100 dark:bg-red-500/15">
                                         <svg class="fill-red-600 dark:fill-red-500" width="24" height="24" viewBox="0 0 24 24" fill="none"
                                             xmlns="http://www.w3.org/2000/svg">
@@ -94,7 +94,7 @@
                                             </h4>
                                         </div>
                                     </div>
-                                </div>
+                                </a>
                             </div>
                         </div>
                     </div>

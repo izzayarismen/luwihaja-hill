@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Akomodasi;
 use App\Models\Order;
+use App\Models\Ulasan;
 use Illuminate\Http\Request;
 
 class AkomodasiController extends Controller
@@ -116,12 +117,19 @@ class AkomodasiController extends Controller
             $gambar = array_map('trim', explode(',', $akomodasi->gambar));
         }
 
+        $ulasan = Ulasan::where('akomodasi_id', $id)->get();
+        $total_ulasan = $ulasan->count();
+        $avg_rating = $ulasan->avg('rating');
+
         return view('detail-akomodasi', [
             'active' => 'akomodasi',
             'akomodasi' => $akomodasi,
             'order' => $order,
             'fasilitas' => $fasilitas,
-            'gambar' => $gambar
+            'gambar' => $gambar,
+            'ulasan' => $ulasan,
+            'total_ulasan' => $total_ulasan,
+            'avg_rating' => $avg_rating
         ]);
     }
 
