@@ -161,9 +161,9 @@
                                         </div>
 
                                         <h4 class="mt-4">Fasilitas</h4>
-                                        <ul>
+                                        <ul class="amenities-list">
                                             @foreach ($fasilitas as $item)
-                                            <li>{{ $item }}</li>
+                                            <li><i class="bi bi-check-circle-fill"></i>{{ $item }}</li>
                                             @endforeach
                                         </ul>
                                     </div>
@@ -183,56 +183,51 @@
                                 </div>
                             </div>
 
-                            <div class="tab-pane fade show" id="room-details-kebijakan" role="tabpanel">
+                            <div class="tab-pane fade" id="room-details-kebijakan" role="tabpanel" aria-labelledby="amenities-tab">
+                                <div class="amenities-section">
                                 <div class="row">
-                                    <div class="col-lg-8">
-                                        <h4>Anak</h4>
-                                        <ul>
-                                            <li>Tamu umur berapa pun bisa menginap di sini.</li>
-                                            <li>Anak-anak 5 tahun ke atas dianggap sebagai tamu dewasa.</li>
-                                            <li>Pastikan umur anak yang menginap sesuai dengan detail pemesanan. Jika berbeda, tamu mungkin akan dikenakan biaya tambahan saat check-in.</li>
-                                        </ul>
-                                        <h4>Ketentuan status pernikahan</h4>
-                                        <ul>
-                                            <li>Tamu yang datang berpasangan harus menunjukkan buku nikah saat check-in.</li>
-                                        </ul>
-                                        <h4>Deposit</h4>
-                                        <ul>
-                                            <li>Tamu tidak perlu membayar deposit saat check-in.</li>
-                                        </ul>
-                                        <h4>Umur</h4>
-                                        <ul>
-                                            <li>Tamu umur berapa pun bisa menginap di sini.</li>
-                                        </ul>
-                                        <h4>Sarapan</h4>
-                                        <ul>
-                                            <li>Sarapan tidak tersedia.</li>
-                                        </ul>
-                                        <h4>Hewan peliharaan</h4>
-                                        <ul>
-                                            <li>Tidak diperbolehkan membawa hewan peliharaan.</li>
-                                        </ul>
-                                        <h4>Alkohol</h4>
-                                        <ul>
-                                            <li>Minuman beralkohol tidak diperbolehkan.</li>
-                                        </ul>
+                                    <div class="col-md-6">
+                                    <h4>Anak</h4>
+                                    <ul class="amenities-list">
+                                        <li><i class="bi bi-check-circle-fill"></i> Tamu umur berapa pun bisa menginap di sini.</li>
+                                        <li><i class="bi bi-check-circle-fill"></i> Anak-anak 5 tahun ke atas dianggap sebagai tamu dewasa.</li>
+                                        <li><i class="bi bi-check-circle-fill"></i> Pastikan umur anak yang menginap sesuai dengan detail pemesanan. Jika berbeda, tamu mungkin akan dikenakan biaya tambahan saat check-in.</li>
+                                    </ul>
+
+                                    <h4 class="mt-4">Ketentuan status pernikahan</h4>
+                                    <ul class="amenities-list">
+                                        <li><i class="bi bi-check-circle-fill"></i> Tamu yang datang berpasangan harus menunjukkan buku nikah saat check-in.</li>
+                                    </ul>
+
+                                    <h4 class="mt-4">Deposit</h4>
+                                    <ul class="amenities-list">
+                                        <li><i class="bi bi-check-circle-fill"></i> Tamu tidak perlu membayar deposit saat check-in.</li>
+                                    </ul>
                                     </div>
-                                    <div class="col-lg-4">
-                                        <div class="room-stats">
-                                            <h4>Prosedur Check-in</h4>
-                                            <div class="stat-item">
-                                                <span class="stat-label">Check-in:</span>
-                                                <span class="stat-value">{{ $akomodasi->checkin }}</span>
-                                            </div>
-                                            <div class="stat-item">
-                                                <span class="stat-label">Check-out:</span>
-                                                <span class="stat-value">{{ $akomodasi->checkout }}</span>
-                                            </div>
-                                        </div>
+                                    <div class="col-md-6">
+                                    <h4>Umur</h4>
+                                    <ul class="amenities-list">
+                                        <li><i class="bi bi-check-circle-fill"></i> Tamu umur berapa pun bisa menginap di sini.</li>
+                                    </ul>
+
+                                    <h4 class="mt-4">Sarapan</h4>
+                                    <ul class="amenities-list">
+                                        <li><i class="bi bi-check-circle-fill"></i> Sarapan tidak tersedia.</li>
+                                    </ul>
+
+                                    <h4 class="mt-4">Hewan peliharaan</h4>
+                                    <ul class="amenities-list">
+                                        <li><i class="bi bi-check-circle-fill"></i> Tidak diperbolehkan membawa hewan peliharaan.</li>
+                                    </ul>
+
+                                    <h4 class="mt-4">Alkohol</h4>
+                                    <ul class="amenities-list">
+                                        <li><i class="bi bi-check-circle-fill"></i> Minuman beralkohol tidak diperbolehkan.</li>
+                                    </ul>
                                     </div>
                                 </div>
+                                </div>
                             </div>
-
 
                             <div class="tab-pane fade" id="room-details-reviews" role="tabpanel">
                                 <div class="reviews-section">

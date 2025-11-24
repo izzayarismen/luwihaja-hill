@@ -54,6 +54,9 @@ Route::middleware('auth')->group(function () {
     // Payment
     Route::get('/payment/{order_id}', [BookingController::class, 'getPayment']);
     Route::post('/payment/{order_id}', [BookingController::class, 'postPayment']);
+
+    Route::post('/ulasan', [ProfileController::class, 'postUlasan']);
+    Route::delete('/ulasan/{id}', [ProfileController::class, 'deleteUlasan']);
 });
 
 Route::prefix('admin')->middleware('auth.admin')->group(function () {

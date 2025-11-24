@@ -2,6 +2,7 @@
 
 @php
     use Carbon\Carbon;
+    use App\Models\Ulasan; // Pastikan Model diload untuk pengecekan di view
 @endphp
 
 @section('content')
@@ -223,14 +224,21 @@
                                                 <button type="button" class="btn-details" data-bs-toggle="collapse" data-bs-target="#details{{ $item->id }}" aria-expanded="false">Cek Tiket</button>
                                             @endif
 
-                                            {{-- [MODIFIKASI] Tombol Beri Ulasan muncul jika status finished --}}
+                                            {{-- [LOGIKA] Tombol Beri/Edit Ulasan muncul jika status finished --}}
                                             @if ($item->status == 'finished')
+                                                @php
+                                                    // Cek apakah user ini sudah pernah review akomodasi ini
+                                                    $existingReview = Ulasan::where('user_id', Auth::id())
+                                                                        ->where('akomodasi_id', $item->akomodasi_id)
+                                                                        ->first();
+                                                @endphp
                                                 <button type="button" class="status processing" data-bs-toggle="modal" data-bs-target="#reviewModal{{ $item->id }}">
-                                                    <i class="bi bi-star"></i> Beri Ulasan
+                                                    <i class="bi bi-star"></i> {{ $existingReview ? 'Ubah Ulasan' : 'Beri Ulasan' }}
                                                 </button>
                                             @endif
                                         </div>
 
+                                        {{-- Timeline & Details Section (Tidak Diubah) --}}
                                         <div class="collapse tracking-info" id="tracking-{{$item->id}}">
                                             <div class="tracking-timeline">
                                                 <div class="timeline-item {{ $item->status == 'unpayed' || $item->status == 'rejected' ? 'active' : ($item->status == 'pending' || $item->status == 'verified' || $item->status == 'finished' ? 'completed' : '') }}">
@@ -359,30 +367,35 @@
                                         <div class="modal-dialog modal-dialog-centered">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title">Beri Ulasan - #{{ $item->order_id }}</h5>
+                                                    <h5 class="modal-title">Ulasan - {{ $item->akomodasi->tipe }}</h5>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
-                                                {{-- Pastikan Route '/reviews/store' sudah dibuat di web.php --}}
-                                                <form action="/reviews/store" method="POST" enctype="multipart/form-data">
+
+                                                <form action="/ulasan" method="POST" enctype="multipart/form-data">
                                                     @csrf
-                                                    <input type="hidden" name="order_id" value="{{ $item->id }}">
                                                     <input type="hidden" name="akomodasi_id" value="{{ $item->akomodasi_id }}">
 
                                                     <div class="modal-body">
+                                                        {{-- Cek lagi jika sudah ada review untuk pre-fill data --}}
+                                                        @php
+                                                            $currentRating = $existingReview ? $existingReview->rating : 0;
+                                                            $currentText = $existingReview ? $existingReview->ulasan : '';
+                                                        @endphp
+
                                                         <div class="mb-4">
                                                             <label class="form-label d-block">Bagaimana pengalaman menginap Anda?</label>
                                                             <div class="star-rating">
-                                                                <input type="radio" id="star5-{{$item->id}}" name="rating" value="5" /><label for="star5-{{$item->id}}" title="Sempurna"><i class="bi bi-star-fill"></i></label>
-                                                                <input type="radio" id="star4-{{$item->id}}" name="rating" value="4" /><label for="star4-{{$item->id}}" title="Sangat Bagus"><i class="bi bi-star-fill"></i></label>
-                                                                <input type="radio" id="star3-{{$item->id}}" name="rating" value="3" /><label for="star3-{{$item->id}}" title="Bagus"><i class="bi bi-star-fill"></i></label>
-                                                                <input type="radio" id="star2-{{$item->id}}" name="rating" value="2" /><label for="star2-{{$item->id}}" title="Kurang"><i class="bi bi-star-fill"></i></label>
-                                                                <input type="radio" id="star1-{{$item->id}}" name="rating" value="1" /><label for="star1-{{$item->id}}" title="Buruk"><i class="bi bi-star-fill"></i></label>
+                                                                <input type="radio" id="star5-{{$item->id}}" name="rating" value="5" {{ $currentRating == 5 ? 'checked' : '' }} /><label for="star5-{{$item->id}}" title="Sempurna"><i class="bi bi-star-fill"></i></label>
+                                                                <input type="radio" id="star4-{{$item->id}}" name="rating" value="4" {{ $currentRating == 4 ? 'checked' : '' }} /><label for="star4-{{$item->id}}" title="Sangat Bagus"><i class="bi bi-star-fill"></i></label>
+                                                                <input type="radio" id="star3-{{$item->id}}" name="rating" value="3" {{ $currentRating == 3 ? 'checked' : '' }} /><label for="star3-{{$item->id}}" title="Bagus"><i class="bi bi-star-fill"></i></label>
+                                                                <input type="radio" id="star2-{{$item->id}}" name="rating" value="2" {{ $currentRating == 2 ? 'checked' : '' }} /><label for="star2-{{$item->id}}" title="Kurang"><i class="bi bi-star-fill"></i></label>
+                                                                <input type="radio" id="star1-{{$item->id}}" name="rating" value="1" {{ $currentRating == 1 ? 'checked' : '' }} /><label for="star1-{{$item->id}}" title="Buruk"><i class="bi bi-star-fill"></i></label>
                                                             </div>
                                                         </div>
 
                                                         <div class="mb-3">
                                                             <label for="reviewText{{$item->id}}" class="form-label">Ceritakan pengalaman Anda</label>
-                                                            <textarea class="form-control" id="reviewText{{$item->id}}" name="comment" rows="3" placeholder="Kamar bersih, pelayanan ramah, lokasi strategis..." required></textarea>
+                                                            <textarea class="form-control" id="reviewText{{$item->id}}" name="ulasan" rows="3" placeholder="Kamar bersih, pelayanan ramah, lokasi strategis..." required>{{ $currentText }}</textarea>
                                                         </div>
                                                     </div>
                                                     <div class="modal-footer">
@@ -402,7 +415,7 @@
 
                             <div class="tab-pane fade" id="reviews">
                                 <div class="section-header" data-aos="fade-up">
-                                    <h2>My Reviews</h2>
+                                    <h2>Ulasan Saya</h2>
                                     <div class="header-actions">
                                         <div class="dropdown">
                                             <button class="filter-btn" data-bs-toggle="dropdown">
@@ -411,8 +424,7 @@
                                             </button>
                                             <ul class="dropdown-menu">
                                                 <li><a class="dropdown-item" href="#">Recent</a></li>
-                                                <li><a class="dropdown-item" href="#">Highest Rating</a>
-                                                </li>
+                                                <li><a class="dropdown-item" href="#">Highest Rating</a></li>
                                                 <li><a class="dropdown-item" href="#">Lowest Rating</a></li>
                                             </ul>
                                         </div>
@@ -420,59 +432,78 @@
                                 </div>
 
                                 <div class="reviews-grid">
+                                    @forelse($ulasan_saya as $item)
                                     <div class="review-card" data-aos="fade-up" data-aos-delay="100">
                                         <div class="review-header">
-                                            <img src="images/product-1.webp" alt="Product" class="product-image"
-                                                loading="lazy">
+                                            <img src="{{ trim(explode(',', $item->akomodasi->gambar)[0]) }}" alt="Product" class="product-image" loading="lazy">
                                             <div class="review-meta">
-                                                <h4>Lorem ipsum dolor sit amet</h4>
+                                                <h4>{{ $item->akomodasi->tipe }}</h4>
                                                 <div class="rating">
-                                                    <i class="bi bi-star-fill"></i>
-                                                    <i class="bi bi-star-fill"></i>
-                                                    <i class="bi bi-star-fill"></i>
-                                                    <i class="bi bi-star-fill"></i>
-                                                    <i class="bi bi-star-fill"></i>
-                                                    <span>(5.0)</span>
+                                                    @for ($i = 0; $i < $item->rating; $i++)
+                                                    <i class="bi bi-star-fill text-warning"></i>
+                                                    @endfor
+                                                    <span>({{ $item->rating }}.0)</span>
                                                 </div>
-                                                <div class="review-date">Reviewed on Feb 15, 2025</div>
+                                                <div class="review-date">Ulasan dibuat pada {{ Carbon::parse($item->created_at)->translatedFormat('D, d M Y') }}</div>
                                             </div>
                                         </div>
                                         <div class="review-content">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-                                                eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                            <p>{{ $item->ulasan }}</p>
                                         </div>
                                         <div class="review-footer">
-                                            <button type="button" class="btn-edit">Edit Review</button>
-                                            <button type="button" class="btn-delete">Delete</button>
+                                            {{-- Trigger Modal Edit (Menggunakan Modal yang sama strukturnya dengan Create) --}}
+                                            <button type="button" class="btn-edit" data-bs-toggle="modal" data-bs-target="#editReviewTabModal{{ $item->id }}">Edit Ulasan</button>
+
+                                            {{-- Form Delete --}}
+                                            <form action="/ulasan/{{ $item->id }}" method="POST" onsubmit="return confirm('Yakin ingin menghapus ulasan ini?');" style="display:inline-block;">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn-delete">Hapus Ulasan</button>
+                                            </form>
                                         </div>
                                     </div>
 
-                                    <div class="review-card" data-aos="fade-up" data-aos-delay="200">
-                                        <div class="review-header">
-                                            <img src="images/product-2.webp" alt="Product" class="product-image"
-                                                loading="lazy">
-                                            <div class="review-meta">
-                                                <h4>Consectetur adipiscing elit</h4>
-                                                <div class="rating">
-                                                    <i class="bi bi-star-fill"></i>
-                                                    <i class="bi bi-star-fill"></i>
-                                                    <i class="bi bi-star-fill"></i>
-                                                    <i class="bi bi-star-fill"></i>
-                                                    <i class="bi bi-star"></i>
-                                                    <span>(4.0)</span>
+                                    <div class="modal fade" id="editReviewTabModal{{ $item->id }}" tabindex="-1" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title">Ubah Ulasan - {{ $item->akomodasi->tipe }}</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
-                                                <div class="review-date">Reviewed on Feb 10, 2025</div>
+
+                                                {{-- Form POST ke /ulasan (UpdateOrCreate logic) --}}
+                                                <form action="/ulasan" method="POST">
+                                                    @csrf
+                                                    <input type="hidden" name="akomodasi_id" value="{{ $item->akomodasi_id }}">
+
+                                                    <div class="modal-body">
+                                                        <div class="mb-4 text-center">
+                                                            <label class="form-label d-block">Ubah penilaian Anda?</label>
+                                                            <div class="star-rating">
+                                                                <input type="radio" id="e-star5-{{$item->id}}" name="rating" value="5" {{ $item->rating == 5 ? 'checked' : '' }} /><label for="e-star5-{{$item->id}}"><i class="bi bi-star-fill"></i></label>
+                                                                <input type="radio" id="e-star4-{{$item->id}}" name="rating" value="4" {{ $item->rating == 4 ? 'checked' : '' }} /><label for="e-star4-{{$item->id}}"><i class="bi bi-star-fill"></i></label>
+                                                                <input type="radio" id="e-star3-{{$item->id}}" name="rating" value="3" {{ $item->rating == 3 ? 'checked' : '' }} /><label for="e-star3-{{$item->id}}"><i class="bi bi-star-fill"></i></label>
+                                                                <input type="radio" id="e-star2-{{$item->id}}" name="rating" value="2" {{ $item->rating == 2 ? 'checked' : '' }} /><label for="e-star2-{{$item->id}}"><i class="bi bi-star-fill"></i></label>
+                                                                <input type="radio" id="e-star1-{{$item->id}}" name="rating" value="1" {{ $item->rating == 1 ? 'checked' : '' }} /><label for="e-star1-{{$item->id}}"><i class="bi bi-star-fill"></i></label>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="mb-3">
+                                                            <label class="form-label">Ceritakan pengalaman Anda</label>
+                                                            <textarea class="form-control" name="ulasan" rows="3" required>{{ $item->ulasan }}</textarea>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn status cancelled" data-bs-dismiss="modal">Batal</button>
+                                                        <button type="submit" class="btn status delivered">Simpan Perubahan</button>
+                                                    </div>
+                                                </form>
                                             </div>
                                         </div>
-                                        <div class="review-content">
-                                            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                                                nisi ut aliquip ex ea commodo consequat.</p>
-                                        </div>
-                                        <div class="review-footer">
-                                            <button type="button" class="btn-edit">Edit Review</button>
-                                            <button type="button" class="btn-delete">Delete</button>
-                                        </div>
                                     </div>
+                                    @empty
+                                    <p class="text-center">Belum ada ulasan.</p>
+                                    @endforelse
                                 </div>
                             </div>
                         </div>
