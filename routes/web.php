@@ -53,29 +53,27 @@ Route::middleware('auth')->group(function () {
     // Payment
     Route::get('/payment/{order_id}', [BookingController::class, 'getPayment']);
     Route::post('/payment/{order_id}', [BookingController::class, 'postPayment']);
+});
 
-    Route::prefix('admin')->group(function () {
-        Route::get('/', function() {
-            return view('admin.index');
-        });
-
-        Route::resource('/produk', ProdukController::class);
-
+Route::prefix('admin')->middleware('auth.admin')->group(function () {
+    Route::get('/', function() {
+        return view('admin.index');
     });
+
+    Route::resource('/produk', ProdukController::class);
+
+    Route::get('/verifikasi', function() {
+        return view('admin/verifikasi', [
+                'active' => 'admin',
+            ]);
+    });
+
+    Route::get('/booking', function() {
+        return view('admin/booking', [
+                'active' => 'admin',
+            ]);
+    });
+
+    Route::resource('/faq-ulasan', FaqController::class);
 });
 
-Route::get('/admin/verifikasi', function() {
-    return view('admin/verifikasi', [
-            'active' => 'admin',
-        ]);
-});
-
-Route::get('/admin/booking', function() {
-    return view('admin/booking', [
-            'active' => 'admin',
-        ]);
-});
-
-
-
-Route::resource('/admin/faq-ulasan', FaqController::class);
