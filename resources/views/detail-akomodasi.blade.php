@@ -26,8 +26,8 @@
                 <div class="col-lg-8">
                     <div class="room-gallery">
                         <div class="main-image-container image-zoom-container">
-                            <img id="main-product-image" src="{{ $akomodasi->gambar }}" alt="{{ $akomodasi->tipe }}"
-                                class="img-fluid main-room-image" data-zoom="{{ $akomodasi->gambar }}">
+                            <img id="main-product-image" src="{{ $gambar[0] }}" alt="{{ $akomodasi->tipe }}"
+                                class="img-fluid main-room-image" data-zoom="{{ $gambar[0] }}">
                             <div class="image-nav-buttons">
                                 <button class="image-nav-btn prev-image" type="button">
                                     <i class="bi bi-chevron-left"></i>
@@ -38,21 +38,11 @@
                             </div>
                         </div>
                         <div class="thumbnail-gallery thumbnail-list">
-                            <div class="thumbnail-item active" data-image="{{ $akomodasi->gambar }}">
-                                <img src="{{ $akomodasi->gambar }}" alt="{{ $akomodasi->tipe }}" class="img-fluid">
-                            </div>
-                            <div class="thumbnail-item" data-image="/images/room-3.webp">
-                                <img src="/images/room-3.webp" alt="Bedroom View" class="img-fluid">
-                            </div>
-                            <div class="thumbnail-item" data-image="/images/room-7.webp">
-                                <img src="/images/room-7.webp" alt="Bathroom" class="img-fluid">
-                            </div>
-                            <div class="thumbnail-item" data-image="/images/room-12.webp">
-                                <img src="/images/room-12.webp" alt="City View" class="img-fluid">
-                            </div>
-                            <div class="thumbnail-item" data-image="/images/room-15.webp">
-                                <img src="/images/room-15.webp" alt="Living Area" class="img-fluid">
-                            </div>
+                            @foreach ($gambar as $index => $img)
+                                <div class="thumbnail-item {{ $index == 0 ? 'active' : '' }}" data-image="{{ $img }}">
+                                    <img src="{{ $img }}" alt="Thumbnail" class="img-fluid">
+                                </div>
+                            @endforeach
                         </div>
                     </div>
                 </div><!-- End Room Gallery -->

@@ -72,7 +72,7 @@ class AkomodasiController extends Controller
         });
 
 
-        $akomodasi = $query->get();
+        $akomodasi = $query->paginate('4');
         return view('akomodasi', [
             'active' => 'akomodasi',
             'akomodasi' => $akomodasi,
@@ -111,11 +111,17 @@ class AkomodasiController extends Controller
             $fasilitas = array_map('trim', explode(',', $akomodasi->fasilitas));
         }
 
+        $gambar = [];
+        if ($akomodasi->gambar) {
+            $gambar = array_map('trim', explode(',', $akomodasi->gambar));
+        }
+
         return view('detail-akomodasi', [
             'active' => 'akomodasi',
             'akomodasi' => $akomodasi,
             'order' => $order,
-            'fasilitas' => $fasilitas
+            'fasilitas' => $fasilitas,
+            'gambar' => $gambar
         ]);
     }
 
