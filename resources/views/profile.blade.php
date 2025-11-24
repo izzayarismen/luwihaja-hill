@@ -244,7 +244,7 @@
                                                         @if ($item->status == 'finished')
                                                         <p>Pesanan selesai. Terima kasih telah menginap.</p>
                                                         @else
-                                                        <p>Siap untuk check-in pada [{{ Carbon::parse($item->tanggal_masuk)->translatedFormat('D, d M Y') }}], pukul 14:00 - 21:00 WIB.</p>
+                                                        <p>Siap untuk check-in pada {{ Carbon::parse($item->tanggal_masuk)->translatedFormat('D, d M Y') }}, pukul 14:00 - 21:00 WIB.</p>
                                                         @endif
                                                     </div>
                                                 </div>
@@ -284,7 +284,7 @@
                                                                 <div class="item-meta">
                                                                     <span class="sku">{{ Carbon::parse($item->tanggal_masuk)->translatedFormat('D, d M Y') }}</span>
                                                                     <span>-</span>
-                                                                    <span class="qty">{{ Carbon::parse($item->tanggal_masuk)->translatedFormat('D, d M Y') }}</span>
+                                                                    <span class="qty">{{ Carbon::parse($item->tanggal_keluar)->translatedFormat('D, d M Y') }}</span>
                                                                 </div>
                                                             </div>
                                                             <div class="item-price">

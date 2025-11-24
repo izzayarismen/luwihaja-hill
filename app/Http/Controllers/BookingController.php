@@ -30,9 +30,10 @@ class BookingController extends Controller
 
     public function postBooking($id, Request $request)
     {
-        if(!$request->tanggal_masuk && !$request->tanggal_keluar) {
-            return back()->with('error', 'Tanggal masuk dan Tanggal keluar tidak boleh kosong!');
-        }
+        $request->validate([
+            'tanggal_masuk' => 'required',
+            'tanggal_keluar' => 'required'
+        ]);
 
         $akomodasi = Akomodasi::findOrFail($id);
 

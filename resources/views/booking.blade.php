@@ -9,6 +9,32 @@
             @csrf
                 <div class="row g-4">
                     <div class="col-lg-8" data-aos="fade-up" data-aos-delay="200">
+                        @if (session('success'))
+                            <div class="bg-success border border-success text-white px-4 py-3 rounded relative mb-4"
+                                role="alert">
+                                <span class="block sm:inline">{{ session('success') }}</span>
+                            </div>
+                        @endif
+
+                        @if (session('error'))
+                            <div class="bg-danger border border-danger text-white px-4 py-3 rounded relative mb-4"
+                                role="alert">
+                                <span class="block sm:inline">{{ session('error') }}</span>
+                            </div>
+                        @endif
+
+                        {{-- Tampilkan validasi error jika ada --}}
+                        @if ($errors->any())
+                            <div class="bg-danger border border-danger text-white px-4 py-3 rounded relative mb-4"
+                                role="alert">
+                                <strong class="font-bold">Oops! Ada kesalahan:</strong>
+                                <ul class="mt-2 list-disc list-inside">
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
                         <div class="cart-items">
                             <div class="cart-header d-none d-lg-block">
                                 <div class="row align-items-center gy-4">
@@ -84,17 +110,19 @@
                                     <div class="col-md-12">
                                         <label for="nama" class="form-label">Nama Lengkap</label>
                                         <input type="text" name="nama_pemesan" class="form-control" id="nama"
-                                            value="{{ Auth::user()->nama }}" required>
+                                            value="{{ auth()->user()->nama }}" required>
                                     </div>
                                     <div class="col-md-6">
                                         <label for="email" class="form-label">Email</label>
+                                        <input type="email" class="form-control" id="email"
+                                            value="{{ auth()->user()->email }}" disabled required>
                                         <input type="email" name="email_pemesan" class="form-control" id="email"
-                                            value="{{ Auth::user()->email }}" disabled required>
+                                            value="{{ auth()->user()->email }}" hidden required>
                                     </div>
                                     <div class="col-md-6">
                                         <label for="phone" class="form-label">Phone</label>
                                         <input type="tel" name="telepon_pemesan" class="form-control" id="phone"
-                                            value="{{ Auth::user()->telepon }}" required>
+                                            value="{{ auth()->user()->telepon }}" required>
                                     </div>
                                 </div>
                             </div><!-- End Cart Item -->
