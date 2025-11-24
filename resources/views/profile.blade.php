@@ -223,7 +223,7 @@
                                                         @if ($item->status == 'verified' || $item->status == 'finished')
                                                         <p>Pesanan dikonfirmasi. Silakan lihat E-Tiket Anda pada menu Cek Tiket.</p>
                                                         @else
-                                                        <p>Sedang diverifikasi admin. Jika dalam 24 jam status belum berubah, mohon hubungi kami <a href="wa.me/6282115551822"></a>[di sini].</p>
+                                                        <p>Sedang diverifikasi admin. Jika dalam 24 jam status belum berubah, mohon hubungi kami <a href="wa.me/6282115551822" target="_blank">[di sini]</a>.</p>
                                                         @endif
                                                         <span class="timeline-date">Feb 20, 2025 - 2:45 PM</span>
                                                     </div>
