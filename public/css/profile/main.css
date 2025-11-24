@@ -6903,6 +6903,12 @@ section,
   color: #f97316;
 }
 
+.status.processing {
+    background-color: #fff7ed;
+    color: #f97316;
+    border: 0px;
+}
+
 .account .content-area .orders-grid .order-card .order-content .order-info .info-row .status.shipped {
   background-color: #ecfeff;
   color: #06b6d4;
@@ -6913,10 +6919,20 @@ section,
   color: #22c55e;
 }
 
+.status.delivered {
+    color: #f0fdf4;
+    background-color: #22c55e;
+  }
+
 .account .content-area .orders-grid .order-card .order-content .order-info .info-row .status.cancelled {
   background-color: #fef2f2;
   color: #ef4444;
 }
+
+.status.cancelled {
+    color: #fef2f2;
+    background-color: #ef4444;
+  }
 
 .account .content-area .orders-grid .order-card .order-content .order-info .info-row .price {
   font-weight: 600;
@@ -6943,9 +6959,19 @@ section,
   border: none;
 }
 
+.btn-track {
+    background-color: var(--accent-color);
+    color: var(--contrast-color);
+    border: none;
+  }
+
 .account .content-area .orders-grid .order-card .order-footer button.btn-track:hover {
   background-color: color-mix(in srgb, var(--accent-color), transparent 15%);
 }
+
+.btn-track:hover {
+    background-color: color-mix(in srgb, var(--accent-color), transparent 15%);
+  }
 
 .account .content-area .orders-grid .order-card .order-footer button.btn-details {
   background-color: color-mix(in srgb, var(--accent-color), transparent 92%);
@@ -6953,9 +6979,19 @@ section,
   border: none;
 }
 
+.btn-details {
+    background-color: color-mix(in srgb, var(--accent-color), transparent 92%);
+    color: var(--accent-color);
+    border: none;
+  }
+
 .account .content-area .orders-grid .order-card .order-footer button.btn-details:hover {
   background-color: color-mix(in srgb, var(--accent-color), transparent 88%);
 }
+
+.btn-details:hover {
+    background-color: color-mix(in srgb, var(--accent-color), transparent 88%);
+  }
 
 .account .content-area .orders-grid .order-card .order-footer button.btn-review {
   background-color: #f0fdf4;

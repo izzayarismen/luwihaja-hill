@@ -5,12 +5,52 @@
 @endphp
 
 @section('content')
-    <!-- Content Area -->
+    {{-- CSS Tambahan untuk Star Rating --}}
+    <style>
+        .star-rating {
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: flex-end;
+            gap: 5px;
+        }
+
+        .star-rating input {
+            display: none;
+        }
+
+        .star-rating label {
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: #ddd;
+            transition: color 0.2s;
+        }
+
+        /* Hover & Checked Logic */
+        .star-rating input:checked ~ label,
+        .star-rating label:hover,
+        .star-rating label:hover ~ label {
+            color: #ffc107; /* Warna Kuning Emas */
+        }
+
+        /* Style untuk upload area */
+        .upload-area {
+            border: 2px dashed #ddd;
+            padding: 20px;
+            text-align: center;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-bottom: 15px;
+        }
+        .upload-area:hover {
+            background-color: #f8f9fa;
+            border-color: #aaa;
+        }
+    </style>
+
     <section id="account" class="account section">
 
         <div class="container" data-aos="fade-up" data-aos-delay="100">
 
-            <!-- Mobile Menu Toggle -->
             <div class="mobile-menu d-lg-none mb-4">
                 <button class="mobile-menu-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#profileMenu">
                     <i class="bi bi-grid"></i>
@@ -23,14 +63,12 @@
                 <div class="col-lg-9">
                     <div class="content-area">
                         <div class="tab-content">
-                            <!-- Settings Tab -->
                             <div class="tab-pane fade show active" id="settings">
                                 <div class="section-header" data-aos="fade-up">
                                     <h2>Pengaturan Akun</h2>
                                 </div>
 
                                 <div class="settings-content">
-                                    <!-- Personal Information -->
                                     @if (session('success'))
                                         <div class="bg-success border border-success text-white px-4 py-3 rounded relative mb-4"
                                             role="alert">
@@ -86,7 +124,6 @@
                                         </form>
                                     </div>
 
-                                    <!-- Security Settings -->
                                     <div class="settings-section" data-aos="fade-up" data-aos-delay="200">
                                         <h3>Keamanan</h3>
                                         <form class="settings-form" action="/profile/password" method="POST">
@@ -115,7 +152,6 @@
                                 </div>
                             </div>
 
-                            <!-- Orders Tab -->
                             <div class="tab-pane fade" id="orders">
                                 <div class="section-header" data-aos="fade-up">
                                     <h2>Pesanan Saya</h2>
@@ -138,7 +174,6 @@
 
                                 <div class="orders-grid">
                                     @forelse ($pesanan_saya as $item)
-                                    <!-- Order Card 1 -->
                                     <div class="order-card" data-aos="fade-up" data-aos-delay="100">
                                         <div class="order-header">
                                             <div class="order-id">
@@ -183,12 +218,19 @@
                                         <div class="order-footer">
                                             <button type="button" class="btn-track" data-bs-toggle="collapse"
                                                 data-bs-target="#tracking-{{$item->id}}" aria-expanded="false">Lihat Status</button>
-                                                @if ($item->status == 'verified' || $item->status == 'finished')
+
+                                            @if ($item->status == 'verified' || $item->status == 'finished')
                                                 <button type="button" class="btn-details" data-bs-toggle="collapse" data-bs-target="#details{{ $item->id }}" aria-expanded="false">Cek Tiket</button>
+                                            @endif
+
+                                            {{-- [MODIFIKASI] Tombol Beri Ulasan muncul jika status finished --}}
+                                            @if ($item->status == 'finished')
+                                                <button type="button" class="status processing" data-bs-toggle="modal" data-bs-target="#reviewModal{{ $item->id }}">
+                                                    <i class="bi bi-star"></i> Beri Ulasan
+                                                </button>
                                             @endif
                                         </div>
 
-                                        <!-- Order Tracking -->
                                         <div class="collapse tracking-info" id="tracking-{{$item->id}}">
                                             <div class="tracking-timeline">
                                                 <div class="timeline-item {{ $item->status == 'unpayed' || $item->status == 'rejected' ? 'active' : ($item->status == 'pending' || $item->status == 'verified' || $item->status == 'finished' ? 'completed' : '') }}">
@@ -256,7 +298,6 @@
                                             </div>
                                         </div>
 
-                                        <!-- Order Details -->
                                         <div class="collapse order-details" id="details{{ $item->id }}">
                                             <div class="details-content">
                                                 <div class="detail-section">
@@ -312,13 +353,53 @@
                                             </div>
                                         </div>
                                     </div>
+
+                                    @if ($item->status == 'finished')
+                                    <div class="modal fade" id="reviewModal{{ $item->id }}" tabindex="-1" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title">Beri Ulasan - #{{ $item->order_id }}</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                {{-- Pastikan Route '/reviews/store' sudah dibuat di web.php --}}
+                                                <form action="/reviews/store" method="POST" enctype="multipart/form-data">
+                                                    @csrf
+                                                    <input type="hidden" name="order_id" value="{{ $item->id }}">
+                                                    <input type="hidden" name="akomodasi_id" value="{{ $item->akomodasi_id }}">
+
+                                                    <div class="modal-body">
+                                                        <div class="mb-4">
+                                                            <label class="form-label d-block">Bagaimana pengalaman menginap Anda?</label>
+                                                            <div class="star-rating">
+                                                                <input type="radio" id="star5-{{$item->id}}" name="rating" value="5" /><label for="star5-{{$item->id}}" title="Sempurna"><i class="bi bi-star-fill"></i></label>
+                                                                <input type="radio" id="star4-{{$item->id}}" name="rating" value="4" /><label for="star4-{{$item->id}}" title="Sangat Bagus"><i class="bi bi-star-fill"></i></label>
+                                                                <input type="radio" id="star3-{{$item->id}}" name="rating" value="3" /><label for="star3-{{$item->id}}" title="Bagus"><i class="bi bi-star-fill"></i></label>
+                                                                <input type="radio" id="star2-{{$item->id}}" name="rating" value="2" /><label for="star2-{{$item->id}}" title="Kurang"><i class="bi bi-star-fill"></i></label>
+                                                                <input type="radio" id="star1-{{$item->id}}" name="rating" value="1" /><label for="star1-{{$item->id}}" title="Buruk"><i class="bi bi-star-fill"></i></label>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="mb-3">
+                                                            <label for="reviewText{{$item->id}}" class="form-label">Ceritakan pengalaman Anda</label>
+                                                            <textarea class="form-control" id="reviewText{{$item->id}}" name="comment" rows="3" placeholder="Kamar bersih, pelayanan ramah, lokasi strategis..." required></textarea>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn status cancelled" data-bs-dismiss="modal">Batal</button>
+                                                        <button type="submit" class="btn status delivered">Kirim Ulasan</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @endif
                                     @empty
                                     <p class="text-center">Belum ada pesanan.</p>
                                     @endforelse
                                 </div>
                             </div>
 
-                            <!-- Reviews Tab -->
                             <div class="tab-pane fade" id="reviews">
                                 <div class="section-header" data-aos="fade-up">
                                     <h2>My Reviews</h2>
@@ -339,7 +420,6 @@
                                 </div>
 
                                 <div class="reviews-grid">
-                                    <!-- Review Card 1 -->
                                     <div class="review-card" data-aos="fade-up" data-aos-delay="100">
                                         <div class="review-header">
                                             <img src="images/product-1.webp" alt="Product" class="product-image"
@@ -367,7 +447,6 @@
                                         </div>
                                     </div>
 
-                                    <!-- Review Card 2 -->
                                     <div class="review-card" data-aos="fade-up" data-aos-delay="200">
                                         <div class="review-header">
                                             <img src="images/product-2.webp" alt="Product" class="product-image"
