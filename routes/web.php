@@ -64,11 +64,7 @@ Route::prefix('admin')->middleware('auth.admin')->group(function () {
 
     Route::resource('/produk', ProdukController::class);
 
-    Route::get('/booking', function() {
-        return view('admin/booking', [
-                'active' => 'admin',
-            ]);
-    });
+    Route::get('/booking', [AdminController::class, 'booking']);
 
     Route::get('/verifikasi', [AdminController::class, 'verifikasi']);
     Route::post('/verifikasi/{id}', [AdminController::class, 'updateVerifikasi']);
