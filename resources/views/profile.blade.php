@@ -156,6 +156,8 @@
                                                     <span>Status</span>
                                                     @if ($item->status == 'unpayed')
                                                     <span class="status cancelled">Belum Dibayar</span>
+                                                    @elseif ($item->status == 'rejected')
+                                                    <span class="status cancelled">Pembayaran Ditolak</span>
                                                     @elseif ($item->status == 'pending')
                                                     <span class="status processing">Menunggu Verifikasi</span>
                                                     @elseif ($item->status == 'verified')
@@ -189,22 +191,25 @@
                                         <!-- Order Tracking -->
                                         <div class="collapse tracking-info" id="tracking-{{$item->id}}">
                                             <div class="tracking-timeline">
-                                                <div class="timeline-item {{ $item->status == 'unpayed' ? 'active' : ($item->status == 'pending' || $item->status == 'verified' || $item->status == 'finished' ? 'completed' : '') }}">
+                                                <div class="timeline-item {{ $item->status == 'unpayed' || $item->status == 'rejected' ? 'active' : ($item->status == 'pending' || $item->status == 'verified' || $item->status == 'finished' ? 'completed' : '') }}">
                                                     <div class="timeline-icon">
                                                         @if ($item->status == 'pending' || $item->status == 'verified' || $item->status == 'finished')
                                                         <i class="bi bi-check-circle-fill"></i>
+                                                        @elseif ($item->status == 'rejected')
+                                                        <i class="bi bi-x-circle"></i>
                                                         @else
                                                         <i class="bi bi-cash-stack"></i>
                                                         @endif
                                                     </div>
                                                     <div class="timeline-content">
-                                                        <h5>{{ $item->status != 'unpayed' ? 'Sudah' : 'Belum' }} Dibayar</h5>
-                                                        @if ($item->status != 'unpayed')
+                                                        <h5>{{ $item->status == 'pending' ? 'Sudah Dibayar' : ($item->status == 'rejected' ? 'Pembayaran Ditolak' : 'Belum Dibayar') }}</h5>
+                                                        @if ($item->status == 'rejected')
+                                                        <p>Bukti pembayaran tidak valid atau tidak terbaca. Silakan unggah ulang bukti transfer yang benar <a href="/payment/{{ $item->order_id }}">[di sini]</a>.</p>
+                                                        @elseif ($item->status != 'unpayed')
                                                         <p>Pembayaran berhasil. Lihat bukti transfer <a href="{{ $item->bukti_pembayaran }}" target="_blank">[di sini]</a>.</p>
                                                         @else
                                                         <p>Menunggu pembayaran. Selesaikan transaksi Anda segera <a href="/payment/{{ $item->order_id }}">[di sini]</a>.</p>
                                                         @endif
-                                                        <span class="timeline-date">Feb 20, 2025 - 10:30 AM</span>
                                                     </div>
                                                 </div>
 
@@ -225,7 +230,6 @@
                                                         @else
                                                         <p>Sedang diverifikasi admin. Jika dalam 24 jam status belum berubah, mohon hubungi kami <a href="https://wa.me/6282115551822" target="_blank">[di sini]</a>.</p>
                                                         @endif
-                                                        <span class="timeline-date">Feb 20, 2025 - 2:45 PM</span>
                                                     </div>
                                                 </div>
                                                 @endif

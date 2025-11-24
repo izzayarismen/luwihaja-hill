@@ -72,7 +72,7 @@ class AkomodasiController extends Controller
         });
 
 
-        $akomodasi = $query->paginate('2');
+        $akomodasi = $query->paginate('4');
         return view('akomodasi', [
             'active' => 'akomodasi',
             'akomodasi' => $akomodasi,
