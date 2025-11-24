@@ -179,7 +179,7 @@
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="room-stats">
-                                            <h4>Quick Stats</h4>
+                                            <h4>Prosedur Check-in</h4>
                                             <div class="stat-item">
                                                 <span class="stat-label">Check-in:</span>
                                                 <span class="stat-value">{{ $akomodasi->checkin }}</span>
@@ -229,7 +229,7 @@
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="room-stats">
-                                            <h4>Quick Stats</h4>
+                                            <h4>Prosedur Check-in</h4>
                                             <div class="stat-item">
                                                 <span class="stat-label">Check-in:</span>
                                                 <span class="stat-value">{{ $akomodasi->checkin }}</span>

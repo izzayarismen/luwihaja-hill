@@ -166,7 +166,7 @@
 
                             <div class="checkout-button">
                                 <button type="submit" href="/payment" class="btn btn-accent w-100">
-                                    Lanjut ke Pemayaran <i class="bi bi-arrow-right"></i>
+                                    Lanjut ke Pembayaran <i class="bi bi-arrow-right"></i>
                                 </button>
                             </div>
 
