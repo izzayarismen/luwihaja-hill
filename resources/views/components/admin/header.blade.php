@@ -61,7 +61,7 @@
                         <img src="/images/default.png" alt="User" />
                     </span>
 
-                    <span class="text-theme-sm mr-1 block font-medium"> Admin 1 </span>
+                    <span class="text-theme-sm mr-1 block font-medium"> {{ auth()->user()->nama }} </span>
 
                     <svg :class="dropdownOpen && 'rotate-180'" class="stroke-gray-500 dark:stroke-gray-400"
                         width="18" height="20" viewBox="0 0 18 20"
