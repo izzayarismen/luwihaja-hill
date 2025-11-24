@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -13,6 +14,13 @@ class ProfileController extends Controller
     public function getProfile()
     {
         $pesanan_saya = Order::where('user_id', Auth::user()->id)->with('akomodasi')->orderBy('id', 'desc')->get();
+
+        Order::where(function ($q) {
+            $q->where('status', 'unpayed')
+              ->orWhere('status', 'rejected');
+        })
+        ->where('updated_at', '<', Carbon::now()->subHours(24))
+        ->delete();
 
         return view('profile', [
             'title' => 'Profil',
