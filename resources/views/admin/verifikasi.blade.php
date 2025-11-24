@@ -18,55 +18,7 @@
     isRejectModalOpen: false,
     selectedItem: null,
 
-    items: [{
-            id: '00001',
-            nama: 'Christine Brooks',
-            kamar: 'Family Room',
-            jenis: 'Tipe Sungai & Dapur',
-            jumlah: 1,
-            checkIn: '14 Feb 2025',
-            checkOut: '15 Feb 2025',
-            tglBooking: '10 Feb 2025',
-            totalHarga: 'Rp 1.500.000',
-            image: './images/product/product-01.jpg'
-        },
-        {
-            id: '00002',
-            nama: 'John Doe',
-            kamar: 'Deluxe Room',
-            jenis: 'Tipe Laut',
-            jumlah: 2,
-            checkIn: '20 Mar 2025',
-            checkOut: '22 Mar 2025',
-            tglBooking: '15 Mar 2025',
-            totalHarga: 'Rp 2.800.000',
-            image: './images/product/product-02.jpg'
-        },
-        {
-            id: '00003',
-            nama: 'Jane Smith',
-            kamar: 'Standard Room',
-            jenis: 'Tipe Gunung',
-            jumlah: 1,
-            checkIn: '01 Apr 2025',
-            checkOut: '03 Apr 2025',
-            tglBooking: '28 Mar 2025',
-            totalHarga: 'Rp 1.200.000',
-            image: './images/product/product-03.jpg'
-        },
-        {
-            id: '00004',
-            nama: 'Robert Green',
-            kamar: 'Suite Room',
-            jenis: 'Tipe Kota',
-            jumlah: 1,
-            checkIn: '10 May 2025',
-            checkOut: '12 May 2025',
-            tglBooking: '05 May 2025',
-            totalHarga: 'Rp 3.500.000',
-            image: './images/product/product-04.jpg'
-        }
-    ],
+    items: {{ Js::from($orders) }},
 
     showDetail: function(item) {
         this.selectedItem = item;
@@ -179,7 +131,7 @@ $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(valu
                                     <template x-for="item in sortedItems()" :key="item.id">
                                         <div
                                             class="bg-white dark:bg-gray-800 rounded-2xl shadow-sm overflow-hidden border border-gray-200 dark:border-gray-700">
-                                            <img :src="item.image" :alt="item.kamar"
+                                            <img :src="item.bukti_pembayaran" :alt="item.order_id"
                                                 class="w-full h-48 object-cover" />
                                             <div class="p-4">
                                                 <button @click="showDetail(item)"
@@ -199,7 +151,7 @@ $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(valu
                             <div
                                 class="w-full max-w-4xl bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden grid grid-cols-1 sm:grid-cols-2 border border-gray-200 dark:border-gray-700">
                                 <div class="hidden sm:block">
-                                    <img :src="selectedItem ? selectedItem.image : ''" alt="Detail Kamar"
+                                    <img :src="selectedItem ? selectedItem.bukti_pembayaran : ''" alt="Detail Kamar"
                                         class="w-full h-full object-cover" />
                                 </div>
 
@@ -217,39 +169,39 @@ $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(valu
                                                         ORDER ID
                                                     </td>
                                                     <td class="px-4 py-3 w-2/3 text-gray-800 dark:text-gray-200"
-                                                        x-text="selectedItem ? selectedItem.id : ''"></td>
+                                                        x-text="selectedItem ? '#' + selectedItem.order_id : ''"></td>
                                                 </tr>
                                                 <tr class="divide-x divide-gray-200 dark:divide-gray-700">
                                                     <td
                                                         class="px-4 py-3 w-1/3 font-medium text-gray-500 dark:text-gray-400">
-                                                        NAMA
+                                                        NAMA PEMESAN
                                                     </td>
                                                     <td class="px-4 py-3 w-2/3 text-gray-800 dark:text-gray-200"
-                                                        x-text="selectedItem ? selectedItem.nama : ''"></td>
+                                                        x-text="selectedItem ? selectedItem.nama_pemesan : ''"></td>
                                                 </tr>
                                                 <tr class="divide-x divide-gray-200 dark:divide-gray-700">
                                                     <td
                                                         class="px-4 py-3 w-1/3 font-medium text-gray-500 dark:text-gray-400">
-                                                        KAMAR
+                                                        ALAMAT EMAIL
                                                     </td>
                                                     <td class="px-4 py-3 w-2/3 text-gray-800 dark:text-gray-200"
-                                                        x-text="selectedItem ? selectedItem.kamar : ''"></td>
+                                                        x-text="selectedItem ? selectedItem.email_pemesan : ''"></td>
                                                 </tr>
                                                 <tr class="divide-x divide-gray-200 dark:divide-gray-700">
                                                     <td
                                                         class="px-4 py-3 w-1/3 font-medium text-gray-500 dark:text-gray-400">
-                                                        JENIS
+                                                        NOMOR TELEPON
                                                     </td>
                                                     <td class="px-4 py-3 w-2/3 text-gray-800 dark:text-gray-200"
-                                                        x-text="selectedItem ? selectedItem.jenis : ''"></td>
+                                                        x-text="selectedItem ? selectedItem.telepon_pemesan : ''"></td>
                                                 </tr>
                                                 <tr class="divide-x divide-gray-200 dark:divide-gray-700">
                                                     <td
                                                         class="px-4 py-3 w-1/3 font-medium text-gray-500 dark:text-gray-400">
-                                                        JUMLAH
+                                                        TIPE KAMAR
                                                     </td>
                                                     <td class="px-4 py-3 w-2/3 text-gray-800 dark:text-gray-200"
-                                                        x-text="selectedItem ? selectedItem.jumlah : ''"></td>
+                                                        x-text="selectedItem ? selectedItem.akomodasi.tipe : ''"></td>
                                                 </tr>
                                                 <tr class="divide-x divide-gray-200 dark:divide-gray-700">
                                                     <td
@@ -257,7 +209,7 @@ $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(valu
                                                         CHECK IN
                                                     </td>
                                                     <td class="px-4 py-3 w-2/3 text-gray-800 dark:text-gray-200"
-                                                        x-text="selectedItem ? selectedItem.checkIn : ''"></td>
+                                                        x-text="selectedItem ? selectedItem.tanggal_masuk : ''"></td>
                                                 </tr>
                                                 <tr class="divide-x divide-gray-200 dark:divide-gray-700">
                                                     <td
@@ -265,7 +217,7 @@ $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(valu
                                                         CHECK OUT
                                                     </td>
                                                     <td class="px-4 py-3 w-2/3 text-gray-800 dark:text-gray-200"
-                                                        x-text="selectedItem ? selectedItem.checkOut : ''"></td>
+                                                        x-text="selectedItem ? selectedItem.tanggal_keluar : ''"></td>
                                                 </tr>
                                                 <tr class="divide-x divide-gray-200 dark:divide-gray-700">
                                                     <td
@@ -273,7 +225,7 @@ $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(valu
                                                         TANGGAL BOOKING
                                                     </td>
                                                     <td class="px-4 py-3 w-2/3 text-gray-800 dark:text-gray-200"
-                                                        x-text="selectedItem ? selectedItem.tglBooking : ''"></td>
+                                                        x-text="selectedItem ? selectedItem.created_at : ''"></td>
                                                 </tr>
                                                 <tr class="divide-x divide-gray-200 dark:divide-gray-700">
                                                     <td
@@ -281,7 +233,7 @@ $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(valu
                                                         TOTAL HARGA
                                                     </td>
                                                     <td class="px-4 py-3 w-2/3 font-semibold text-gray-900 dark:text-white"
-                                                        x-text="selectedItem ? selectedItem.totalHarga : ''"></td>
+                                                        x-text="selectedItem ? selectedItem.total_harga : ''"></td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -335,16 +287,26 @@ $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(valu
                 <div @click.away="isApproveModalOpen = false"
                     class="w-full max-w-sm p-6 text-center bg-white dark:bg-gray-800 rounded-2xl shadow-xl">
                     <h3 class="text-lg font-medium text-gray-900 dark:text-white">
-                        Apakah Anda ingin mem-verifikasi pembayaran ini?
+                        Apakah anda ingin mem-verifikasi pembayaran ini?
                     </h3>
                     <div class="grid grid-cols-2 gap-4 mt-6">
                         <button @click="isApproveModalOpen = false"
                             class="px-4 py-2.5 font-medium text-white bg-red-600 rounded-lg hover:bg-red-700">
                             Batal
                         </button>
-                        <button @click="isApproveModalOpen = false"
-                            class="px-4 py-2.5 font-medium text-gray-800 bg-gray-100 rounded-lg hover:bg-gray-200 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600">
-                            Ya
+                        <button
+                            x-data="{ isLoading: false }"
+                            :disabled="isLoading"
+                            @click="
+                                isLoading = true;
+                                document.getElementById('verifikasiForm').action = `/admin/verifikasi/${selectedItem.id}`;
+                                document.getElementById('statusInput').value = 'verified';
+                                document.getElementById('verifikasiForm').submit();
+                            "
+                            class="px-4 py-2.5 bg-gray-100 rounded-lg font-medium hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                        >
+                            <span x-show="!isLoading">Ya</span>
+                            <span x-show="isLoading">Loading...</span>
                         </button>
                     </div>
                 </div>
@@ -355,26 +317,37 @@ $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(valu
                 x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95"
                 class="absolute inset-0 z-50 flex items-center justify-center p-4" style="display: none">
                 <div @click.away="isRejectModalOpen = false"
-                    class="w-full max-w-sm p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-xl">
+                    class="w-full max-w-sm p-6 text-center bg-white dark:bg-gray-800 rounded-2xl shadow-xl">
                     <h3 class="text-lg font-medium text-gray-900 dark:text-white">
-                        Masukkan alasan Anda menolak pembayaran ini
+                        Apakah anda ingin menolak verifikasi pembayaran ini?
                     </h3>
-                    <textarea rows="4" placeholder="Tulis alasan..."
-                        class="w-full p-3 mt-4 text-sm bg-gray-50 border border-gray-300 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:placeholder-gray-400 focus:ring-blue-500 focus:border-blue-500"></textarea>
                     <div class="grid grid-cols-2 gap-4 mt-6">
-                        <button @click="isRejectModalOpen = false"
-                            class="px-4 py-2.5 font-medium text-white bg-red-600 rounded-lg hover:bg-red-700">
+                        <button @click="isApproveModalOpen = false"
+                            class="px-4 py-2.5 font-medium text-gray-800 bg-gray-100 rounded-lg hover:bg-gray-200 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600">
                             Batal
                         </button>
-                        <button @click="isRejectModalOpen = false"
-                            class="px-4 py-2.5 font-medium text-gray-800 bg-gray-100 rounded-lg hover:bg-gray-200 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600">
-                            Tolak dan Kirim
+                        <button
+                            x-data="{ isLoading: false }"
+                            :disabled="isLoading"
+                            @click="
+                                isLoading = true;
+                                document.getElementById('verifikasiForm').action = `/admin/verifikasi/${selectedItem.id}`;
+                                document.getElementById('statusInput').value = 'rejected';
+                                document.getElementById('verifikasiForm').submit();
+                            "
+                            class="px-4 py-2.5 font-medium text-white bg-red-600 rounded-lg hover:bg-red-700">
+                            <span x-show="!isLoading">Tolak</span>
+                            <span x-show="isLoading">Loading...</span>
                         </button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <form id="verifikasiForm" method="POST" action="">
+        @csrf
+        <input type="hidden" name="status" id="statusInput">
+    </form>
     <script defer src="/js/admin/bundle.js"></script>
 </body>
 @endsection

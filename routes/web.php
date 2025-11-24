@@ -71,6 +71,7 @@ Route::prefix('admin')->middleware('auth.admin')->group(function () {
     });
 
     Route::get('/verifikasi', [AdminController::class, 'verifikasi']);
+    Route::post('/verifikasi/{id}', [AdminController::class, 'updateVerifikasi']);
 
     Route::resource('/faq-ulasan', FaqController::class);
 });
