@@ -238,7 +238,7 @@
                                     <div class="row">
                                         <div class="col-lg-4">
                                             <div class="review-summary">
-                                                <div class="overall-rating">gi
+                                                <div class="overall-rating">
                                                     <span class="rating-number">{{ $avg_rating }}</span>
                                                     <div class="rating-stars">
                                                         @for($i = 1; $i <= ceil($avg_rating); $i++)
