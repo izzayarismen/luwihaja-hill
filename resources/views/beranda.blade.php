@@ -383,7 +383,7 @@
                     <div class="swiper-slide">
                         <div class="testimonial-item" data-aos="zoom-in" data-aos-delay="200">
                             <div class="testimonial-header">
-                                <img src="images/person-f-12.webp" alt="Client" class="img-fluid" loading="lazy">
+                                <img src="images/default.png" alt="Client" class="img-fluid" loading="lazy">
                                 <div class="rating">
                                     <i class="bi bi-star-fill"></i>
                                     <i class="bi bi-star-fill"></i>
@@ -407,7 +407,7 @@
                     <div class="swiper-slide">
                         <div class="testimonial-item" data-aos="zoom-in" data-aos-delay="300">
                             <div class="testimonial-header">
-                                <img src="images/person-m-8.webp" alt="Client" class="img-fluid" loading="lazy">
+                                <img src="images/default.png" alt="Client" class="img-fluid" loading="lazy">
                                 <div class="rating">
                                     <i class="bi bi-star-fill"></i>
                                     <i class="bi bi-star-fill"></i>
@@ -431,7 +431,7 @@
                     <div class="swiper-slide">
                         <div class="testimonial-item" data-aos="zoom-in" data-aos-delay="400">
                             <div class="testimonial-header">
-                                <img src="images/person-f-6.webp" alt="Client" class="img-fluid" loading="lazy">
+                                <img src="images/default.png" alt="Client" class="img-fluid" loading="lazy">
                                 <div class="rating">
                                     <i class="bi bi-star-fill"></i>
                                     <i class="bi bi-star-fill"></i>
@@ -455,7 +455,7 @@
                     <div class="swiper-slide">
                         <div class="testimonial-item" data-aos="zoom-in" data-aos-delay="500">
                             <div class="testimonial-header">
-                                <img src="images/person-m-12.webp" alt="Client" class="img-fluid" loading="lazy">
+                                <img src="images/default.png" alt="Client" class="img-fluid" loading="lazy">
                                 <div class="rating">
                                     <i class="bi bi-star-fill"></i>
                                     <i class="bi bi-star-fill"></i>
