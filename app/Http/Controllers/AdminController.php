@@ -26,6 +26,15 @@ class AdminController extends Controller
         ]);
     }
 
+    public function booking()
+    {
+        $bookings = Order::with(['akomodasi', 'user'])->orderBy('id', 'desc')->get();
+
+        return view('admin.booking', [
+            'bookings' => $bookings
+        ]);
+    }
+
     public function verifikasi()
     {
         $orders = Order::with(['akomodasi', 'user'])
